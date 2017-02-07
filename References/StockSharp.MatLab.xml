@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>StockSharp.MatLab</name>
+  </assembly>
+  <members>
+    <member name="T:StockSharp.MatLab.ErrorEventArgs">
+      <summary>Аргумент, передающий информацию об ошибке.</summary>
+    </member>
+    <member name="P:StockSharp.MatLab.ErrorEventArgs.Error">
+      <summary>Информация об ошибке поиска инструментов.</summary>
+    </member>
+    <member name="T:StockSharp.MatLab.SecurityEventArgs">
+      <summary>Аргумент, передающий информацию об инструменте.</summary>
+    </member>
+    <member name="P:StockSharp.MatLab.SecurityEventArgs.Security">
+      <summary>Инструмент стакана.</summary>
+    </member>
+    <member name="T:StockSharp.MatLab.OrderEventArgs">
+      <summary>Аргумент, передающий информацию о заявке.</summary>
+    </member>
+    <member name="P:StockSharp.MatLab.OrderEventArgs.Order">
+      <summary>Заявка.</summary>
+    </member>
+    <member name="T:StockSharp.MatLab.OrderFailEventArgs">
+      <summary>Аргумент, передающий информацию об ошибке заявок (регистрации, снятия).</summary>
+    </member>
+    <member name="P:StockSharp.MatLab.OrderFailEventArgs.OrderFail">
+      <summary>Ошибка.</summary>
+    </member>
+    <member name="T:StockSharp.MatLab.TradeEventArgs">
+      <summary>Аргумент, передающий информацию о тиковой сделке.</summary>
+    </member>
+    <member name="P:StockSharp.MatLab.TradeEventArgs.Trade">
+      <summary>Сделка.</summary>
+    </member>
+    <member name="T:StockSharp.MatLab.MyTradeEventArgs">
+      <summary>Аргумент, передающий информацию о собственной сделке.</summary>
+    </member>
+    <member name="P:StockSharp.MatLab.MyTradeEventArgs.Trade">
+      <summary>Сделка.</summary>
+    </member>
+    <member name="T:StockSharp.MatLab.PortfolioEventArgs">
+      <summary>Аргумент, передающий информацию о портфеле.</summary>
+    </member>
+    <member name="P:StockSharp.MatLab.PortfolioEventArgs.Portfolio">
+      <summary>Портфель.</summary>
+    </member>
+    <member name="T:StockSharp.MatLab.PositionEventArgs">
+      <summary>Аргумент, передающий информацию о позиции.</summary>
+    </member>
+    <member name="P:StockSharp.MatLab.PositionEventArgs.Position">
+      <summary>Позиция.</summary>
+    </member>
+    <member name="T:StockSharp.MatLab.MarketDepthEventArgs">
+      <summary>Аргумент, передающий информацию о стакане.</summary>
+    </member>
+    <member name="P:StockSharp.MatLab.MarketDepthEventArgs.Depth">
+      <summary>Стакан.</summary>
+    </member>
+    <member name="T:StockSharp.MatLab.OrderLogItemEventArg">
+      <summary>Аргумент, передающий информацию о строчку лога заявок.</summary>
+    </member>
+    <member name="P:StockSharp.MatLab.OrderLogItemEventArg.Item">
+      <summary>Строчки.</summary>
+    </member>
+    <member name="T:StockSharp.MatLab.MatLabConnector">
+      <summary>Подключение, предоставляющий возможность использовать из MatLab скриптов подключения <see cref="T:StockSharp.BusinessEntities.IConnector" />.</summary>
+    </member>
+    <member name="M:StockSharp.MatLab.MatLabConnector.#ctor(StockSharp.BusinessEntities.IConnector)">
+      <summary>Создать <see cref="T:StockSharp.MatLab.MatLabConnector" />.</summary>
+      <param name="realConnector">Подключение, через которое будут отправляться заявки и получатся маркет-данные.</param>
+    </member>
+    <member name="M:StockSharp.MatLab.MatLabConnector.#ctor(StockSharp.BusinessEntities.IConnector,System.Boolean)">
+      <summary>Создать <see cref="T:StockSharp.MatLab.MatLabConnector" />.</summary>
+      <param name="realConnector">Подключение, через которое будут отправляться заявки и получатся маркет-данные.</param>
+      <param name="ownTrader">Контролировать время жизни подключения <paramref name="realConnector" />.</param>
+    </member>
+    <member name="P:StockSharp.MatLab.MatLabConnector.RealConnector">
+      <summary>Подключение, через которое будут отправляться заявки и получатся маркет-данные.</summary>
+    </member>
+    <member name="E:StockSharp.MatLab.MatLabConnector.Connected">
+      <summary>Событие успешного подключения.</summary>
+    </member>
+    <member name="E:StockSharp.MatLab.MatLabConnector.ConnectionError">
+      <summary>Событие ошибки подключения (например, соединения было разорвано).</summary>
+    </member>
+    <member name="E:StockSharp.MatLab.MatLabConnector.Disconnected">
+      <summary>Событие успешного отключения.</summary>
+    </member>
+    <member name="E:StockSharp.MatLab.MatLabConnector.Error">
+      <summary>Событие, сигнализирующее об ошибке при получении или обработке новых данных с сервера.</summary>
+    </member>
+    <member name="E:StockSharp.MatLab.MatLabConnector.MarketTimeChanged">
+      <summary>Событие, сигнализирующее об изменении текущего времени на биржевых площадках <see cref="P:StockSharp.BusinessEntities.IConnector.ExchangeBoards" />. Передается разница во времени, прошедшее с последнего вызова события. Первый раз событие передает значение <see cref="F:System.TimeSpan.Zero" />.</summary>
+    </member>
+    <member name="E:StockSharp.MatLab.MatLabConnector.NewSecurity">
+      <summary>Инструмент получен.</summary>
+    </member>
+    <member name="E:StockSharp.MatLab.MatLabConnector.SecurityChanged">
+      <summary>Событие изменения инструмента.</summary>
+    </member>
+    <member name="E:StockSharp.MatLab.MatLabConnector.NewPortfolio">
+      <summary>Портфель получен.</summary>
+    </member>
+    <member name="E:StockSharp.MatLab.MatLabConnector.PortfolioChanged">
+      <summary>Портфель изменен.</summary>
+    </member>
+    <member name="E:StockSharp.MatLab.MatLabConnector.NewPosition">
+      <summary>Позиция получена.</summary>
+    </member>
+    <member name="E:StockSharp.MatLab.MatLabConnector.PositionChanged">
+      <summary>Позиция изменена.</summary>
+    </member>
+    <member name="E:StockSharp.MatLab.MatLabConnector.NewTrade">
+      <summary>Тиковая сделка была получена.</summary>
+    </member>
+    <member name="E:StockSharp.MatLab.MatLabConnector.NewMyTrade">
+      <summary>Собственная сделка была получена.</summary>
+    </member>
+    <member name="E:StockSharp.MatLab.MatLabConnector.NewOrder">
+      <summary>Заявка была получена.</summary>
+    </member>
+    <member name="E:StockSharp.MatLab.MatLabConnector.OrderChanged">
+      <summary>Заявка изменена (отменена, исполнена).</summary>
+    </member>
+    <member name="E:StockSharp.MatLab.MatLabConnector.OrderRegisterFailed">
+      <summary>Событие ошибки регистрации заявки.</summary>
+    </member>
+    <member name="E:StockSharp.MatLab.MatLabConnector.OrderCancelFailed">
+      <summary>Событие ошибки отмены заявки.</summary>
+    </member>
+    <member name="E:StockSharp.MatLab.MatLabConnector.NewStopOrder">
+      <summary>Событие получения стоп-заявки.</summary>
+    </member>
+    <member name="E:StockSharp.MatLab.MatLabConnector.StopOrderChanged">
+      <summary>Событие изменения стоп-заявки.</summary>
+    </member>
+    <member name="E:StockSharp.MatLab.MatLabConnector.StopOrderRegisterFailed">
+      <summary>Событие ошибки регистрации стоп-заявки.</summary>
+    </member>
+    <member name="E:StockSharp.MatLab.MatLabConnector.StopOrderCancelFailed">
+      <summary>Событие ошибки отмены стоп-заявки.</summary>
+    </member>
+    <member name="E:StockSharp.MatLab.MatLabConnector.NewMarketDepth">
+      <summary>Стакан получен.</summary>
+    </member>
+    <member name="E:StockSharp.MatLab.MatLabConnector.MarketDepthChanged">
+      <summary>Стакан изменен.</summary>
+    </member>
+    <member name="M:StockSharp.MatLab.MatLabConnector.LookupSecurity(System.String)">
+      <summary>Найти инструменты, соотвествующие фильтру <paramref name="criteria" />.</summary>
+      <param name="criteria">Инструмент, поля которого будут использоваться в качестве фильтра.</param>
+    </member>
+    <member name="M:StockSharp.MatLab.MatLabConnector.DisposeManaged">
+      <summary>Освободить занятые ресурсы.</summary>
+    </member>
+  </members>
+</doc>

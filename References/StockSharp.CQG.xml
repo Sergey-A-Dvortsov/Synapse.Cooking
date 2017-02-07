@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>StockSharp.CQG</name>
+  </assembly>
+  <members>
+    <member name="T:StockSharp.CQG.CQGMessageAdapter">
+      <summary>Адаптер сообщений для CQG.</summary>
+    </member>
+    <member name="M:StockSharp.CQG.CQGMessageAdapter.#ctor(Ecng.Common.IdGenerator)">
+      <summary>Создать <see cref="T:StockSharp.CQG.CQGMessageAdapter" />.</summary>
+      <param name="transactionIdGenerator">Генератор транзакций.</param>
+    </member>
+    <member name="P:StockSharp.CQG.CQGMessageAdapter.IsNativeIdentifiers">
+      <summary>Идентифицировать инструменты в сообщениях по системному идентификатору <see cref="P:StockSharp.Messages.SecurityId.Native" />.</summary>
+    </member>
+    <member name="M:StockSharp.CQG.CQGMessageAdapter.CreateOrderCondition">
+      <summary>Создать для заявки типа <see cref="F:StockSharp.Messages.OrderTypes.Conditional" /> условие, которое поддерживается подключением.</summary>
+      <returns>Условие для заявки. Если подключение не поддерживает заявки типа <see cref="F:StockSharp.Messages.OrderTypes.Conditional" />, то будет возвращено <see langword="null" />.</returns>
+    </member>
+    <member name="M:StockSharp.CQG.CQGMessageAdapter.OnSendInMessage(StockSharp.Messages.Message)">
+      <summary>Отправить сообщение.</summary>
+      <param name="message">Сообщение.</param>
+    </member>
+    <member name="M:StockSharp.CQG.CQGMessageAdapter.ToString">
+      <summary>Получить строковое представление.</summary>
+      <returns>Строковое представление.</returns>
+    </member>
+    <member name="T:StockSharp.CQG.CQGOrderCondition">
+      <summary>Условие заявок, специфичных для <see cref="N:StockSharp.CQG" />.</summary>
+    </member>
+    <member name="M:StockSharp.CQG.CQGOrderCondition.#ctor">
+      <summary>Создать <see cref="T:StockSharp.CQG.CQGOrderCondition" />.</summary>
+    </member>
+    <member name="P:StockSharp.CQG.CQGOrderCondition.StopPrice">
+      <summary>Цена активации, при достижении которой будет выставлена заявка.</summary>
+    </member>
+    <member name="T:StockSharp.CQG.CQGTrader">
+      <summary>Реализация интерфейса <see cref="T:StockSharp.BusinessEntities.IConnector" /> для взаимодействия с системой CQG.</summary>
+    </member>
+    <member name="M:StockSharp.CQG.CQGTrader.#ctor">
+      <summary>Создать <see cref="T:StockSharp.CQG.CQGTrader" />.</summary>
+    </member>
+  </members>
+</doc>

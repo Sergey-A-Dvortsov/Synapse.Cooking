@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>StockSharp.BarChart</name>
+  </assembly>
+  <members>
+    <member name="T:StockSharp.BarChart.BarChartMessageAdapter">
+      <summary>Маркет-дата адаптер сообщений для BarChart.</summary>
+    </member>
+    <member name="M:StockSharp.BarChart.BarChartMessageAdapter.#ctor(Ecng.Common.IdGenerator)">
+      <summary>Создать <see cref="T:StockSharp.BarChart.BarChartMessageAdapter" />.</summary>
+      <param name="transactionIdGenerator">Генератор транзакций.</param>
+    </member>
+    <member name="P:StockSharp.BarChart.BarChartMessageAdapter.Login">
+      <summary>Логин.</summary>
+    </member>
+    <member name="P:StockSharp.BarChart.BarChartMessageAdapter.Password">
+      <summary>Пароль.</summary>
+    </member>
+    <member name="P:StockSharp.BarChart.BarChartMessageAdapter.TimeFrames">
+      <summary>Доступные тайм-фреймы.</summary>
+    </member>
+    <member name="M:StockSharp.BarChart.BarChartMessageAdapter.OnSendInMessage(StockSharp.Messages.Message)">
+      <summary>Отправить сообщение.</summary>
+      <param name="message">Сообщение.</param>
+    </member>
+    <member name="M:StockSharp.BarChart.BarChartMessageAdapter.Save(Ecng.Serialization.SettingsStorage)">
+      <summary>Сохранить настройки.</summary>
+      <param name="storage">Хранилище настроек.</param>
+    </member>
+    <member name="M:StockSharp.BarChart.BarChartMessageAdapter.Load(Ecng.Serialization.SettingsStorage)">
+      <summary>Загрузить настройки.</summary>
+      <param name="storage">Хранилище настроек.</param>
+    </member>
+    <member name="T:StockSharp.BarChart.BarChartTrader">
+      <summary>Реализация интерфейса <see cref="T:StockSharp.BusinessEntities.IConnector" /> для взаимодействия с BarChart для скачивания исторических и реал-тайм маркет-данных.</summary>
+    </member>
+    <member name="M:StockSharp.BarChart.BarChartTrader.#ctor">
+      <summary>Создать <see cref="T:StockSharp.BarChart.BarChartTrader" />.</summary>
+    </member>
+    <member name="P:StockSharp.BarChart.BarChartTrader.Login">
+      <summary>Логин.</summary>
+    </member>
+    <member name="P:StockSharp.BarChart.BarChartTrader.Password">
+      <summary>Пароль.</summary>
+    </member>
+    <member name="M:StockSharp.BarChart.BarChartTrader.GetHistoricalTicks(StockSharp.BusinessEntities.Security,System.Int64,System.Boolean@)">
+      <summary>Получить исторические тиков.</summary>
+      <param name="security">Инструмент, для которого необходимо получить все сделки.</param>
+      <param name="count">Максимальное количество тиков.</param>
+      <param name="isSuccess">Успешно ли получены все данные или процесс загрузки был прерван.</param>
+      <returns>Исторические тиковые данные.</returns>
+    </member>
+    <member name="M:StockSharp.BarChart.BarChartTrader.GetHistoricalTicks(StockSharp.BusinessEntities.Security,System.DateTime,System.DateTime,System.Boolean@)">
+      <summary>Получить исторические тиков.</summary>
+      <param name="security">Инструмент, для которого необходимо получить все сделки.</param>
+      <param name="from">Дата начала периода.</param>
+      <param name="to">Дата окончания периода.</param>
+      <param name="isSuccess">Успешно ли получены все данные или процесс загрузки был прерван.</param>
+      <returns>Исторические тиковые данные.</returns>
+    </member>
+    <member name="M:StockSharp.BarChart.BarChartTrader.GetHistoricalCandles(StockSharp.BusinessEntities.Security,System.Type,System.Object,System.Int64,System.Boolean@)">
+      <summary>Получить исторические свечи.</summary>
+      <param name="security">Инструмент, для которого необходимо получить свечи.</param>
+      <param name="candleMessageType">Тип сообщения свечи.</param>
+      <param name="arg">Параметр свечки (например, тайм-фрейм).</param>
+      <param name="count">Максимальное количество тиков.</param>
+      <param name="isSuccess">Успешно ли получены все данные или процесс загрузки был прерван.</param>
+      <returns>Исторические свечи.</returns>
+    </member>
+    <member name="M:StockSharp.BarChart.BarChartTrader.GetHistoricalCandles(StockSharp.BusinessEntities.Security,System.Type,System.Object,System.DateTime,System.DateTime,System.Boolean@)">
+      <summary>Получить исторические свечи.</summary>
+      <param name="security">Инструмент, для которого необходимо получить свечи.</param>
+      <param name="candleMessageType">Тип сообщения свечи.</param>
+      <param name="arg">Параметр свечки (например, тайм-фрейм).</param>
+      <param name="from">Дата начала периода.</param>
+      <param name="to">Дата окончания периода.</param>
+      <param name="isSuccess">Успешно ли получены все данные или процесс загрузки был прерван.</param>
+      <returns>Исторические свечи.</returns>
+    </member>
+    <member name="M:StockSharp.BarChart.BarChartTrader.GetSupportedRanges(StockSharp.Algo.Candles.CandleSeries)">
+      <summary>Получить временные диапазоны, для которых у данного источника для передаваемой серии свечек есть данные.</summary>
+      <param name="series">Серия свечек.</param>
+      <returns>Временные диапазоны.</returns>
+    </member>
+    <member name="E:StockSharp.BarChart.BarChartTrader.NewCandles">
+      <summary>Событие появления новых свечек, полученных после подписки через <see cref="M:StockSharp.BarChart.BarChartTrader.SubscribeCandles(StockSharp.Algo.Candles.CandleSeries,System.DateTimeOffset,System.DateTimeOffset)" />.</summary>
+    </member>
+    <member name="E:StockSharp.BarChart.BarChartTrader.Stopped">
+      <summary>Событие окончания обработки серии.</summary>
+    </member>
+    <member name="M:StockSharp.BarChart.BarChartTrader.SubscribeCandles(StockSharp.Algo.Candles.CandleSeries,System.DateTimeOffset,System.DateTimeOffset)">
+      <summary>Подписаться на получение свечек.</summary>
+      <param name="series">Серия свечек.</param>
+      <param name="from">Начальная дата, с которой необходимо получать данные.</param>
+      <param name="to">Конечная дата, до которой необходимо получать данные.</param>
+    </member>
+    <member name="M:StockSharp.BarChart.BarChartTrader.UnSubscribeCandles(StockSharp.Algo.Candles.CandleSeries)">
+      <summary>Остановить подписку получения свечек, ранее созданную через <see cref="M:StockSharp.BarChart.BarChartTrader.SubscribeCandles(StockSharp.Algo.Candles.CandleSeries,System.DateTimeOffset,System.DateTimeOffset)" />.</summary>
+      <param name="series">Серия свечек.</param>
+    </member>
+    <member name="M:StockSharp.BarChart.BarChartTrader.OnProcessMessage(StockSharp.Messages.Message)">
+      <summary>Обработать сообщение.</summary>
+      <param name="message">Сообщение.</param>
+    </member>
+  </members>
+</doc>

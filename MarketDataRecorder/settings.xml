@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<settings>
+  <storage-path>C:\HistoryData</storage-path>
+  !<!-- Можно использовать форматы bin и scv -->
+  <storage-format>bin</storage-format>
+  <securities>
+    <security>RIU6@FORTS</security>
+    <security>SIU6@FORTS</security>
+  </securities>
+</settings> 

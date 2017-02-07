@@ -1,0 +1,1947 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>StockSharp.Xaml.Charting</name>
+  </assembly>
+  <members>
+    <member name="T:StockSharp.Xaml.Charting.Chart">
+      <summary>Графический компонент отображения свечных графиков.</summary>
+      <summary>
+            Chart
+            </summary>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.Chart.#ctor">
+      <summary>Создать <see cref="T:StockSharp.Xaml.Charting.Chart" />.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.Chart.Areas">
+      <summary>Области графика.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.Chart.IsAutoScroll">
+      <summary>Скроллировать автоматически области <see cref="P:StockSharp.Xaml.Charting.Chart.Areas" /> при появлении новых данных. По-умолчанию выключено.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.Chart.IsAutoRange">
+      <summary>Использовать автоматический диапазон для оси X. По-умолчанию выключено.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.Chart.AutoRangeInterval">
+      <summary>Интервал скроллирования графика. По-умолчанию равно 200 млс.</summary>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.Chart.AddArea(StockSharp.Xaml.Charting.ChartArea)">
+      <summary>Добавить область на график.</summary>
+      <param name="area">Область графика.</param>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.Chart.RemoveArea(StockSharp.Xaml.Charting.ChartArea)">
+      <summary>Удалить область с графика.</summary>
+      <param name="area">Область графика.</param>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.Chart.ClearAreas">
+      <summary>Удалить все области с графика.</summary>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.Chart.AddElement(StockSharp.Xaml.Charting.ChartArea,StockSharp.Xaml.Charting.IChartElement)">
+      <summary>Добавить элемент на график.</summary>
+      <param name="area">Область графика.</param>
+      <param name="element">Элемент графика.</param>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.Chart.AddElement(StockSharp.Xaml.Charting.ChartArea,StockSharp.Xaml.Charting.ChartCandleElement,StockSharp.Algo.Candles.CandleSeries)">
+      <summary>Добавить элемент на график.</summary>
+      <param name="area">Область графика.</param>
+      <param name="element">Элемент графика.</param>
+      <param name="candleSeries">Серия свечек.</param>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.Chart.AddElement(StockSharp.Xaml.Charting.ChartArea,StockSharp.Xaml.Charting.ChartIndicatorElement,StockSharp.Algo.Candles.CandleSeries,StockSharp.Algo.Indicators.IIndicator)">
+      <summary>Добавить элемент на график.</summary>
+      <param name="area">Область графика.</param>
+      <param name="element">Элемент графика.</param>
+      <param name="candleSeries">Серия свечек.</param>
+      <param name="indicator">Индикатор.</param>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.Chart.AddElement(StockSharp.Xaml.Charting.ChartArea,StockSharp.Xaml.Charting.ChartOrderElement,StockSharp.BusinessEntities.Security)">
+      <summary>Добавить элемент на график.</summary>
+      <param name="area">Область графика.</param>
+      <param name="element">Элемент графика.</param>
+      <param name="security">Инструмент стакана.</param>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.Chart.AddElement(StockSharp.Xaml.Charting.ChartArea,StockSharp.Xaml.Charting.ChartTradeElement,StockSharp.BusinessEntities.Security)">
+      <summary>Добавить элемент на график.</summary>
+      <param name="area">Область графика.</param>
+      <param name="element">Элемент графика.</param>
+      <param name="security">Инструмент стакана.</param>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.Chart.GetIndicator(StockSharp.Xaml.Charting.ChartIndicatorElement)">
+      <summary>Получить индикатор, который связан с <see cref="T:StockSharp.Xaml.Charting.ChartIndicatorElement" />.</summary>
+      <param name="element">Элемент графика.</param>
+      <returns>Индикатор.</returns>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.Chart.GetSource(StockSharp.Xaml.Charting.IChartElement)">
+      <summary>Получить источник данных для <see cref="T:StockSharp.Xaml.Charting.IChartElement" />.</summary>
+      <param name="element">Элемент графика.</param>
+      <returns>Источник данных.</returns>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.Chart.SetSource(StockSharp.Xaml.Charting.IChartElement,System.Object)">
+      <summary>Установить источник для элемента.</summary>
+      <param name="element">Элемент графика.</param>
+      <param name="source">Источник.</param>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.Chart.AutoRangeByAnnotations">
+      <summary>Использовать аннотации для определения видимого диапазона для оси Y.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.Chart.MinimumRange">
+      <summary>Минимальное количество видимых свечек.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.Chart.ChartTheme">
+      <summary>Название графической темы.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.Chart.ShowLegend">
+      <summary>Показывать легенду.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.Chart.ShowOverview">
+      <summary>Показывать область просмотра.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.Chart.ShowPerfStats">
+      <summary>Показывать FPS.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.Chart.IsInteracted">
+      <summary>Интерактивный режим. По-умолчанию выключено.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.Chart.CrossHair">
+      <summary>Перекрестие.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.Chart.CrossHairTooltip">
+      <summary>Показывать подсказку для перекрестия.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.Chart.CrossHairAxisLabels">
+      <summary>Показывать значения на оси для перекрестия.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.Chart.AnnotationType">
+      <summary>Тип аннотации для рисования на графике.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.Chart.OrderCreationMode">
+      <summary>Режим создания заявок. По умолчанию выключено.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.Chart.TimeZone">
+      <summary>Локальная временная зона для всех <see cref="T:System.DateTimeOffset" /> значений конвертации.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.Chart.IndicatorTypes">
+      <summary>Список доступных типов индикаторов.</summary>
+    </member>
+    <member name="E:StockSharp.Xaml.Charting.Chart.AddCandles">
+      <summary>Событие создания элемента графика.</summary>
+    </member>
+    <member name="E:StockSharp.Xaml.Charting.Chart.AddIndicator">
+      <summary>Событие создания элемента графика.</summary>
+    </member>
+    <member name="E:StockSharp.Xaml.Charting.Chart.AddOrders">
+      <summary>Событие создания элемента графика.</summary>
+    </member>
+    <member name="E:StockSharp.Xaml.Charting.Chart.AddTrades">
+      <summary>Событие создания элемента графика.</summary>
+    </member>
+    <member name="E:StockSharp.Xaml.Charting.Chart.RemoveElement">
+      <summary>Событие удаления элемента графика.</summary>
+    </member>
+    <member name="E:StockSharp.Xaml.Charting.Chart.CreateOrder">
+      <summary>Событие создания новой заявки.</summary>
+    </member>
+    <member name="E:StockSharp.Xaml.Charting.Chart.MoveOrder">
+      <summary>Событие изменения заявки.</summary>
+    </member>
+    <member name="E:StockSharp.Xaml.Charting.Chart.CancelOrder">
+      <summary>Событие отмены заявки.</summary>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.Chart.Reset(System.Collections.Generic.IEnumerable{StockSharp.Xaml.Charting.IChartElement})">
+      <summary>Сбросить отрисованные ранее значения элементов графика.</summary>
+      <param name="elements">Элементы графика.</param>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.Chart.Draw(StockSharp.Xaml.Charting.ChartDrawData)">
+      <summary>Обработать новые данные.</summary>
+      <param name="data">Новые данные.</param>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.Chart.Load(Ecng.Serialization.SettingsStorage)">
+      <summary>Загрузить настройки.</summary>
+      <param name="storage">Хранилище настроек.</param>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.Chart.Save(Ecng.Serialization.SettingsStorage)">
+      <summary>Сохранить настройки.</summary>
+      <param name="storage">Хранилище настроек.</param>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.Chart.InitializeComponent">
+      <summary>InitializeComponent.</summary>
+    </member>
+    <member name="T:StockSharp.Xaml.Charting.ChartActiveOrderInfo">
+      <summary>Элемент графика отображения одной заявки.</summary>
+    </member>
+    <member name="E:StockSharp.Xaml.Charting.ChartActiveOrderInfo.OrderStateChanged">
+      <summary>Состояние заявки было изменено.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartActiveOrderInfo.Order">
+      <summary>Заявка, которую необходимо отобразить на графике.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartActiveOrderInfo.State">
+      <summary>Состояние заявки.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartActiveOrderInfo.Direction">
+      <summary>Направление заявки.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartActiveOrderInfo.Volume">
+      <summary>Объем заявки.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartActiveOrderInfo.FilledVolume">
+      <summary>Исполненный объем.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartActiveOrderInfo.Price">
+      <summary>Цена заявки.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartActiveOrderInfo.PriceStep">
+      <summary>Шаг цены инструмента.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartActiveOrderInfo.ChartX">
+      <summary>Значение X для данного элемента в диапазоне [0..1]. По-умолчанию равно 0.8.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartActiveOrderInfo.AutoRemoveFromChart">
+      <summary>Авто удаление заявки при ее финальном состоянии (<see cref="F:StockSharp.Messages.OrderStates.Done" />, <see cref="F:StockSharp.Messages.OrderStates.Failed" />).</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartActiveOrderInfo.IsFrozen">
+      <summary>Не позволять редактировать заявку на графике.</summary>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartActiveOrderInfo.#ctor(StockSharp.Xaml.Charting.ChartActiveOrderInfo)">
+      <summary>Создать <see cref="T:StockSharp.Xaml.Charting.ChartActiveOrderInfo" />.</summary>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartActiveOrderInfo.UpdateOrderState(StockSharp.BusinessEntities.Order,System.Boolean,System.Boolean)">
+      <summary>Обновить состояние заявки или заменить новой.</summary>
+      <param name="order">заявка.</param>
+      <param name="isError">Является ли операция с заявкой ошибкой.</param>
+      <param name="freeze">Не позволять редактировать заявку на графике.</param>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartActiveOrderInfo.Load(Ecng.Serialization.SettingsStorage)">
+      <summary>Сохранить настройки.</summary>
+      <param name="storage">Хранилище настроек.</param>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartActiveOrderInfo.Save(Ecng.Serialization.SettingsStorage)">
+      <summary>Сохранить настройки.</summary>
+      <param name="storage">Хранилище настроек.</param>
+    </member>
+    <member name="T:StockSharp.Xaml.Charting.ChartActiveOrdersElement">
+      <summary>Элемент графика отображения активных заявок.</summary>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartActiveOrdersElement.#ctor">
+      <summary>Создать <see cref="T:StockSharp.Xaml.Charting.ChartActiveOrdersElement" />.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartActiveOrdersElement.IsVisible">
+      <summary>Показать элемент графика.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartActiveOrdersElement.BuyPendingColor">
+      <summary>Цвет заявки на покупку в неактивном состоянии.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartActiveOrdersElement.BuyColor">
+      <summary>Цвет заявки на покупку в активном состоянии.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartActiveOrdersElement.BuyBlinkColor">
+      <summary>Цвет моргания при частичном исполнении (Покупка).</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartActiveOrdersElement.SellPendingColor">
+      <summary>Цвет заявки на продажу в неактивном состоянии.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartActiveOrdersElement.SellColor">
+      <summary>Цвет заявки на продажу в активном состоянии.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartActiveOrdersElement.SellBlinkColor">
+      <summary>Цвет моргания при частичном исполнении (Продажа).</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartActiveOrdersElement.CancelButtonColor">
+      <summary>Цвет кнопки отмены.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartActiveOrdersElement.CancelButtonBackground">
+      <summary>Цвет фона кнопки отмены.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartActiveOrdersElement.ForegroundColor">
+      <summary>Цвет текста.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartActiveOrdersElement.IsAnimationEnabled">
+      <summary>Показать элемент графика.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartActiveOrdersElement.Orders">
+      <summary>Заявки для отображения на графике.</summary>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartActiveOrdersElement.Load(Ecng.Serialization.SettingsStorage)">
+      <summary>Загрузить настройки.</summary>
+      <param name="storage">Хранилище настроек.</param>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartActiveOrdersElement.Save(Ecng.Serialization.SettingsStorage)">
+      <summary>Сохранить настройки.</summary>
+      <param name="storage">Хранилище настроек.</param>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartActiveOrdersElement.Clone">
+      <summary>Создать копию <see cref="T:StockSharp.Xaml.Charting.ChartActiveOrdersElement" />.</summary>
+      <returns>Копия объекта.</returns>
+    </member>
+    <member name="T:StockSharp.Xaml.Charting.ChartAnnotationTypes">
+      <summary>Типы аннотаций.</summary>
+    </member>
+    <member name="F:StockSharp.Xaml.Charting.ChartAnnotationTypes.None">
+      <summary>Отсутствует.</summary>
+    </member>
+    <member name="F:StockSharp.Xaml.Charting.ChartAnnotationTypes.LineAnnotation">
+      <summary>Строка.</summary>
+    </member>
+    <member name="F:StockSharp.Xaml.Charting.ChartAnnotationTypes.LineArrowAnnotation">
+      <summary>Указатель.</summary>
+    </member>
+    <member name="F:StockSharp.Xaml.Charting.ChartAnnotationTypes.TextAnnotation">
+      <summary>Текст.</summary>
+    </member>
+    <member name="F:StockSharp.Xaml.Charting.ChartAnnotationTypes.BoxAnnotation">
+      <summary>Область.</summary>
+    </member>
+    <member name="F:StockSharp.Xaml.Charting.ChartAnnotationTypes.HorizontalLineAnnotation">
+      <summary>Горизонтальная линия.</summary>
+    </member>
+    <member name="F:StockSharp.Xaml.Charting.ChartAnnotationTypes.VerticalLineAnnotation">
+      <summary>Вертикальная линия.</summary>
+    </member>
+    <member name="T:StockSharp.Xaml.Charting.ChartArea">
+      <summary>Область графика.</summary>
+    </member>
+    <member name="F:StockSharp.Xaml.Charting.ChartArea.XAxisId">
+      <summary>Основной идентификатор для X-осей.</summary>
+    </member>
+    <member name="F:StockSharp.Xaml.Charting.ChartArea.YAxisId">
+      <summary>Основной идентификатор для Y-осей.</summary>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartArea.#ctor">
+      <summary>Создать <see cref="T:StockSharp.Xaml.Charting.ChartArea" />.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartArea.Title">
+      <summary>Название области графика.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartArea.Height">
+      <summary>Высота области.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartArea.Elements">
+      <summary>Элементы области (<see cref="T:StockSharp.Xaml.Charting.ChartIndicatorElement" />, <see cref="T:StockSharp.Xaml.Charting.ChartCandleElement" /> и т.д.).</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartArea.XAxises">
+      <summary>Список горизонтальных осей.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartArea.YAxises">
+      <summary>Список вертикальных осей.</summary>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartArea.Load(Ecng.Serialization.SettingsStorage)">
+      <summary>Загрузить настройки.</summary>
+      <param name="storage">Хранилище настроек.</param>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartArea.Save(Ecng.Serialization.SettingsStorage)">
+      <summary>Сохранить настройки.</summary>
+      <param name="storage">Хранилище настроек.</param>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartArea.Clone">
+      <summary>Создать копию <see cref="T:StockSharp.Xaml.Charting.ChartArea" />.</summary>
+      <returns>Копия объекта.</returns>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartArea.ToString">
+      <summary>Получить строковое представление.</summary>
+      <returns>Строковое представление.</returns>
+    </member>
+    <member name="T:StockSharp.Xaml.Charting.ChartAxisAlignment">
+      <summary>Расположения осей на графике.</summary>
+    </member>
+    <member name="F:StockSharp.Xaml.Charting.ChartAxisAlignment.Default">
+      <summary>По-умолчанию.</summary>
+    </member>
+    <member name="F:StockSharp.Xaml.Charting.ChartAxisAlignment.Right">
+      <summary>Справа.</summary>
+    </member>
+    <member name="F:StockSharp.Xaml.Charting.ChartAxisAlignment.Left">
+      <summary>Слева.</summary>
+    </member>
+    <member name="F:StockSharp.Xaml.Charting.ChartAxisAlignment.Top">
+      <summary>Сверху.</summary>
+    </member>
+    <member name="F:StockSharp.Xaml.Charting.ChartAxisAlignment.Bottom">
+      <summary>Снизу.</summary>
+    </member>
+    <member name="T:StockSharp.Xaml.Charting.ChartAxisType">
+      <summary>Типы осей графика.</summary>
+    </member>
+    <member name="F:StockSharp.Xaml.Charting.ChartAxisType.DateTime">
+      <summary>Время.</summary>
+    </member>
+    <member name="F:StockSharp.Xaml.Charting.ChartAxisType.CategoryDateTime">
+      <summary>Время без разрывов.</summary>
+    </member>
+    <member name="F:StockSharp.Xaml.Charting.ChartAxisType.Numeric">
+      <summary>Число.</summary>
+    </member>
+    <member name="T:StockSharp.Xaml.Charting.ChartAxis">
+      <summary>Ось графика.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartAxis.ChartArea">
+      <summary>Область графика.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartAxis.Id">
+      <summary>Уникальный идентификатор.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartAxis.Title">
+      <summary>Заголовок.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartAxis.Group">
+      <summary>Группа.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartAxis.AxisAlignment">
+      <summary>Расположение оси.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartAxis.AxisType">
+      <summary>Тип оси.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartAxis.AutoRange">
+      <summary>Автоматический диапазон.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartAxis.FlipCoordinates">
+      <summary>Перевернуть координаты.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartAxis.DrawMajorTicks">
+      <summary>Показывать основные линии сетки на оси.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartAxis.DrawMajorGridLines">
+      <summary>Показывать основные линии сетки.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartAxis.DrawMinorTicks">
+      <summary>Показывать дополнительные линии сетки на оси.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartAxis.DrawMinorGridLines">
+      <summary>Показывать дополнительные линии сетки.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartAxis.DrawLabels">
+      <summary>Показывать надписи на оси.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartAxis.TextFormatting">
+      <summary>Формат надписей.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartAxis.SubDayTextFormatting">
+      <summary>Формат надписей для оси X внутри дня.</summary>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartAxis.Load(Ecng.Serialization.SettingsStorage)">
+      <summary>Загрузить настройки.</summary>
+      <param name="storage">Хранилище настроек.</param>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartAxis.Save(Ecng.Serialization.SettingsStorage)">
+      <summary>Сохранить настройки.</summary>
+      <param name="storage">Хранилище настроек.</param>
+    </member>
+    <member name="E:StockSharp.Xaml.Charting.ChartAxis.PropertyChanging">
+      <summary>Событие изменения свойств элемента графика.</summary>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartAxis.RaisePropertyChanging(System.String)">
+      <summary>Вызвать событие <see cref="E:StockSharp.Xaml.Charting.ChartAxis.PropertyChanging" />.</summary>
+      <param name="name">Название свойства.</param>
+    </member>
+    <member name="E:StockSharp.Xaml.Charting.ChartAxis.PropertyChanged">
+      <summary>Событие изменения значения свойств элемента графика.</summary>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartAxis.RaisePropertyChanged(System.String)">
+      <summary>Вызвать событие <see cref="E:StockSharp.Xaml.Charting.ChartAxis.PropertyChanged" />.</summary>
+      <param name="name">Название свойства.</param>
+    </member>
+    <member name="E:StockSharp.Xaml.Charting.ChartAxis.PropertyValueChanging">
+      <summary>Событие начала изменения значения свойств элемента графика.</summary>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartAxis.RaisePropertyValueChanging(System.String,System.Object)">
+      <summary>Вызвать событие <see cref="E:StockSharp.Xaml.Charting.ChartAxis.PropertyValueChanging" />.</summary>
+      <param name="name">Название свойства.</param>
+      <param name="value">Новое значение свойства.</param>
+    </member>
+    <member name="T:StockSharp.Xaml.Charting.ChartCandleDrawStyles">
+      <summary>Стили отрисовки графика свечей.</summary>
+    </member>
+    <member name="F:StockSharp.Xaml.Charting.ChartCandleDrawStyles.CandleStick">
+      <summary>Японские свечи.</summary>
+    </member>
+    <member name="F:StockSharp.Xaml.Charting.ChartCandleDrawStyles.Ohlc">
+      <summary>Бары.</summary>
+    </member>
+    <member name="F:StockSharp.Xaml.Charting.ChartCandleDrawStyles.LineOpen">
+      <summary>Линия (открытие).</summary>
+    </member>
+    <member name="F:StockSharp.Xaml.Charting.ChartCandleDrawStyles.LineHigh">
+      <summary>Линия (максимум).</summary>
+    </member>
+    <member name="F:StockSharp.Xaml.Charting.ChartCandleDrawStyles.LineLow">
+      <summary>Линия (минимум).</summary>
+    </member>
+    <member name="F:StockSharp.Xaml.Charting.ChartCandleDrawStyles.LineClose">
+      <summary>Линия (закрытие).</summary>
+    </member>
+    <member name="F:StockSharp.Xaml.Charting.ChartCandleDrawStyles.BoxVolume">
+      <summary>Боксовые объемы.</summary>
+    </member>
+    <member name="F:StockSharp.Xaml.Charting.ChartCandleDrawStyles.ClusterProfile">
+      <summary>Кластерный профиль.</summary>
+    </member>
+    <member name="F:StockSharp.Xaml.Charting.ChartCandleDrawStyles.Area">
+      <summary>Область.</summary>
+    </member>
+    <member name="T:StockSharp.Xaml.Charting.ChartCandleElement">
+      <summary>Элемент графика, представляющий свечи.</summary>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartCandleElement.#ctor">
+      <summary>Создать <see cref="T:StockSharp.Xaml.Charting.ChartCandleElement" />.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartCandleElement.Title">
+      <summary>Заголовок серии, который будет отображаться на графике.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartCandleElement.DrawStyle">
+      <summary>Стиль отрисовки свечей.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartCandleElement.DownFillColor">
+      <summary>Цвет тела убывающей свечи.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartCandleElement.UpFillColor">
+      <summary>Цвет тела возрастающей свечи.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartCandleElement.DownBorderColor">
+      <summary>Цвет контура убывающей свечи.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartCandleElement.UpBorderColor">
+      <summary>Цвет контура возрастающей свечи.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartCandleElement.StrokeThickness">
+      <summary>Толщина линии (бара или окантовки), с которой будет рисоваться свеча на графике.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartCandleElement.AntiAliasing">
+      <summary>Сглаживание отрисовки свечек (по-умолчанию включено).</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartCandleElement.LineColor">
+      <summary>Цвет линии для стиля <see cref="P:StockSharp.Xaml.Charting.ChartCandleElement.DrawStyle" /> Line*.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartCandleElement.ShowAxisMarker">
+      <summary>Показывать маркер на оси Y.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartCandleElement.Timeframe2Multiplier">
+      <summary>Множитель таймфрейма #2.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartCandleElement.Timeframe3Multiplier">
+      <summary>Множитель таймфрейма #3.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartCandleElement.FontColor">
+      <summary>Цвет текста.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartCandleElement.Timeframe2Color">
+      <summary>Цвет таймфрейма #2.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartCandleElement.Timeframe2FrameColor">
+      <summary>Цвет линии таймфрейма #2.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartCandleElement.Timeframe3Color">
+      <summary>Цвет таймфрейма #3.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartCandleElement.MaxVolumeColor">
+      <summary>Цвет максимального объема.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartCandleElement.ClusterLineColor">
+      <summary>Цвет линии кластерного профиля.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartCandleElement.ClusterTextColor">
+      <summary>Цвет текста кластера.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartCandleElement.ClusterColor">
+      <summary>Цвет кластера.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartCandleElement.ClusterMaxColor">
+      <summary>Цвек максимума у кластера.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartCandleElement.ShowHorizontalVolumes">
+      <summary>Показывать горизонтальный объем.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartCandleElement.LocalHorizontalVolumes">
+      <summary>Локальный горизонтальный объем.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartCandleElement.HorizontalVolumeWidthFraction">
+      <summary>Ширина доли горизонтального объема.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartCandleElement.HorizontalVolumeColor">
+      <summary>Цвет горизонтального объема.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartCandleElement.HorizontalVolumeFontColor">
+      <summary>Цвет шрифта горизонтального объема.</summary>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartCandleElement.Load(Ecng.Serialization.SettingsStorage)">
+      <summary>Загрузить настройки.</summary>
+      <param name="storage">Хранилище настроек.</param>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartCandleElement.Save(Ecng.Serialization.SettingsStorage)">
+      <summary>Сохранить настройки.</summary>
+      <param name="storage">Хранилище настроек.</param>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartCandleElement.Clone">
+      <summary>Создать копию <see cref="T:StockSharp.Xaml.Charting.ChartCandleElement" />.</summary>
+      <returns>Копия объекта.</returns>
+    </member>
+    <member name="T:StockSharp.Xaml.Charting.ChartDrawData">
+      <summary>Данные отрисовки графика.</summary>
+    </member>
+    <member name="T:StockSharp.Xaml.Charting.ChartDrawData.ChartDrawDataItem">
+      <summary>Элемент данных отрисовки графика.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartDrawData.ChartDrawDataItem.Time">
+      <summary>Временная отметка формирования новых данных.</summary>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartDrawData.ChartDrawDataItem.Add(StockSharp.Xaml.Charting.ChartCandleElement,StockSharp.Algo.Candles.Candle)">
+      <summary>Добавить данные свечи.</summary>
+      <param name="element">Элемент графика, представляющий свечи.</param>
+      <param name="candle">Данные свечи.</param>
+      <returns>Объект <see cref="T:StockSharp.Xaml.Charting.ChartDrawData.ChartDrawDataItem" />.</returns>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartDrawData.ChartDrawDataItem.Add(StockSharp.Xaml.Charting.ChartCandleElement,System.Object,System.Decimal,System.Decimal,System.Decimal,System.Decimal)">
+      <summary>Добавить данные свечи.</summary>
+      <param name="element">Элемент графика, представляющий свечи.</param>
+      <param name="candleArg">Параметр свечи.</param>
+      <param name="openPrice">Цена открытия.</param>
+      <param name="highPrice">Цена наивысшая.</param>
+      <param name="lowPrice">Цена наименьшая.</param>
+      <param name="closePrice">Цена закрытия.</param>
+      <returns>Объект <see cref="T:StockSharp.Xaml.Charting.ChartDrawData.ChartDrawDataItem" />.</returns>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartDrawData.ChartDrawDataItem.Add(StockSharp.Xaml.Charting.ChartCandleElement,System.Object,System.Decimal,System.Decimal,System.Decimal,System.Decimal,System.Tuple{System.Decimal,System.Decimal}[],System.Nullable{System.Decimal})">
+      <summary>Добавить данные свечи.</summary>
+      <param name="element">Элемент графика, представляющий свечи.</param>
+      <param name="candleArg">Параметр свечи.</param>
+      <param name="openPrice">Цена открытия.</param>
+      <param name="highPrice">Цена наивысшая.</param>
+      <param name="lowPrice">Цена наименьшая.</param>
+      <param name="closePrice">Цена закрытия.</param>
+      <param name="priceLevels">Ценовые уровни.</param>
+      <param name="priceStep">Минимальный шаг цены.</param>
+      <returns>Объект <see cref="T:StockSharp.Xaml.Charting.ChartDrawData.ChartDrawDataItem" />.</returns>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartDrawData.ChartDrawDataItem.Add(StockSharp.Xaml.Charting.ChartCandleElement,System.Tuple{System.Object,System.Decimal,System.Decimal,System.Decimal,System.Decimal,System.Tuple{System.Decimal,System.Decimal}[],System.Nullable{System.Decimal}})">
+      <summary>Добавить данные свечи.</summary>
+      <param name="element">Элемент графика, представляющий свечи.</param>
+      <param name="candle">Данные свечи.</param>
+      <returns>Объект <see cref="T:StockSharp.Xaml.Charting.ChartDrawData.ChartDrawDataItem" />.</returns>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartDrawData.ChartDrawDataItem.Add(StockSharp.Xaml.Charting.ChartIndicatorElement,StockSharp.Algo.Indicators.IIndicatorValue)">
+      <summary>Добавить данные индикатора.</summary>
+      <param name="element">Элемент графика, представляющий индикатор.</param>
+      <param name="value">Значение индикатора.</param>
+      <returns>Объект <see cref="T:StockSharp.Xaml.Charting.ChartDrawData.ChartDrawDataItem" />.</returns>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartDrawData.ChartDrawDataItem.Add(StockSharp.Xaml.Charting.ChartOrderElement,StockSharp.BusinessEntities.Order)">
+      <summary>Добавить данные заявки.</summary>
+      <param name="element">Элемент графика, представляющий заявки.</param>
+      <param name="order">Данные заявки.</param>
+      <returns>Объект <see cref="T:StockSharp.Xaml.Charting.ChartDrawData.ChartDrawDataItem" />.</returns>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartDrawData.ChartDrawDataItem.Add(StockSharp.Xaml.Charting.ChartOrderElement,System.Int64,StockSharp.Messages.Sides,System.Decimal,System.Decimal)">
+      <summary>Добавить данные сделки.</summary>
+      <param name="element">Элемент графика, представляющий заявки.</param>
+      <param name="tradeId">Идентификатор сделки.</param>
+      <param name="side">Направление заявки (покупка или продажа).</param>
+      <param name="price">Цена сделки.</param>
+      <param name="volume">Количество контрактов в сделке.</param>
+      <returns>Объект <see cref="T:StockSharp.Xaml.Charting.ChartDrawData.ChartDrawDataItem" />.</returns>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartDrawData.ChartDrawDataItem.Add(StockSharp.Xaml.Charting.ChartOrderElement,System.Tuple{System.Int64,StockSharp.Messages.Sides,System.Decimal,System.Decimal})">
+      <summary>Добавить данные заявки.</summary>
+      <param name="element">Элемент графика, представляющий заявки.</param>
+      <param name="order">Данные заявки.</param>
+      <returns>Объект <see cref="T:StockSharp.Xaml.Charting.ChartDrawData.ChartDrawDataItem" />.</returns>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartDrawData.ChartDrawDataItem.Add(StockSharp.Xaml.Charting.ChartTradeElement,StockSharp.BusinessEntities.MyTrade)">
+      <summary>Добавить данные заявки.</summary>
+      <param name="element">Элемент графика, представляющий сделки.</param>
+      <param name="trade">Данные сделки.</param>
+      <returns>Объект <see cref="T:StockSharp.Xaml.Charting.ChartDrawData.ChartDrawDataItem" />.</returns>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartDrawData.ChartDrawDataItem.Add(StockSharp.Xaml.Charting.ChartTradeElement,System.Int64,StockSharp.Messages.Sides,System.Decimal,System.Decimal)">
+      <summary>Добавить данные сделки.</summary>
+      <param name="element">Элемент графика, представляющий сделки.</param>
+      <param name="tradeId">Идентификатор сделки.</param>
+      <param name="side">Направление заявки (покупка или продажа).</param>
+      <param name="price">Цена сделки.</param>
+      <param name="volume">Количество контрактов в сделке.</param>
+      <returns>Объект <see cref="T:StockSharp.Xaml.Charting.ChartDrawData.ChartDrawDataItem" />.</returns>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartDrawData.ChartDrawDataItem.Add(StockSharp.Xaml.Charting.ChartTradeElement,System.Tuple{System.Int64,StockSharp.Messages.Sides,System.Decimal,System.Decimal})">
+      <summary>Добавить данные заявки.</summary>
+      <param name="element">Элемент графика, представляющий сделки.</param>
+      <param name="trade">Данные сделки.</param>
+      <returns>Объект <see cref="T:StockSharp.Xaml.Charting.ChartDrawData.ChartDrawDataItem" />.</returns>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartDrawData.ChartDrawDataItem.Add(StockSharp.Xaml.Charting.ChartActiveOrdersElement,StockSharp.Xaml.Charting.ChartActiveOrderInfo)">
+      <summary>Добавить данные активной заявки.</summary>
+      <param name="element">Элемент графика отображения активных заявок.</param>
+      <param name="value">Данные активной заявки.</param>
+      <returns>Объект <see cref="T:StockSharp.Xaml.Charting.ChartDrawData.ChartDrawDataItem" />.</returns>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartDrawData.ChartDrawDataItem.Add(StockSharp.Xaml.Charting.IChartElement,System.Object)">
+      <summary>Добавить данные графика.</summary>
+      <param name="element">Элемент графика.</param>
+      <param name="value">Данные графика.</param>
+      <returns>Объект <see cref="T:StockSharp.Xaml.Charting.ChartDrawData.ChartDrawDataItem" />.</returns>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartDrawData.#ctor">
+      <summary>Создать <see cref="T:StockSharp.Xaml.Charting.ChartDrawData" />.</summary>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartDrawData.Group(System.DateTimeOffset)">
+      <summary>Создать <see cref="T:StockSharp.Xaml.Charting.ChartDrawData.ChartDrawDataItem" />.</summary>
+      <param name="offset">Временная отметка формирования новых данных.</param>
+      <returns>Объект <see cref="T:StockSharp.Xaml.Charting.ChartDrawData.ChartDrawDataItem" />.</returns>
+    </member>
+    <member name="T:StockSharp.Xaml.Charting.IChartElement">
+      <summary>Интерфейс, описывающий элемент графика (индикатор, свеча и т.д.).</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.IChartElement.Id">
+      <summary>Уникальный идентификатор.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.IChartElement.IsLegend">
+      <summary>Отображать ли легенду на графике.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.IChartElement.XAxisId">
+      <summary>Ось X.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.IChartElement.YAxisId">
+      <summary>Ось Y.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.IChartElement.Chart">
+      <summary>График, на котором отрисовывается элемент.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.IChartElement.ChartArea">
+      <summary>Область графика, на которой отрисовывается элемент.</summary>
+    </member>
+    <member name="T:StockSharp.Xaml.Charting.ChartElement`1">
+      <summary>Базовый класс, описывающий элемент графика (индикатор, свеча и т.д.).</summary>
+      <typeparam name="T">Тип элемента графика.</typeparam>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartElement`1.#ctor">
+      <summary>Инициализировать <see cref="T:StockSharp.Xaml.Charting.ChartElement`1" />.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartElement`1.Chart">
+      <summary>График, на котором отрисовывается элемент.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartElement`1.ChartArea">
+      <summary>Область графика, на которой отрисовывается элемент.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartElement`1.FullTitle">
+      <summary>Полный заголовок серии, который будет отображаться на графике.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartElement`1.IsLegend">
+      <summary>Отображать ли легенду на графике.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartElement`1.XAxisId">
+      <summary>Ось X.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartElement`1.YAxisId">
+      <summary>Ось Y.</summary>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartElement`1.Load(Ecng.Serialization.SettingsStorage)">
+      <summary>Загрузить настройки.</summary>
+      <param name="storage">Хранилище настроек.</param>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartElement`1.Save(Ecng.Serialization.SettingsStorage)">
+      <summary>Сохранить настройки.</summary>
+      <param name="storage">Хранилище настроек.</param>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartElement`1.FillClone(`0)">
+      <summary>Заполнить копию элемента.</summary>
+      <param name="elem">Копия объекта.</param>
+      <returns>Копия объекта.</returns>
+    </member>
+    <member name="T:StockSharp.Xaml.Charting.ChartElementEditor">
+      <summary>Редактор элементов графика.</summary>
+      <summary>
+            ChartElementEditor
+            </summary>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartElementEditor.#ctor">
+      <summary>Создать <see cref="T:StockSharp.Xaml.Charting.ChartElementEditor" />.</summary>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartElementEditor.InitializeComponent">
+      <summary>InitializeComponent.</summary>
+    </member>
+    <member name="T:StockSharp.Xaml.Charting.ChartHelper">
+      <summary>Вспомогательный класс для <see cref="T:StockSharp.Xaml.Charting.IChart" />.</summary>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartHelper.SeriesName(System.String)">
+      <summary>Получить уникальное имя для серии.</summary>
+      <param name="prefix">Префикс имени.</param>
+      <returns>Уникальное имя.</returns>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartHelper.Draw(StockSharp.Xaml.Charting.IChart,StockSharp.Xaml.Charting.ChartCandleElement,StockSharp.Algo.Candles.Candle)">
+      <summary>Отрисовать свечу.</summary>
+      <param name="chart">График.</param>
+      <param name="element">Элемент графика, представляющий свечи.</param>
+      <param name="candle">Свеча.</param>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartHelper.Draw(StockSharp.Xaml.Charting.IChart,System.DateTimeOffset,StockSharp.Xaml.Charting.IChartElement,System.Object)">
+      <summary>Отрисовать новые данные.</summary>
+      <param name="chart">График.</param>
+      <param name="time">Временная отметка формирования новых данных.</param>
+      <param name="element">Элемент графика.</param>
+      <param name="value">Значение.</param>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartHelper.Draw(StockSharp.Xaml.Charting.IChart,System.DateTimeOffset,System.Collections.Generic.IDictionary{StockSharp.Xaml.Charting.IChartElement,System.Object})">
+      <summary>Обработать новые данные.</summary>
+      <param name="chart">График.</param>
+      <param name="time">Временная отметка формирования новых данных.</param>
+      <param name="values">Новые данные.</param>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartHelper.Draw(StockSharp.Xaml.Charting.IChart,System.Collections.Generic.IEnumerable{Ecng.Common.RefPair{System.DateTimeOffset,System.Collections.Generic.IDictionary{StockSharp.Xaml.Charting.IChartElement,System.Object}}})">
+      <summary>Обработать новые данные.</summary>
+      <param name="chart">График.</param>
+      <param name="values">Новые данные.</param>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartHelper.SaveToXml(StockSharp.Xaml.Charting.IChart,System.String)">
+      <summary>Сохранить данные графика в xml файл.</summary>
+      <param name="chart">График.</param>
+      <param name="fileName">Полный путь к файлу.</param>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartHelper.SaveToImage(StockSharp.Xaml.Charting.IChart)">
+      <summary>Сохранить график в изображение.</summary>
+      <param name="chart">График.</param>
+      <returns>Изображение.</returns>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartHelper.GetArea(StockSharp.Xaml.Charting.Chart,System.Int32)">
+      <summary>Вернуть область по указанному индексу. Если областей меньше, то недостающие будут созданы автоматически.</summary>
+      <param name="chart">График.</param>
+      <param name="index">Индекс области.</param>
+      <returns>Область.</returns>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartHelper.GetChart(StockSharp.Algo.Strategies.Strategy)">
+      <summary>Получить график, ассоциированный с переданной стратегией.</summary>
+      <param name="strategy">Стратегия.</param>
+      <returns>График.</returns>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartHelper.SetChart(StockSharp.Algo.Strategies.Strategy,StockSharp.Xaml.Charting.IChart)">
+      <summary>Установить график для стратегии.</summary>
+      <param name="strategy">Стратегия.</param>
+      <param name="chart">График.</param>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartHelper.SetTitle(StockSharp.Xaml.Charting.ChartCandleElement,StockSharp.Algo.Candles.CandleSeries)">
+      <summary>Установить заголовок для элемента.</summary>
+      <param name="element">Элемент.</param>
+      <param name="series">Серия свечек.</param>
+      <returns>Элемент.</returns>
+    </member>
+    <member name="T:StockSharp.Xaml.Charting.ChartIndicatorDrawStyles">
+      <summary>Стили отрисовки графика индикатора.</summary>
+    </member>
+    <member name="F:StockSharp.Xaml.Charting.ChartIndicatorDrawStyles.Line">
+      <summary>Строка.</summary>
+    </member>
+    <member name="F:StockSharp.Xaml.Charting.ChartIndicatorDrawStyles.NoGapLine">
+      <summary>Линия без разрывов.</summary>
+    </member>
+    <member name="F:StockSharp.Xaml.Charting.ChartIndicatorDrawStyles.StepLine">
+      <summary>Ступенчатая линия.</summary>
+    </member>
+    <member name="F:StockSharp.Xaml.Charting.ChartIndicatorDrawStyles.Band">
+      <summary>Диапазон.</summary>
+    </member>
+    <member name="F:StockSharp.Xaml.Charting.ChartIndicatorDrawStyles.BandOneValue">
+      <summary>Диапазон с одним значением.</summary>
+    </member>
+    <member name="F:StockSharp.Xaml.Charting.ChartIndicatorDrawStyles.Dot">
+      <summary>Точки.</summary>
+    </member>
+    <member name="F:StockSharp.Xaml.Charting.ChartIndicatorDrawStyles.Histogram">
+      <summary>Гистограмма.</summary>
+    </member>
+    <member name="F:StockSharp.Xaml.Charting.ChartIndicatorDrawStyles.Bubble">
+      <summary>Пузыры.</summary>
+    </member>
+    <member name="F:StockSharp.Xaml.Charting.ChartIndicatorDrawStyles.StackedBar">
+      <summary>Штабельная диаграмма.</summary>
+    </member>
+    <member name="T:StockSharp.Xaml.Charting.ChartIndicatorElement">
+      <summary>Элемент графика, представляющий индикатор.</summary>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartIndicatorElement.#ctor">
+      <summary>Создать <see cref="T:StockSharp.Xaml.Charting.ChartIndicatorElement" />.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartIndicatorElement.Title">
+      <summary>Заголовок индикатора, который будет отображаться на графике.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartIndicatorElement.Color">
+      <summary>Цвет линии (бара и т.д.), которой будет рисоваться на графике индикатор. По-умолчанию равно <see cref="P:System.Windows.Media.Colors.Green" />.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartIndicatorElement.AdditionalColor">
+      <summary>Дополнительный цвет линии (бара и т.д.), которой будет рисоваться на графике индикатор.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartIndicatorElement.StrokeThickness">
+      <summary>Толщина линии (бара и т.д.), с которой будет рисоваться индикатор на графике. По-умолчанию равно 2.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartIndicatorElement.IndicatorPainter">
+      <summary>Рендерер индикатора.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartIndicatorElement.DrawStyle">
+      <summary>Стиль отрисовки индикатора. По-умолчанию равно <see cref="F:StockSharp.Xaml.Charting.ChartIndicatorDrawStyles.Line" />.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartIndicatorElement.DrawTemplate">
+      <summary>Шаблон отрисовки для Dot стиля <see cref="T:StockSharp.Xaml.Charting.ChartIndicatorDrawStyles" />.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartIndicatorElement.AntiAliasing">
+      <summary>Сглаживание отрисовки индикатора.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartIndicatorElement.ShowAxisMarker">
+      <summary>Показывать маркер на оси Y.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartIndicatorElement.ParentElement">
+      <summary>Родительский <see cref="T:StockSharp.Xaml.Charting.ChartIndicatorElement" />. Используется при отрисовке индикаторов с помощью <see cref="T:StockSharp.Xaml.Charting.IChartIndicatorPainter" />.</summary>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartIndicatorElement.Load(Ecng.Serialization.SettingsStorage)">
+      <summary>Загрузить настройки.</summary>
+      <param name="storage">Хранилище настроек.</param>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartIndicatorElement.Save(Ecng.Serialization.SettingsStorage)">
+      <summary>Сохранить настройки.</summary>
+      <param name="storage">Хранилище настроек.</param>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartIndicatorElement.Clone">
+      <summary>Создать копию <see cref="T:StockSharp.Xaml.Charting.ChartIndicatorElement" />.</summary>
+      <returns>Копия объекта.</returns>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartIndicatorElement.ToString">
+      <summary>Получить строковое представление.</summary>
+      <returns>Строковое представление.</returns>
+    </member>
+    <member name="T:StockSharp.Xaml.Charting.ChartOrderElement">
+      <summary>Элемент графика, представляющий заявки.</summary>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartOrderElement.#ctor">
+      <summary>Инициализировать <see cref="T:StockSharp.Xaml.Charting.ChartOrderElement" />.</summary>
+    </member>
+    <member name="T:StockSharp.Xaml.Charting.ChartPanel">
+      <summary>Расширенный графический компонент отображения свечных графиков.</summary>
+      <summary>
+            ChartPanel
+            </summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartPanel.SecurityProvider">
+      <summary>Поставщик информации об инструментах.</summary>
+    </member>
+    <member name="F:StockSharp.Xaml.Charting.ChartPanel.RegisterOrderCommand">
+      <summary>Команда на регистрацию заявки.</summary>
+    </member>
+    <member name="F:StockSharp.Xaml.Charting.ChartPanel.AddAreaCommand">
+      <summary>Команда добавления области на график.</summary>
+    </member>
+    <member name="F:StockSharp.Xaml.Charting.ChartPanel.AddCandlesCommand">
+      <summary>Команда добавления свечек на график.</summary>
+    </member>
+    <member name="F:StockSharp.Xaml.Charting.ChartPanel.AddIndicatorCommand">
+      <summary>Команда добавления индикатора на график.</summary>
+    </member>
+    <member name="E:StockSharp.Xaml.Charting.ChartPanel.SettingsChanged">
+      <summary>Событие изменения настроек графика.</summary>
+    </member>
+    <member name="E:StockSharp.Xaml.Charting.ChartPanel.RegisterOrder">
+      <summary>Событие регистрации заявки с графика.</summary>
+    </member>
+    <member name="E:StockSharp.Xaml.Charting.ChartPanel.MoveOrder">
+      <summary>Событие изменения заявки на графике.</summary>
+    </member>
+    <member name="E:StockSharp.Xaml.Charting.ChartPanel.CancelOrder">
+      <summary>Событие отмена заявки на графике.</summary>
+    </member>
+    <member name="E:StockSharp.Xaml.Charting.ChartPanel.SubscribeCandleElement">
+      <summary>Событие подписки на получение данных для элемента.</summary>
+    </member>
+    <member name="E:StockSharp.Xaml.Charting.ChartPanel.SubscribeIndicatorElement">
+      <summary>Событие подписки на получение данных для элемента.</summary>
+    </member>
+    <member name="E:StockSharp.Xaml.Charting.ChartPanel.SubscribeOrderElement">
+      <summary>Событие подписки на получение данных для элемента.</summary>
+    </member>
+    <member name="E:StockSharp.Xaml.Charting.ChartPanel.SubscribeTradeElement">
+      <summary>Событие подписки на получение данных для элемента.</summary>
+    </member>
+    <member name="E:StockSharp.Xaml.Charting.ChartPanel.UnSubscribeElement">
+      <summary>Событие отписки от получения данных для элемента.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartPanel.Elements">
+      <summary>Элементы графика.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartPanel.IsAutoRange">
+      <summary>Использовать автоматический диапазон для оси X. По-умолчанию выключено.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartPanel.ChartTheme">
+      <summary>Название графической темы.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartPanel.OrderSettings">
+      <summary>Настройки регистрации заявок.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartPanel.ShareSettings">
+      <summary>Настройки публикации изображени в облако.</summary>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartPanel.AddArea(StockSharp.Xaml.Charting.ChartArea)">
+      <summary>Добавить область на график.</summary>
+      <param name="area">Область графика.</param>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartPanel.RemoveArea(StockSharp.Xaml.Charting.ChartArea)">
+      <summary>Удалить область с графика.</summary>
+      <param name="area">Область графика.</param>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartPanel.ClearAreas">
+      <summary>Удалить все области с графика.</summary>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartPanel.AddElement(StockSharp.Xaml.Charting.ChartArea,StockSharp.Xaml.Charting.IChartElement)">
+      <summary>Добавить элемент на график.</summary>
+      <param name="area">Область графика.</param>
+      <param name="element">Элемент графика.</param>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartPanel.AddElement(StockSharp.Xaml.Charting.ChartArea,StockSharp.Xaml.Charting.ChartCandleElement,StockSharp.Algo.Candles.CandleSeries)">
+      <summary>Добавить элемент на график.</summary>
+      <param name="area">Область графика.</param>
+      <param name="element">Элемент графика.</param>
+      <param name="candleSeries">Серия свечек.</param>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartPanel.AddElement(StockSharp.Xaml.Charting.ChartArea,StockSharp.Xaml.Charting.ChartIndicatorElement,StockSharp.Algo.Candles.CandleSeries,StockSharp.Algo.Indicators.IIndicator)">
+      <summary>Добавить элемент на график.</summary>
+      <param name="area">Область графика.</param>
+      <param name="element">Элемент графика.</param>
+      <param name="candleSeries">Серия свечек.</param>
+      <param name="indicator">Индикатор.</param>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartPanel.AddElement(StockSharp.Xaml.Charting.ChartArea,StockSharp.Xaml.Charting.ChartOrderElement,StockSharp.BusinessEntities.Security)">
+      <summary>Добавить элемент на график.</summary>
+      <param name="area">Область графика.</param>
+      <param name="element">Элемент графика.</param>
+      <param name="security">Инструмент стакана.</param>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartPanel.AddElement(StockSharp.Xaml.Charting.ChartArea,StockSharp.Xaml.Charting.ChartTradeElement,StockSharp.BusinessEntities.Security)">
+      <summary>Добавить элемент на график.</summary>
+      <param name="area">Область графика.</param>
+      <param name="element">Элемент графика.</param>
+      <param name="security">Инструмент стакана.</param>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartPanel.RemoveElement(StockSharp.Xaml.Charting.ChartArea,StockSharp.Xaml.Charting.IChartElement)">
+      <summary>Удалить элемент с графика.</summary>
+      <param name="area">Область графика.</param>
+      <param name="element">Элемент графика.</param>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartPanel.GetIndicator(StockSharp.Xaml.Charting.ChartIndicatorElement)">
+      <summary>Получить индикатор, который связан с <see cref="T:StockSharp.Xaml.Charting.ChartIndicatorElement" />.</summary>
+      <param name="element">Элемент графика.</param>
+      <returns>Индикатор.</returns>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartPanel.GetSource(StockSharp.Xaml.Charting.IChartElement)">
+      <summary>Получить источник данных для <see cref="T:StockSharp.Xaml.Charting.IChartElement" />.</summary>
+      <param name="element">Элемент графика.</param>
+      <returns>Источник данных.</returns>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartPanel.SetSource(StockSharp.Xaml.Charting.IChartElement,System.Object)">
+      <summary>Установить источник для элемента.</summary>
+      <param name="element">Элемент графика.</param>
+      <param name="source">Источник.</param>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartPanel.IsInteracted">
+      <summary>Интерактивный режим. По-умолчанию выключено.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartPanel.OrderCreationMode">
+      <summary>Режим создания заявок. По умолчанию выключено.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartPanel.MinimumRange">
+      <summary>Минимальное количество видимых свечек.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartPanel.ShowOverview">
+      <summary>Показывать область просмотра.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartPanel.IndicatorTypes">
+      <summary>Список доступных типов индикаторов.</summary>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartPanel.#ctor">
+      <summary>Создать <see cref="T:StockSharp.Xaml.Charting.ChartPanel" />.</summary>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartPanel.ReSubscribeElements">
+      <summary>Переподписаться на получение данных для всех элементов.</summary>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartPanel.Save(Ecng.Serialization.SettingsStorage)">
+      <summary>Сохранить настройки.</summary>
+      <param name="storage">Хранилище настроек.</param>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartPanel.Load(Ecng.Serialization.SettingsStorage)">
+      <summary>Загрузить настройки.</summary>
+      <param name="storage">Хранилище настроек.</param>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartPanel.Areas">
+      <summary>Области графика.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartPanel.IsAutoScroll">
+      <summary>Скроллировать автоматически области <see cref="P:StockSharp.Xaml.Charting.IChart.Areas" /> при появлении новых данных. По-умолчанию включено.</summary>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartPanel.Reset(System.Collections.Generic.IEnumerable{StockSharp.Xaml.Charting.IChartElement})">
+      <summary>Сбросить отрисованные ранее значения элементов графика.</summary>
+      <param name="elements">Элементы графика.</param>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartPanel.Draw(StockSharp.Xaml.Charting.ChartDrawData)">
+      <summary>Обработать новые данные.</summary>
+      <param name="data">Новые данные.</param>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartPanel.InitializeComponent">
+      <summary>InitializeComponent.</summary>
+    </member>
+    <member name="T:StockSharp.Xaml.Charting.ChartPanelOrderSettings">
+      <summary>Настройки регистрации заявок.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartPanelOrderSettings.Security">
+      <summary>Инструмент.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartPanelOrderSettings.Portfolio">
+      <summary>Портфель.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartPanelOrderSettings.Volume">
+      <summary>Количество контрактов в заявке.</summary>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartPanelOrderSettings.Load(Ecng.Serialization.SettingsStorage)">
+      <summary>Загрузить настройки.</summary>
+      <param name="storage">Хранилище настроек.</param>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartPanelOrderSettings.Save(Ecng.Serialization.SettingsStorage)">
+      <summary>Сохранить настройки.</summary>
+      <param name="storage">Хранилище настроек.</param>
+    </member>
+    <member name="T:StockSharp.Xaml.Charting.ChartPanelShareSettings">
+      <summary>Настройки публикации изображени в облако.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartPanelShareSettings.IsEnabled">
+      <summary>Доступна ли публикация в облако.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartPanelShareSettings.Period">
+      <summary>Период обновления изображения в облаке.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartPanelShareSettings.FileName">
+      <summary>Имя загруженного изображения.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartPanelShareSettings.Published">
+      <summary>Опубликовано ли.</summary>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartPanelShareSettings.Load(Ecng.Serialization.SettingsStorage)">
+      <summary>Загрузить настройки.</summary>
+      <param name="storage">Хранилище настроек.</param>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartPanelShareSettings.Save(Ecng.Serialization.SettingsStorage)">
+      <summary>Сохранить настройки.</summary>
+      <param name="storage">Хранилище настроек.</param>
+    </member>
+    <member name="T:StockSharp.Xaml.Charting.ChartPart`1">
+      <summary>Базовый класс, описывающий часть графика.</summary>
+      <typeparam name="T">Тип элемента графика.</typeparam>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartPart`1.#ctor">
+      <summary>Инициализировать <see cref="T:StockSharp.Xaml.Charting.ChartPart`1" />.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartPart`1.Id">
+      <summary>Уникальный идентификатор.</summary>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartPart`1.Load(Ecng.Serialization.SettingsStorage)">
+      <summary>Загрузить настройки.</summary>
+      <param name="storage">Хранилище настроек.</param>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartPart`1.Save(Ecng.Serialization.SettingsStorage)">
+      <summary>Сохранить настройки.</summary>
+      <param name="storage">Хранилище настроек.</param>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartPart`1.OnEquals(`0)">
+      <summary>Сравнить <see cref="T:StockSharp.Xaml.Charting.ChartElement`1" /> на эквивалентность.</summary>
+      <param name="other">Другое значение, с которым необходимо сравнивать.</param>
+      <returns>
+        <see langword="true" />, если другое значение равно текущему, иначе, <see langword="false" />.</returns>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartPart`1.GetHashCode">
+      <summary>Рассчитать хеш-код объекта <see cref="T:StockSharp.Xaml.Charting.ChartElement`1" />.</summary>
+      <returns>Хеш-код.</returns>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartPart`1.FillClone(`0)">
+      <summary>Заполнить копию элемента.</summary>
+      <param name="elem">Копия объекта.</param>
+      <returns>Копия объекта.</returns>
+    </member>
+    <member name="E:StockSharp.Xaml.Charting.ChartPart`1.PropertyChanging">
+      <summary>Событие изменения свойств элемента графика.</summary>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartPart`1.RaisePropertyChanging(System.String)">
+      <summary>Вызвать событие <see cref="E:StockSharp.Xaml.Charting.ChartPart`1.PropertyChanging" />.</summary>
+      <param name="name">Название свойства.</param>
+    </member>
+    <member name="E:StockSharp.Xaml.Charting.ChartPart`1.PropertyChanged">
+      <summary>Событие изменения значения свойств элемента графика.</summary>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartPart`1.RaisePropertyChanged(System.String)">
+      <summary>Вызвать событие <see cref="E:StockSharp.Xaml.Charting.ChartPart`1.PropertyChanged" />.</summary>
+      <param name="name">Название свойства.</param>
+    </member>
+    <member name="E:StockSharp.Xaml.Charting.ChartPart`1.PropertyValueChanging">
+      <summary>Событие начала изменения значения свойств элемента графика.</summary>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartPart`1.RaisePropertyValueChanging(System.String,System.Object)">
+      <summary>Вызвать событие <see cref="E:StockSharp.Xaml.Charting.ChartPart`1.PropertyValueChanging" />.</summary>
+      <param name="name">Название свойства.</param>
+      <param name="value">Новое значение свойства.</param>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartPart`1.SetField``1(``0@,``0,System.String)">
+      <summary>Обновить значение поля и вызвать событие <see cref="E:StockSharp.Xaml.Charting.ChartPart`1.PropertyChanged" />.</summary>
+      <param name="field">Поле для обновления.</param>
+      <param name="value">Новое значение.</param>
+      <param name="name">Имя поля для обновления.</param>
+      <typeparam name="TField">Тип поля.</typeparam>
+      <returns>
+        <see langword="true" /> если поле было обновлено. <see langword="false" /> иначе.</returns>
+    </member>
+    <member name="T:StockSharp.Xaml.Charting.ChartThemes">
+      <summary>Chart тема.</summary>
+    </member>
+    <member name="F:StockSharp.Xaml.Charting.ChartThemes.BlackSteel">
+      <summary>BlackSteel тема.</summary>
+    </member>
+    <member name="F:StockSharp.Xaml.Charting.ChartThemes.BrightSpark">
+      <summary>BrightSpark тема.</summary>
+    </member>
+    <member name="F:StockSharp.Xaml.Charting.ChartThemes.Chrome">
+      <summary>Chrome тема.</summary>
+    </member>
+    <member name="F:StockSharp.Xaml.Charting.ChartThemes.Electric">
+      <summary>Electric тема.</summary>
+    </member>
+    <member name="F:StockSharp.Xaml.Charting.ChartThemes.ExpressionDark">
+      <summary>ExpressionDark тема.</summary>
+    </member>
+    <member name="F:StockSharp.Xaml.Charting.ChartThemes.ExpressionLight">
+      <summary>ExpressionLight тема.</summary>
+    </member>
+    <member name="F:StockSharp.Xaml.Charting.ChartThemes.Oscilloscope">
+      <summary>Oscilloscope тема.</summary>
+    </member>
+    <member name="T:StockSharp.Xaml.Charting.ChartTradeElement">
+      <summary>Элемент графика, представляющий сделки.</summary>
+    </member>
+    <member name="T:StockSharp.Xaml.Charting.ChartTransactionElement`1">
+      <summary>Базовый класс, описывающий элемент графика Заявки или Сделки.</summary>
+      <typeparam name="T">Тип элемента.</typeparam>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartTransactionElement`1.#ctor">
+      <summary>Инициализировать <see cref="T:StockSharp.Xaml.Charting.ChartTransactionElement`1" />.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartTransactionElement`1.Title">
+      <summary>Заголовок серии, который будет отображаться на графике.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartTransactionElement`1.BuyColor">
+      <summary>Цвет графического элемента на графике, обозначающий покупку.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartTransactionElement`1.BuyStrokeColor">
+      <summary>Цвет границы графического элемента на графике, обозначающий покупку.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartTransactionElement`1.SellColor">
+      <summary>Цвет графического элемента на графике, обозначающий продажу.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartTransactionElement`1.SellStrokeColor">
+      <summary>Цвет границы графического элемента на графике, обозначающий продажу.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.ChartTransactionElement`1.IsHidden">
+      <summary>Видимость элементов на графике.</summary>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartTransactionElement`1.Load(Ecng.Serialization.SettingsStorage)">
+      <summary>Загрузить настройки.</summary>
+      <param name="storage">Хранилище настроек.</param>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartTransactionElement`1.Save(Ecng.Serialization.SettingsStorage)">
+      <summary>Сохранить настройки.</summary>
+      <param name="storage">Хранилище настроек.</param>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartTransactionElement`1.FillClone(`0)">
+      <summary>Заполнить копию элемента.</summary>
+      <param name="elem">Копия объекта.</param>
+      <returns>Копия объекта.</returns>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ChartTransactionElement`1.Clone">
+      <summary>Создать копию <see cref="T:StockSharp.Xaml.Charting.ChartTransactionElement`1" />.</summary>
+      <returns>Копия объекта.</returns>
+    </member>
+    <member name="T:StockSharp.Xaml.Charting.EquityCurveChart">
+      <summary>Графический компонент отображения кривой эквити.</summary>
+      <summary>
+            EquityCurveChart
+            </summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.EquityCurveChart.ChartTheme">
+      <summary>Название графической темы.</summary>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.EquityCurveChart.#ctor">
+      <summary>Создать <see cref="T:StockSharp.Xaml.Charting.EquityCurveChart" />.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.EquityCurveChart.NoGapMode">
+      <summary>Убирать разрывы (выходные, праздники) на графике. При включенном режиме и использовании нескольких кривых потеряется совместное масштабирование. По умолчанию включено.</summary>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.EquityCurveChart.CreateCurve(System.String,System.Windows.Media.Color,StockSharp.Xaml.Charting.LineChartStyles)">
+      <summary>Создать новую кривую для отрисовки доходности.</summary>
+      <param name="title">Заголовок линии.</param>
+      <param name="color">Цвет линии.</param>
+      <param name="style">Стиль отрисовки линии. По-умолчанию установлен <see cref="F:StockSharp.Xaml.Charting.LineChartStyles.Line" />.</param>
+      <returns>Коллекция с данными, которую необходимо заполнять для отрисовки линии.</returns>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.EquityCurveChart.CreateCurve(System.String,System.Windows.Media.Color,System.Windows.Media.Color,StockSharp.Xaml.Charting.LineChartStyles)">
+      <summary>Создать новую кривую для отрисовки доходности.</summary>
+      <param name="title">Заголовок линии.</param>
+      <param name="color">Цвет линии.</param>
+      <param name="secondColor">Дополнительный цвет линии. Используется для отрисовки <see cref="F:StockSharp.Xaml.Charting.LineChartStyles.Area" />.</param>
+      <param name="style">Стиль отрисовки линии. По-умолчанию установлен <see cref="F:StockSharp.Xaml.Charting.LineChartStyles.Line" />.</param>
+      <returns>Коллекция с данными, которую необходимо заполнять для отрисовки линии.</returns>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.EquityCurveChart.RemoveCurve(System.Collections.Generic.ICollection{StockSharp.Xaml.Charting.LineData{System.DateTime}})">
+      <summary>Удалить кривую доходности с графика.</summary>
+      <param name="items">Коллекция с данными, полученная из метода <see cref="M:StockSharp.Xaml.Charting.EquityCurveChart.CreateCurve(System.String,System.Windows.Media.Color,StockSharp.Xaml.Charting.LineChartStyles)" />.</param>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.EquityCurveChart.Clear">
+      <summary>Удалить кривые доходности с графика.</summary>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.EquityCurveChart.InitializeComponent">
+      <summary>InitializeComponent.</summary>
+    </member>
+    <member name="T:StockSharp.Xaml.Charting.LineChartStyles">
+      <summary>Стили отрисовки графика кривой эквити.</summary>
+    </member>
+    <member name="F:StockSharp.Xaml.Charting.LineChartStyles.Area">
+      <summary>Отрисовка графика в виде закрашенной области.</summary>
+    </member>
+    <member name="F:StockSharp.Xaml.Charting.LineChartStyles.Line">
+      <summary>Отрисовка графика в виде линии.</summary>
+    </member>
+    <member name="F:StockSharp.Xaml.Charting.LineChartStyles.DashedLine">
+      <summary>Отрисовка графика в виде пунктирной линии.</summary>
+    </member>
+    <member name="T:StockSharp.Xaml.Charting.EquityData">
+      <summary>Данные по эквити.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.EquityData.Time">
+      <summary>Отметка времени, в которое значение эквити было равным <see cref="P:StockSharp.Xaml.Charting.EquityData.Value" />.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.EquityData.Value">
+      <summary>Значение эквити.</summary>
+    </member>
+    <member name="T:StockSharp.Xaml.Charting.ExtendedBaseApplication">
+      <summary>Расширенный базовый класс для WPF приложений.</summary>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.ExtendedBaseApplication.#ctor">
+      <summary>Инициализировать <see cref="T:StockSharp.Xaml.Charting.ExtendedBaseApplication" />.</summary>
+    </member>
+    <member name="T:StockSharp.Xaml.Charting.Extensions">
+      <summary>Вспомогательный класс.</summary>
+    </member>
+    <member name="T:StockSharp.Xaml.Charting.IChart">
+      <summary>Интерфейс для работы с графиком.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.IChart.Areas">
+      <summary>Области графика.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.IChart.IsAutoScroll">
+      <summary>Скроллировать автоматически области <see cref="P:StockSharp.Xaml.Charting.IChart.Areas" /> при появлении новых данных. По-умолчанию включено.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.IChart.IsAutoRange">
+      <summary>Использовать автоматический диапазон для оси X. По-умолчанию выключено.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.IChart.IndicatorTypes">
+      <summary>Список доступных типов индикаторов.</summary>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.IChart.AddArea(StockSharp.Xaml.Charting.ChartArea)">
+      <summary>Добавить область на график.</summary>
+      <param name="area">Область графика.</param>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.IChart.RemoveArea(StockSharp.Xaml.Charting.ChartArea)">
+      <summary>Удалить область с графика.</summary>
+      <param name="area">Область графика.</param>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.IChart.ClearAreas">
+      <summary>Удалить все области с графика.</summary>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.IChart.AddElement(StockSharp.Xaml.Charting.ChartArea,StockSharp.Xaml.Charting.IChartElement)">
+      <summary>Добавить элемент на график.</summary>
+      <param name="area">Область графика.</param>
+      <param name="element">Элемент графика.</param>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.IChart.AddElement(StockSharp.Xaml.Charting.ChartArea,StockSharp.Xaml.Charting.ChartCandleElement,StockSharp.Algo.Candles.CandleSeries)">
+      <summary>Добавить элемент на график.</summary>
+      <param name="area">Область графика.</param>
+      <param name="element">Элемент графика.</param>
+      <param name="candleSeries">Серия свечек.</param>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.IChart.AddElement(StockSharp.Xaml.Charting.ChartArea,StockSharp.Xaml.Charting.ChartIndicatorElement,StockSharp.Algo.Candles.CandleSeries,StockSharp.Algo.Indicators.IIndicator)">
+      <summary>Добавить элемент на график.</summary>
+      <param name="area">Область графика.</param>
+      <param name="element">Элемент графика.</param>
+      <param name="candleSeries">Серия свечек.</param>
+      <param name="indicator">Индикатор.</param>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.IChart.AddElement(StockSharp.Xaml.Charting.ChartArea,StockSharp.Xaml.Charting.ChartOrderElement,StockSharp.BusinessEntities.Security)">
+      <summary>Добавить элемент на график.</summary>
+      <param name="area">Область графика.</param>
+      <param name="element">Элемент графика.</param>
+      <param name="security">Инструмент стакана.</param>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.IChart.AddElement(StockSharp.Xaml.Charting.ChartArea,StockSharp.Xaml.Charting.ChartTradeElement,StockSharp.BusinessEntities.Security)">
+      <summary>Добавить элемент на график.</summary>
+      <param name="area">Область графика.</param>
+      <param name="element">Элемент графика.</param>
+      <param name="security">Инструмент стакана.</param>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.IChart.RemoveElement(StockSharp.Xaml.Charting.ChartArea,StockSharp.Xaml.Charting.IChartElement)">
+      <summary>Удалить элемент с графика.</summary>
+      <param name="area">Область графика.</param>
+      <param name="element">Элемент графика.</param>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.IChart.GetIndicator(StockSharp.Xaml.Charting.ChartIndicatorElement)">
+      <summary>Получить индикатор, который связан с <see cref="T:StockSharp.Xaml.Charting.ChartIndicatorElement" />.</summary>
+      <param name="element">Элемент графика.</param>
+      <returns>Индикатор.</returns>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.IChart.GetSource(StockSharp.Xaml.Charting.IChartElement)">
+      <summary>Получить источник данных для <see cref="T:StockSharp.Xaml.Charting.IChartElement" />.</summary>
+      <param name="element">Элемент графика.</param>
+      <returns>Источник данных.</returns>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.IChart.Reset(System.Collections.Generic.IEnumerable{StockSharp.Xaml.Charting.IChartElement})">
+      <summary>Сбросить отрисованные ранее значения элементов графика.</summary>
+      <param name="elements">Элементы графика.</param>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.IChart.Draw(StockSharp.Xaml.Charting.ChartDrawData)">
+      <summary>Обработать новые данные.</summary>
+      <param name="data">Новые данные.</param>
+    </member>
+    <member name="T:StockSharp.Xaml.Charting.DrawHandler">
+      <summary>Описание метода отрисовки значения на графике.</summary>
+      <param name="element">Элемент графика.</param>
+      <param name="shift">Смещение.</param>
+      <param name="values">Значения.</param>
+    </member>
+    <member name="T:StockSharp.Xaml.Charting.IChartIndicatorPainter">
+      <summary>Интерфейс, описывающий рендерер индикатора на графике (например, линии, гистограммы и т.д.).</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.IChartIndicatorPainter.BaseElement">
+      <summary>Элемент графика, представляющий индикатор.</summary>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.IChartIndicatorPainter.Init">
+      <summary>Инициализировать рендерер.</summary>
+      <returns>Графические данные.</returns>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.IChartIndicatorPainter.ProcessValues(System.DateTimeOffset,StockSharp.Algo.Indicators.IIndicatorValue,StockSharp.Xaml.Charting.DrawHandler)">
+      <summary>Обработать новые значения.</summary>
+      <param name="time">Временная отметка формирования новых данных.</param>
+      <param name="value">Значения индикатора.</param>
+      <param name="draw">Метод отрисовки значения на графике.</param>
+    </member>
+    <member name="T:StockSharp.Xaml.Charting.IndicatorPainters.AlligatorPainter">
+      <summary>Рендерер для <see cref="T:StockSharp.Algo.Indicators.Alligator" />.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.IndicatorPainters.AlligatorPainter.LipsColor">
+      <summary>Цвет Lips линии.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.IndicatorPainters.AlligatorPainter.TeethColor">
+      <summary>Цвет Teeth линии.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.IndicatorPainters.AlligatorPainter.JawColor">
+      <summary>Цвет Jaw линии.</summary>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.IndicatorPainters.AlligatorPainter.Init">
+      <summary>Инициализировать рендерер.</summary>
+      <returns>Графические данные.</returns>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.IndicatorPainters.AlligatorPainter.ProcessValues(System.DateTimeOffset,StockSharp.Algo.Indicators.IIndicatorValue,StockSharp.Xaml.Charting.DrawHandler)">
+      <summary>Обработать новые значения.</summary>
+      <param name="time">Временная отметка формирования новых данных.</param>
+      <param name="value">Значения индикатора.</param>
+      <param name="draw">Метод отрисовки значения на графике.</param>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.IndicatorPainters.AlligatorPainter.Load(Ecng.Serialization.SettingsStorage)">
+      <summary>Загрузить настройки.</summary>
+      <param name="storage">Хранилище настроек.</param>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.IndicatorPainters.AlligatorPainter.Save(Ecng.Serialization.SettingsStorage)">
+      <summary>Сохранить настройки.</summary>
+      <param name="storage">Хранилище настроек.</param>
+    </member>
+    <member name="T:StockSharp.Xaml.Charting.IndicatorPainters.AverageDirectionalIndexPainter">
+      <summary>Рендерер для <see cref="T:StockSharp.Algo.Indicators.AverageDirectionalIndex" />.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.IndicatorPainters.AverageDirectionalIndexPainter.DxPlusColor">
+      <summary>Цвет DI+ линии.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.IndicatorPainters.AverageDirectionalIndexPainter.DiMinusColor">
+      <summary>Цвет DI- линии.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.IndicatorPainters.AverageDirectionalIndexPainter.AdxColor">
+      <summary>Цвет ADX линии.</summary>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.IndicatorPainters.AverageDirectionalIndexPainter.Init">
+      <summary>Инициализировать рендерер.</summary>
+      <returns>Графические данные.</returns>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.IndicatorPainters.AverageDirectionalIndexPainter.ProcessValues(System.DateTimeOffset,StockSharp.Algo.Indicators.IIndicatorValue,StockSharp.Xaml.Charting.DrawHandler)">
+      <summary>Обработать новые значения.</summary>
+      <param name="time">Временная отметка формирования новых данных.</param>
+      <param name="value">Значения индикатора.</param>
+      <param name="draw">Метод отрисовки значения на графике.</param>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.IndicatorPainters.AverageDirectionalIndexPainter.Load(Ecng.Serialization.SettingsStorage)">
+      <summary>Загрузить настройки.</summary>
+      <param name="storage">Хранилище настроек.</param>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.IndicatorPainters.AverageDirectionalIndexPainter.Save(Ecng.Serialization.SettingsStorage)">
+      <summary>Сохранить настройки.</summary>
+      <param name="storage">Хранилище настроек.</param>
+    </member>
+    <member name="T:StockSharp.Xaml.Charting.IndicatorPainters.BaseChartIndicatorPainter">
+      <summary>Базовый класс рендерера индикатора на графике (например, линии, гистограммы и т.д.).</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.IndicatorPainters.BaseChartIndicatorPainter.BaseElement">
+      <summary>Элемент графика, представляющий индикатор.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.IndicatorPainters.BaseChartIndicatorPainter.InnerElements">
+      <summary>Элементы графика, представляющие вложенные индикаторы.</summary>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.IndicatorPainters.BaseChartIndicatorPainter.Init">
+      <summary>Инициализировать рендерер.</summary>
+      <returns>Графические данные.</returns>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.IndicatorPainters.BaseChartIndicatorPainter.ProcessValues(System.DateTimeOffset,StockSharp.Algo.Indicators.IIndicatorValue,StockSharp.Xaml.Charting.DrawHandler)">
+      <summary>Обработать новые значения.</summary>
+      <param name="time">Временная отметка формирования новых данных.</param>
+      <param name="value">Значения индикатора.</param>
+      <param name="draw">Метод отрисовки значения на графике.</param>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.IndicatorPainters.BaseChartIndicatorPainter.ToString">
+      <summary>Получить строковое представление.</summary>
+      <returns>Строковое представление.</returns>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.IndicatorPainters.BaseChartIndicatorPainter.Load(Ecng.Serialization.SettingsStorage)">
+      <summary>Загрузить настройки.</summary>
+      <param name="storage">Хранилище настроек.</param>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.IndicatorPainters.BaseChartIndicatorPainter.Save(Ecng.Serialization.SettingsStorage)">
+      <summary>Сохранить настройки.</summary>
+      <param name="storage">Хранилище настроек.</param>
+    </member>
+    <member name="T:StockSharp.Xaml.Charting.IndicatorPainters.BollingerBandsPainter">
+      <summary>Рендерер для <see cref="T:StockSharp.Algo.Indicators.BollingerBands" />.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.IndicatorPainters.BollingerBandsPainter.UpBandColor">
+      <summary>Цвет верхней полосы индикатора.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.IndicatorPainters.BollingerBandsPainter.LowBandColor">
+      <summary>Цвет нижней полосы индикатора.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.IndicatorPainters.BollingerBandsPainter.MovingAverageColor">
+      <summary>Цвет средней линии.</summary>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.IndicatorPainters.BollingerBandsPainter.Init">
+      <summary>Инициализировать рендерер.</summary>
+      <returns>Графические данные.</returns>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.IndicatorPainters.BollingerBandsPainter.ProcessValues(System.DateTimeOffset,StockSharp.Algo.Indicators.IIndicatorValue,StockSharp.Xaml.Charting.DrawHandler)">
+      <summary>Обработать новые значения.</summary>
+      <param name="time">Временная отметка формирования новых данных.</param>
+      <param name="value">Значения индикатора.</param>
+      <param name="draw">Метод отрисовки значения на графике.</param>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.IndicatorPainters.BollingerBandsPainter.Load(Ecng.Serialization.SettingsStorage)">
+      <summary>Загрузить настройки.</summary>
+      <param name="storage">Хранилище настроек.</param>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.IndicatorPainters.BollingerBandsPainter.Save(Ecng.Serialization.SettingsStorage)">
+      <summary>Сохранить настройки.</summary>
+      <param name="storage">Хранилище настроек.</param>
+    </member>
+    <member name="T:StockSharp.Xaml.Charting.IndicatorPainters.FractalsPainter">
+      <summary>Рендерер для <see cref="T:StockSharp.Algo.Indicators.Fractals" />.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.IndicatorPainters.FractalsPainter.UpColor">
+      <summary>Цвет Up линии.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.IndicatorPainters.FractalsPainter.DownColor">
+      <summary>Цвет Down линии.</summary>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.IndicatorPainters.FractalsPainter.Init">
+      <summary>Инициализировать рендерер.</summary>
+      <returns>Графические данные.</returns>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.IndicatorPainters.FractalsPainter.ProcessValues(System.DateTimeOffset,StockSharp.Algo.Indicators.IIndicatorValue,StockSharp.Xaml.Charting.DrawHandler)">
+      <summary>Обработать новые значения.</summary>
+      <param name="time">Временная отметка формирования новых данных.</param>
+      <param name="value">Значения индикатора.</param>
+      <param name="draw">Метод отрисовки значения на графике.</param>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.IndicatorPainters.FractalsPainter.Load(Ecng.Serialization.SettingsStorage)">
+      <summary>Загрузить настройки.</summary>
+      <param name="storage">Хранилище настроек.</param>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.IndicatorPainters.FractalsPainter.Save(Ecng.Serialization.SettingsStorage)">
+      <summary>Сохранить настройки.</summary>
+      <param name="storage">Хранилище настроек.</param>
+    </member>
+    <member name="T:StockSharp.Xaml.Charting.IndicatorPainters.IchimokuPainter">
+      <summary>Рендерер для <see cref="T:StockSharp.Algo.Indicators.Ichimoku" />.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.IndicatorPainters.IchimokuPainter.TenkanColor">
+      <summary>Цвет Tenkan линии.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.IndicatorPainters.IchimokuPainter.KijunColor">
+      <summary>Цвет Kijun линии.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.IndicatorPainters.IchimokuPainter.SenkouAColor">
+      <summary>Цвет SenkouA линии.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.IndicatorPainters.IchimokuPainter.SenkouBColor">
+      <summary>Цвет SenkouA линии.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.IndicatorPainters.IchimokuPainter.ChinkouColor">
+      <summary>Цвет Chinkou линии.</summary>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.IndicatorPainters.IchimokuPainter.Init">
+      <summary>Инициализировать рендерер.</summary>
+      <returns>Графические данные.</returns>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.IndicatorPainters.IchimokuPainter.ProcessValues(System.DateTimeOffset,StockSharp.Algo.Indicators.IIndicatorValue,StockSharp.Xaml.Charting.DrawHandler)">
+      <summary>Обработать новые значения.</summary>
+      <param name="time">Временная отметка формирования новых данных.</param>
+      <param name="value">Значения индикатора.</param>
+      <param name="draw">Метод отрисовки значения на графике.</param>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.IndicatorPainters.IchimokuPainter.Load(Ecng.Serialization.SettingsStorage)">
+      <summary>Загрузить настройки.</summary>
+      <param name="storage">Хранилище настроек.</param>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.IndicatorPainters.IchimokuPainter.Save(Ecng.Serialization.SettingsStorage)">
+      <summary>Сохранить настройки.</summary>
+      <param name="storage">Хранилище настроек.</param>
+    </member>
+    <member name="T:StockSharp.Xaml.Charting.IndicatorPainters.MovingAverageConvergenceDivergenceHistogramPainter">
+      <summary>Рендерер для <see cref="T:StockSharp.Algo.Indicators.MovingAverageConvergenceDivergenceHistogram" />.</summary>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.IndicatorPainters.MovingAverageConvergenceDivergenceHistogramPainter.Init">
+      <summary>Инициализировать рендерер.</summary>
+      <returns>Графические данные.</returns>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.IndicatorPainters.MovingAverageConvergenceDivergenceHistogramPainter.ProcessValues(System.DateTimeOffset,StockSharp.Algo.Indicators.IIndicatorValue,StockSharp.Xaml.Charting.DrawHandler)">
+      <summary>Обработать новые значения.</summary>
+      <param name="time">Временная отметка формирования новых данных.</param>
+      <param name="value">Значения индикатора.</param>
+      <param name="draw">Метод отрисовки значения на графике.</param>
+    </member>
+    <member name="T:StockSharp.Xaml.Charting.IndicatorPainters.MovingAverageConvergenceDivergenceSignalPainter">
+      <summary>Рендерер для <see cref="T:StockSharp.Algo.Indicators.MovingAverageConvergenceDivergenceSignal" />.</summary>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.IndicatorPainters.MovingAverageConvergenceDivergenceSignalPainter.Init">
+      <summary>Инициализировать рендерер.</summary>
+      <returns>Графические данные.</returns>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.IndicatorPainters.MovingAverageConvergenceDivergenceSignalPainter.ProcessValues(System.DateTimeOffset,StockSharp.Algo.Indicators.IIndicatorValue,StockSharp.Xaml.Charting.DrawHandler)">
+      <summary>Обработать новые значения.</summary>
+      <param name="time">Временная отметка формирования новых данных.</param>
+      <param name="value">Значения индикатора.</param>
+      <param name="draw">Метод отрисовки значения на графике.</param>
+    </member>
+    <member name="T:StockSharp.Xaml.Charting.IndicatorPainters.ParabolicSarPainter">
+      <summary>Рендерер для <see cref="T:StockSharp.Algo.Indicators.ParabolicSar" />.</summary>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.IndicatorPainters.ParabolicSarPainter.Init">
+      <summary>Инициализировать рендерер.</summary>
+      <returns>Графические данные.</returns>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.IndicatorPainters.ParabolicSarPainter.ProcessValues(System.DateTimeOffset,StockSharp.Algo.Indicators.IIndicatorValue,StockSharp.Xaml.Charting.DrawHandler)">
+      <summary>Обработать новые значения.</summary>
+      <param name="time">Временная отметка формирования новых данных.</param>
+      <param name="value">Значения индикатора.</param>
+      <param name="draw">Метод отрисовки значения на графике.</param>
+    </member>
+    <member name="T:StockSharp.Xaml.Charting.IndicatorPainters.PeakPainter">
+      <summary>Рендерер для <see cref="T:StockSharp.Algo.Indicators.Peak" />.</summary>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.IndicatorPainters.PeakPainter.Init">
+      <summary>Инициализировать рендерер.</summary>
+      <returns>Графические данные.</returns>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.IndicatorPainters.PeakPainter.ProcessValues(System.DateTimeOffset,StockSharp.Algo.Indicators.IIndicatorValue,StockSharp.Xaml.Charting.DrawHandler)">
+      <summary>Обработать новые значения.</summary>
+      <param name="time">Временная отметка формирования новых данных.</param>
+      <param name="value">Значения индикатора.</param>
+      <param name="draw">Метод отрисовки значения на графике.</param>
+    </member>
+    <member name="T:StockSharp.Xaml.Charting.IndicatorPainters.TroughPainter">
+      <summary>Рендерер для <see cref="T:StockSharp.Algo.Indicators.Trough" />.</summary>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.IndicatorPainters.TroughPainter.Init">
+      <summary>Инициализировать рендерер.</summary>
+      <returns>Графические данные.</returns>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.IndicatorPainters.TroughPainter.ProcessValues(System.DateTimeOffset,StockSharp.Algo.Indicators.IIndicatorValue,StockSharp.Xaml.Charting.DrawHandler)">
+      <summary>Обработать новые значения.</summary>
+      <param name="time">Временная отметка формирования новых данных.</param>
+      <param name="value">Значения индикатора.</param>
+      <param name="draw">Метод отрисовки значения на графике.</param>
+    </member>
+    <member name="T:StockSharp.Xaml.Charting.IndicatorPainters.VolumePainter">
+      <summary>Рендерер для <see cref="T:StockSharp.Algo.Indicators.VolumeIndicator" />.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.IndicatorPainters.VolumePainter.UpColor">
+      <summary>Цвет Up линии.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.IndicatorPainters.VolumePainter.DownColor">
+      <summary>Цвет Down линии.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.IndicatorPainters.VolumePainter.BubbleAutoScale">
+      <summary>Использовать автоматическое масштабирование для режима \"Пузырь\".</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.IndicatorPainters.VolumePainter.BubbleScale">
+      <summary>Ручной масштаб для режима "Пузырь".</summary>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.IndicatorPainters.VolumePainter.Init">
+      <summary>Инициализировать рендерер.</summary>
+      <returns>Графические данные.</returns>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.IndicatorPainters.VolumePainter.ProcessValues(System.DateTimeOffset,StockSharp.Algo.Indicators.IIndicatorValue,StockSharp.Xaml.Charting.DrawHandler)">
+      <summary>Обработать новые значения.</summary>
+      <param name="time">Временная отметка формирования новых данных.</param>
+      <param name="value">Значения индикатора.</param>
+      <param name="draw">Метод отрисовки значения на графике.</param>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.IndicatorPainters.VolumePainter.Load(Ecng.Serialization.SettingsStorage)">
+      <summary>Загрузить настройки.</summary>
+      <param name="storage">Хранилище настроек.</param>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.IndicatorPainters.VolumePainter.Save(Ecng.Serialization.SettingsStorage)">
+      <summary>Сохранить настройки.</summary>
+      <param name="storage">Хранилище настроек.</param>
+    </member>
+    <member name="T:StockSharp.Xaml.Charting.IndicatorPainters.VolumeProfilePainter">
+      <summary>Рендерер для <see cref="T:StockSharp.Algo.Indicators.VolumeProfileIndicator" />.</summary>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.IndicatorPainters.VolumeProfilePainter.Init">
+      <summary>Инициализировать рендерер.</summary>
+      <returns>Графические данные.</returns>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.IndicatorPainters.VolumeProfilePainter.ProcessValues(System.DateTimeOffset,StockSharp.Algo.Indicators.IIndicatorValue,StockSharp.Xaml.Charting.DrawHandler)">
+      <summary>Обработать новые значения.</summary>
+      <param name="time">Временная отметка формирования новых данных.</param>
+      <param name="value">Значения индикатора.</param>
+      <param name="draw">Метод отрисовки значения на графике.</param>
+    </member>
+    <member name="T:StockSharp.Xaml.Charting.IndicatorPainters.ZigZagEquisPainter">
+      <summary>Рендерер для <see cref="T:StockSharp.Algo.Indicators.ZigZagEquis" />.</summary>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.IndicatorPainters.ZigZagEquisPainter.Init">
+      <summary>Инициализировать рендерер.</summary>
+      <returns>Графические данные.</returns>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.IndicatorPainters.ZigZagEquisPainter.ProcessValues(System.DateTimeOffset,StockSharp.Algo.Indicators.IIndicatorValue,StockSharp.Xaml.Charting.DrawHandler)">
+      <summary>Обработать новые значения.</summary>
+      <param name="time">Временная отметка формирования новых данных.</param>
+      <param name="value">Значения индикатора.</param>
+      <param name="draw">Метод отрисовки значения на графике.</param>
+    </member>
+    <member name="T:StockSharp.Xaml.Charting.IndicatorPainters.ZigZagPainter">
+      <summary>Рендерер для <see cref="T:StockSharp.Algo.Indicators.ZigZag" />.</summary>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.IndicatorPainters.ZigZagPainter.Init">
+      <summary>Инициализировать рендерер.</summary>
+      <returns>Графические данные.</returns>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.IndicatorPainters.ZigZagPainter.ProcessValues(System.DateTimeOffset,StockSharp.Algo.Indicators.IIndicatorValue,StockSharp.Xaml.Charting.DrawHandler)">
+      <summary>Обработать новые значения.</summary>
+      <param name="time">Временная отметка формирования новых данных.</param>
+      <param name="value">Значения индикатора.</param>
+      <param name="draw">Метод отрисовки значения на графике.</param>
+    </member>
+    <member name="T:StockSharp.Xaml.Charting.IndicatorPickerWindow">
+      <summary>Окно выбора типа индикатора.</summary>
+      <summary>
+            IndicatorPickerWindow
+            </summary>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.IndicatorPickerWindow.#ctor">
+      <summary>Создать <see cref="T:StockSharp.Xaml.Charting.IndicatorPickerWindow" />.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.IndicatorPickerWindow.SelectedIndicatorType">
+      <summary>Выбранный тип индикатора.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.IndicatorPickerWindow.IndicatorTypes">
+      <summary>Список доступных типов индикаторов.</summary>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.IndicatorPickerWindow.InitializeComponent">
+      <summary>InitializeComponent.</summary>
+    </member>
+    <member name="T:StockSharp.Xaml.Charting.IndicatorType">
+      <summary>Описание типа индикатора.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.IndicatorType.Name">
+      <summary>Название индикатора.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.IndicatorType.Description">
+      <summary>Описание индикатора.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.IndicatorType.Indicator">
+      <summary>Тип индикатора.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.IndicatorType.Painter">
+      <summary>Тип рендерера для расширенной отрисовки индикатора.</summary>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.IndicatorType.#ctor">
+      <summary>Создать <see cref="T:StockSharp.Xaml.Charting.IndicatorType" />.</summary>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.IndicatorType.#ctor(System.Type,System.Type)">
+      <summary>Создать <see cref="T:StockSharp.Xaml.Charting.IndicatorType" />.</summary>
+      <param name="indicator">Тип индикатора.</param>
+      <param name="painter">Тип рендерера для расширенной отрисовки индикатора.</param>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.IndicatorType.Clone">
+      <summary>Создать копию <see cref="T:StockSharp.Xaml.Charting.IndicatorType" />.</summary>
+      <returns>Копия объекта.</returns>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.IndicatorType.OnEquals(StockSharp.Xaml.Charting.IndicatorType)">
+      <summary>Сравнить <see cref="T:StockSharp.Xaml.Charting.IndicatorType" /> на эквивалентность.</summary>
+      <param name="other">Другое значение, с которым необходимо сравнивать.</param>
+      <returns>
+        <see langword="true" />, если другое значение равно текущему, иначе, <see langword="false" />.</returns>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.IndicatorType.Load(Ecng.Serialization.SettingsStorage)">
+      <summary>Загрузить настройки.</summary>
+      <param name="storage">Хранилище настроек.</param>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.IndicatorType.Save(Ecng.Serialization.SettingsStorage)">
+      <summary>Сохранить настройки.</summary>
+      <param name="storage">Хранилище настроек.</param>
+    </member>
+    <member name="T:StockSharp.Xaml.Charting.LineData`1">
+      <summary>Данные линии.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.LineData`1.X">
+      <summary>Значение X.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.LineData`1.Y">
+      <summary>Значение Y.</summary>
+    </member>
+    <member name="T:StockSharp.Xaml.Charting.LineElement">
+      <summary>Элемент графика, представляющий линию.</summary>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.LineElement.#ctor">
+      <summary>Создать <see cref="T:StockSharp.Xaml.Charting.LineElement" />.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.LineElement.Color">
+      <summary>Цвет линии (бара и т.д.), с которым она будет рисоваться на графике.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.LineElement.AdditionalColor">
+      <summary>Дополнительный цвет линии (бара и т.д.), с которым она будет рисоваться на графике.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.LineElement.StrokeThickness">
+      <summary>Толщина линии (бара и т.д.), с которой она будет рисоваться на графике. По-умолчанию равно 1.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.LineElement.AntiAliasing">
+      <summary>Сглаживание отрисовки линии. По-умолчанию включено.</summary>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.LineElement.Clone">
+      <summary>Создать копию <see cref="T:StockSharp.Xaml.Charting.LineElement" />.</summary>
+      <returns>Копия объекта.</returns>
+    </member>
+    <member name="T:StockSharp.Xaml.Charting.OptionPositionChartParams">
+      <summary>Типы параметров для отображения на графике <see cref="T:StockSharp.Xaml.Charting.OptionPositionChart" />.</summary>
+    </member>
+    <member name="F:StockSharp.Xaml.Charting.OptionPositionChartParams.Premium">
+      <summary>
+        <see cref="M:StockSharp.Algo.Derivatives.IBlackScholes.Premium(System.DateTimeOffset,System.Nullable{System.Decimal},System.Nullable{System.Decimal})" />.</summary>
+    </member>
+    <member name="F:StockSharp.Xaml.Charting.OptionPositionChartParams.Delta">
+      <summary>
+        <see cref="M:StockSharp.Algo.Derivatives.IBlackScholes.Delta(System.DateTimeOffset,System.Nullable{System.Decimal},System.Nullable{System.Decimal})" />.</summary>
+    </member>
+    <member name="F:StockSharp.Xaml.Charting.OptionPositionChartParams.Gamma">
+      <summary>
+        <see cref="M:StockSharp.Algo.Derivatives.IBlackScholes.Gamma(System.DateTimeOffset,System.Nullable{System.Decimal},System.Nullable{System.Decimal})" />.</summary>
+    </member>
+    <member name="F:StockSharp.Xaml.Charting.OptionPositionChartParams.Theta">
+      <summary>
+        <see cref="M:StockSharp.Algo.Derivatives.IBlackScholes.Theta(System.DateTimeOffset,System.Nullable{System.Decimal},System.Nullable{System.Decimal})" />.</summary>
+    </member>
+    <member name="F:StockSharp.Xaml.Charting.OptionPositionChartParams.Vega">
+      <summary>
+        <see cref="M:StockSharp.Algo.Derivatives.IBlackScholes.Vega(System.DateTimeOffset,System.Nullable{System.Decimal},System.Nullable{System.Decimal})" />.</summary>
+    </member>
+    <member name="F:StockSharp.Xaml.Charting.OptionPositionChartParams.Rho">
+      <summary>
+        <see cref="M:StockSharp.Algo.Derivatives.IBlackScholes.Rho(System.DateTimeOffset,System.Nullable{System.Decimal},System.Nullable{System.Decimal})" />.</summary>
+    </member>
+    <member name="T:StockSharp.Xaml.Charting.OptionPositionChart">
+      <summary>График, показывающий позицию и греки опционов относительно базового актива.</summary>
+      <summary>
+            OptionPositionChart
+            </summary>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.OptionPositionChart.#ctor">
+      <summary>Создать <see cref="T:StockSharp.Xaml.Charting.OptionPositionChart" />.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.OptionPositionChart.SecurityProvider">
+      <summary>Поставщик информации об инструментах.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.OptionPositionChart.MarketDataProvider">
+      <summary>Поставщик маркет-данных.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.OptionPositionChart.ChartParam">
+      <summary>Тип параметра на графике. По-умолчанию равен <see cref="F:StockSharp.Xaml.Charting.OptionPositionChartParams.Premium" />.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.OptionPositionChart.Positions">
+      <summary>Опционные позиции.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.OptionPositionChart.AssetPosition">
+      <summary>Позиция по базовому активу.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.OptionPositionChart.ShowSeparated">
+      <summary>Показывать графики позиции раздельно или как единую позицию. По-умолчанию показывается как единая позиция.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.OptionPositionChart.ShowExpiration">
+      <summary>Показывать график позиции на момент экспирации. По-умолчанию включено.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.OptionPositionChart.UseBlackModel">
+      <summary>Использовать ли модель <see cref="T:StockSharp.Algo.Derivatives.Black" />. По-умолчанию модель не используется.</summary>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.OptionPositionChart.Refresh(System.Decimal,System.Decimal,System.DateTimeOffset,System.DateTimeOffset)">
+      <summary>Перерисовать график.</summary>
+      <param name="assetPrice">Текущая цена базового актива.</param>
+      <param name="priceStep">Шаг цены инструмента.</param>
+      <param name="currentTime">Текущее время.</param>
+      <param name="expiryDate">Дата экспирации.</param>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.OptionPositionChart.InitializeComponent">
+      <summary>InitializeComponent.</summary>
+    </member>
+    <member name="T:StockSharp.Xaml.Charting.OptionVolatilitySmileChart">
+      <summary>График улыбки волательности опционов.</summary>
+      <summary>
+            OptionVolatilitySmileChart
+            </summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Charting.OptionVolatilitySmileChart.ChartTheme">
+      <summary>Название графической темы.</summary>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.OptionVolatilitySmileChart.#ctor">
+      <summary>Создать <see cref="T:StockSharp.Xaml.Charting.OptionVolatilitySmileChart" />.</summary>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.OptionVolatilitySmileChart.CreateSmile(System.String,System.Windows.Media.Color,StockSharp.Xaml.Charting.LineChartStyles)">
+      <summary>Создать новую улыбку.</summary>
+      <param name="title">Заголовок линии.</param>
+      <param name="color">Цвет линии.</param>
+      <param name="style">Стиль отрисовки линии. По-умолчанию установлен <see cref="F:StockSharp.Xaml.Charting.LineChartStyles.Line" />.</param>
+      <returns>Коллекция с данными, которую необходимо заполнять для отрисовки линии.</returns>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.OptionVolatilitySmileChart.CreateSmile(System.String,System.Windows.Media.Color,System.Windows.Media.Color,StockSharp.Xaml.Charting.LineChartStyles)">
+      <summary>Создать новую улыбку.</summary>
+      <param name="title">Заголовок линии.</param>
+      <param name="color">Цвет линии.</param>
+      <param name="secondColor">Дополнительный цвет линии. Используется для отрисовки <see cref="F:StockSharp.Xaml.Charting.LineChartStyles.Area" />.</param>
+      <param name="style">Стиль отрисовки линии. По-умолчанию установлен <see cref="F:StockSharp.Xaml.Charting.LineChartStyles.Line" />.</param>
+      <returns>Коллекция с данными, которую необходимо заполнять для отрисовки линии.</returns>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.OptionVolatilitySmileChart.RemoveSmile(System.Collections.Generic.ICollection{StockSharp.Xaml.Charting.LineData{System.Double}})">
+      <summary>Удалить кривую доходности с графика.</summary>
+      <param name="items">Коллекция с данными, полученная из метода <see cref="M:StockSharp.Xaml.Charting.OptionVolatilitySmileChart.CreateSmile(System.String,System.Windows.Media.Color,StockSharp.Xaml.Charting.LineChartStyles)" />.</param>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.OptionVolatilitySmileChart.Clear">
+      <summary>Удалить кривые доходности с графика.</summary>
+    </member>
+    <member name="M:StockSharp.Xaml.Charting.OptionVolatilitySmileChart.InitializeComponent">
+      <summary>InitializeComponent.</summary>
+    </member>
+  </members>
+</doc>

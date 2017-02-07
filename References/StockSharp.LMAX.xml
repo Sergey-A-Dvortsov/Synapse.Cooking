@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>StockSharp.LMAX</name>
+  </assembly>
+  <members>
+    <member name="T:StockSharp.LMAX.LmaxMessageAdapter">
+      <summary>Адаптер сообщений для LMAX.</summary>
+    </member>
+    <member name="M:StockSharp.LMAX.LmaxMessageAdapter.#ctor(Ecng.Common.IdGenerator)">
+      <summary>Создать <see cref="T:StockSharp.LMAX.LmaxMessageAdapter" />.</summary>
+      <param name="transactionIdGenerator">Генератор транзакций.</param>
+    </member>
+    <member name="M:StockSharp.LMAX.LmaxMessageAdapter.CreateOrderCondition">
+      <summary>Создать для заявки типа <see cref="F:StockSharp.Messages.OrderTypes.Conditional" /> условие, которое поддерживается подключением.</summary>
+      <returns>Условие для заявки. Если подключение не поддерживает заявки типа <see cref="F:StockSharp.Messages.OrderTypes.Conditional" />, то будет возвращено <see langword="null" />.</returns>
+    </member>
+    <member name="M:StockSharp.LMAX.LmaxMessageAdapter.OnSendInMessage(StockSharp.Messages.Message)">
+      <summary>Отправить сообщение.</summary>
+      <param name="message">Сообщение.</param>
+    </member>
+    <member name="P:StockSharp.LMAX.LmaxMessageAdapter.SecurityLookupRequired">
+      <summary>Требуется ли дополнительное сообщение <see cref="T:StockSharp.Messages.SecurityLookupMessage" /> для получения списка инструментов.</summary>
+    </member>
+    <member name="P:StockSharp.LMAX.LmaxMessageAdapter.Login">
+      <summary>Логин.</summary>
+    </member>
+    <member name="P:StockSharp.LMAX.LmaxMessageAdapter.Password">
+      <summary>Пароль.</summary>
+    </member>
+    <member name="P:StockSharp.LMAX.LmaxMessageAdapter.IsDemo">
+      <summary>Подключаться ли к демо торгам вместо сервера с реальной торговлей.</summary>
+    </member>
+    <member name="P:StockSharp.LMAX.LmaxMessageAdapter.IsDownloadSecurityFromSite">
+      <summary>Загружать ли инструменты из архива с сайта LMAX. По-умолчанию выключено.</summary>
+    </member>
+    <member name="P:StockSharp.LMAX.LmaxMessageAdapter.CandleDownloadInterval">
+      <summary>Интервал скачивания свечей.</summary>
+    </member>
+    <member name="P:StockSharp.LMAX.LmaxMessageAdapter.IsValid">
+      <summary>Проверить введенные параметры на валидность.</summary>
+    </member>
+    <member name="P:StockSharp.LMAX.LmaxMessageAdapter.TimeFrames">
+      <summary>Доступные тайм-фреймы.</summary>
+    </member>
+    <member name="M:StockSharp.LMAX.LmaxMessageAdapter.Save(Ecng.Serialization.SettingsStorage)">
+      <summary>Сохранить настройки.</summary>
+      <param name="storage">Хранилище настроек.</param>
+    </member>
+    <member name="M:StockSharp.LMAX.LmaxMessageAdapter.Load(Ecng.Serialization.SettingsStorage)">
+      <summary>Загрузить настройки.</summary>
+      <param name="storage">Хранилище настроек.</param>
+    </member>
+    <member name="M:StockSharp.LMAX.LmaxMessageAdapter.ToString">
+      <summary>Получить строковое представление.</summary>
+      <returns>Строковое представление.</returns>
+    </member>
+    <member name="P:StockSharp.LMAX.LmaxMessageAdapter.IsSupportNativeSecurityLookup">
+      <summary>Поддерживается ли торговой системой поиск инструментов.</summary>
+    </member>
+    <member name="P:StockSharp.LMAX.LmaxMessageAdapter.IsNativeIdentifiers">
+      <summary>Идентифицировать инструменты в сообщениях по системному идентификатору <see cref="P:StockSharp.Messages.SecurityId.Native" />.</summary>
+    </member>
+    <member name="P:StockSharp.LMAX.LmaxMessageAdapter.StorageName">
+      <summary>Название хранилища, ассоциированное с адаптером.</summary>
+    </member>
+    <member name="T:StockSharp.LMAX.LmaxOrderCondition">
+      <summary>Условие заявок, специфичных для <see cref="N:StockSharp.LMAX" />.</summary>
+    </member>
+    <member name="M:StockSharp.LMAX.LmaxOrderCondition.#ctor">
+      <summary>Создать <see cref="T:StockSharp.LMAX.LmaxOrderCondition" />.</summary>
+    </member>
+    <member name="P:StockSharp.LMAX.LmaxOrderCondition.StopLossOffset">
+      <summary>Отступ стоп-лосса.</summary>
+    </member>
+    <member name="P:StockSharp.LMAX.LmaxOrderCondition.TakeProfitOffset">
+      <summary>Отступ тейк-профита.</summary>
+    </member>
+    <member name="T:StockSharp.LMAX.LmaxTrader">
+      <summary>Реализация интерфейса <see cref="T:StockSharp.BusinessEntities.IConnector" /> для взаимодействия с биржей LMAX.</summary>
+    </member>
+    <member name="M:StockSharp.LMAX.LmaxTrader.#ctor">
+      <summary>Создать <see cref="T:StockSharp.LMAX.LmaxTrader" />.</summary>
+    </member>
+    <member name="P:StockSharp.LMAX.LmaxTrader.Login">
+      <summary>Логин.</summary>
+    </member>
+    <member name="P:StockSharp.LMAX.LmaxTrader.Password">
+      <summary>Пароль.</summary>
+    </member>
+    <member name="P:StockSharp.LMAX.LmaxTrader.IsDemo">
+      <summary>Подключаться ли к демо торгам вместо сервера с реальной торговлей.</summary>
+    </member>
+    <member name="P:StockSharp.LMAX.LmaxTrader.IsDownloadSecurityFromSite">
+      <summary>Загружать ли инструменты из архива с сайта LMAX. По-умолчанию выключено.</summary>
+    </member>
+    <member name="E:StockSharp.LMAX.LmaxTrader.NewCandles">
+      <summary>Событие появления новых свечек, полученных после подписки через <see cref="M:StockSharp.LMAX.LmaxTrader.SubscribeCandles(StockSharp.Algo.Candles.CandleSeries,System.DateTimeOffset,System.DateTimeOffset)" />.</summary>
+    </member>
+    <member name="E:StockSharp.LMAX.LmaxTrader.Stopped">
+      <summary>Событие окончания обработки серии.</summary>
+    </member>
+    <member name="M:StockSharp.LMAX.LmaxTrader.SubscribeCandles(StockSharp.Algo.Candles.CandleSeries,System.DateTimeOffset,System.DateTimeOffset)">
+      <summary>Подписаться на получение свечек.</summary>
+      <param name="series">Серия свечек.</param>
+      <param name="from">Начальная дата, с которой необходимо получать данные.</param>
+      <param name="to">Конечная дата, до которой необходимо получать данные.</param>
+    </member>
+    <member name="M:StockSharp.LMAX.LmaxTrader.UnSubscribeCandles(StockSharp.Algo.Candles.CandleSeries)">
+      <summary>Остановить подписку получения свечек, ранее созданную через <see cref="M:StockSharp.LMAX.LmaxTrader.SubscribeCandles(StockSharp.Algo.Candles.CandleSeries,System.DateTimeOffset,System.DateTimeOffset)" />.</summary>
+      <param name="series">Серия свечек.</param>
+    </member>
+    <member name="M:StockSharp.LMAX.LmaxTrader.OnProcessMessage(StockSharp.Messages.Message)">
+      <summary>Обработать сообщение.</summary>
+      <param name="message">Сообщение.</param>
+    </member>
+  </members>
+</doc>

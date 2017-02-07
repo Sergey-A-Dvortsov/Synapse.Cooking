@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>StockSharp.Btce</name>
+  </assembly>
+  <members>
+    <member name="T:StockSharp.Btce.BtceMessageAdapter">
+      <summary>Адаптер сообщений для BTC-e.</summary>
+    </member>
+    <member name="M:StockSharp.Btce.BtceMessageAdapter.#ctor(Ecng.Common.IdGenerator)">
+      <summary>Создать <see cref="T:StockSharp.Btce.BtceMessageAdapter" />.</summary>
+      <param name="transactionIdGenerator">Генератор транзакций.</param>
+    </member>
+    <member name="P:StockSharp.Btce.BtceMessageAdapter.IsSupportNativeSecurityLookup">
+      <summary>Поддерживается ли торговой системой поиск инструментов.</summary>
+    </member>
+    <member name="P:StockSharp.Btce.BtceMessageAdapter.IsSupportNativePortfolioLookup">
+      <summary>Поддерживается ли торговой системой поиск портфелей.</summary>
+    </member>
+    <member name="M:StockSharp.Btce.BtceMessageAdapter.OnSendInMessage(StockSharp.Messages.Message)">
+      <summary>Отправить сообщение.</summary>
+      <param name="message">Сообщение.</param>
+    </member>
+    <member name="P:StockSharp.Btce.BtceMessageAdapter.Key">
+      <summary>Ключ.</summary>
+    </member>
+    <member name="P:StockSharp.Btce.BtceMessageAdapter.Secret">
+      <summary>Secret.</summary>
+    </member>
+    <member name="P:StockSharp.Btce.BtceMessageAdapter.IsValid">
+      <summary>Проверить введенные параметры на валидность.</summary>
+    </member>
+    <member name="M:StockSharp.Btce.BtceMessageAdapter.Save(Ecng.Serialization.SettingsStorage)">
+      <summary>Сохранить настройки.</summary>
+      <param name="storage">Хранилище настроек.</param>
+    </member>
+    <member name="M:StockSharp.Btce.BtceMessageAdapter.Load(Ecng.Serialization.SettingsStorage)">
+      <summary>Загрузить настройки.</summary>
+      <param name="storage">Хранилище настроек.</param>
+    </member>
+    <member name="M:StockSharp.Btce.BtceMessageAdapter.ToString">
+      <summary>Получить строковое представление.</summary>
+      <returns>Строковое представление.</returns>
+    </member>
+    <member name="T:StockSharp.Btce.BtceTrader">
+      <summary>Реализация интерфейса <see cref="T:StockSharp.BusinessEntities.IConnector" /> для взаимодействия с биржей BTC-e.</summary>
+    </member>
+    <member name="M:StockSharp.Btce.BtceTrader.#ctor">
+      <summary>Создать <see cref="T:StockSharp.Btce.BtceTrader" />.</summary>
+    </member>
+    <member name="P:StockSharp.Btce.BtceTrader.Key">
+      <summary>Ключ.</summary>
+    </member>
+    <member name="P:StockSharp.Btce.BtceTrader.Secret">
+      <summary>Secret.</summary>
+    </member>
+  </members>
+</doc>

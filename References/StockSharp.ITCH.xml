@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>StockSharp.ITCH</name>
+  </assembly>
+  <members>
+    <member name="T:StockSharp.ITCH.ItchMessageAdapter">
+      <summary>Маркет-дата адаптер сообщений для ITCH.</summary>
+    </member>
+    <member name="M:StockSharp.ITCH.ItchMessageAdapter.#ctor(Ecng.Common.IdGenerator)">
+      <summary>Создать <see cref="T:StockSharp.ITCH.ItchMessageAdapter" />.</summary>
+      <param name="transactionIdGenerator">Генератор транзакций.</param>
+    </member>
+    <member name="P:StockSharp.ITCH.ItchMessageAdapter.SecurityLookupRequired">
+      <summary>Требуется ли дополнительное сообщение <see cref="T:StockSharp.Messages.SecurityLookupMessage" /> для получения списка инструментов.</summary>
+    </member>
+    <member name="M:StockSharp.ITCH.ItchMessageAdapter.OnSendInMessage(StockSharp.Messages.Message)">
+      <summary>Отправить сообщение.</summary>
+      <param name="message">Сообщение.</param>
+    </member>
+    <member name="M:StockSharp.ITCH.ItchMessageAdapter.CreateOrderLogMarketDepthBuilder(StockSharp.Messages.SecurityId)">
+      <summary>Создать построитель стакана.</summary>
+      <param name="securityId">Идентификатор инструмента.</param>
+      <returns>Построитель стакана.</returns>
+    </member>
+    <member name="P:StockSharp.ITCH.ItchMessageAdapter.PrimaryMulticast">
+      <summary>Основная UDP группа.</summary>
+    </member>
+    <member name="P:StockSharp.ITCH.ItchMessageAdapter.DuplicateMulticast">
+      <summary>Дублирующая UDP группа.</summary>
+    </member>
+    <member name="P:StockSharp.ITCH.ItchMessageAdapter.RecoveryAddress">
+      <summary>Адрес сервера восстановления состояния.</summary>
+    </member>
+    <member name="P:StockSharp.ITCH.ItchMessageAdapter.ReplayAddress">
+      <summary>Адрес сервера проигрывания данных.</summary>
+    </member>
+    <member name="P:StockSharp.ITCH.ItchMessageAdapter.Login">
+      <summary>Логин.</summary>
+    </member>
+    <member name="P:StockSharp.ITCH.ItchMessageAdapter.Password">
+      <summary>Пароль.</summary>
+    </member>
+    <member name="P:StockSharp.ITCH.ItchMessageAdapter.SecurityCsvFile">
+      <summary>Файл с инструментами.</summary>
+    </member>
+    <member name="P:StockSharp.ITCH.ItchMessageAdapter.SecurityDelayLoad">
+      <summary>Отложенная загрузка инструментов из <see cref="P:StockSharp.ITCH.ItchMessageAdapter.SecurityCsvFile" />.</summary>
+    </member>
+    <member name="P:StockSharp.ITCH.ItchMessageAdapter.OnlyActiveSecurities">
+      <summary>Загружать из <see cref="P:StockSharp.ITCH.ItchMessageAdapter.SecurityCsvFile" /> только действующие инструменты.</summary>
+    </member>
+    <member name="P:StockSharp.ITCH.ItchMessageAdapter.GroupId">
+      <summary>Идентификатор группы.</summary>
+    </member>
+    <member name="P:StockSharp.ITCH.ItchMessageAdapter.TimeZone">
+      <summary>Информация о временной зоне, где находится биржа.</summary>
+    </member>
+    <member name="P:StockSharp.ITCH.ItchMessageAdapter.IsValid">
+      <summary>Проверить введенные параметры на валидность.</summary>
+    </member>
+    <member name="M:StockSharp.ITCH.ItchMessageAdapter.Save(Ecng.Serialization.SettingsStorage)">
+      <summary>Сохранить настройки.</summary>
+      <param name="storage">Хранилище настроек.</param>
+    </member>
+    <member name="M:StockSharp.ITCH.ItchMessageAdapter.Load(Ecng.Serialization.SettingsStorage)">
+      <summary>Загрузить настройки.</summary>
+      <param name="storage">Хранилище настроек.</param>
+    </member>
+    <member name="M:StockSharp.ITCH.ItchMessageAdapter.ToString">
+      <summary>Получить строковое представление.</summary>
+      <returns>Строковое представление.</returns>
+    </member>
+    <member name="T:StockSharp.ITCH.ItchOrderLogMarketDepthBuilder">
+      <summary>Построитель стакана из лога заявок ITCH протокола.</summary>
+    </member>
+    <member name="M:StockSharp.ITCH.ItchOrderLogMarketDepthBuilder.#ctor(StockSharp.Messages.SecurityId)">
+      <summary>Создать <see cref="T:StockSharp.ITCH.ItchOrderLogMarketDepthBuilder" />.</summary>
+      <param name="securityId">Идентификатор инструмента.</param>
+    </member>
+    <member name="M:StockSharp.ITCH.ItchOrderLogMarketDepthBuilder.#ctor(StockSharp.Messages.QuoteChangeMessage)">
+      <summary>Создать <see cref="T:StockSharp.ITCH.ItchOrderLogMarketDepthBuilder" />.</summary>
+      <param name="depth">Стакан.</param>
+    </member>
+    <member name="P:StockSharp.ITCH.ItchOrderLogMarketDepthBuilder.Depth">
+      <summary>Стакан.</summary>
+    </member>
+    <member name="M:StockSharp.ITCH.ItchOrderLogMarketDepthBuilder.Update(StockSharp.Messages.ExecutionMessage)">
+      <summary>Добавить новую строчку из лога заявок к стакану.</summary>
+      <param name="item">Строчка лога заявок.</param>
+      <returns>Был ли изменен стакан.</returns>
+    </member>
+    <member name="T:StockSharp.ITCH.ItchTrader">
+      <summary>Реализация интерфейса <see cref="T:StockSharp.BusinessEntities.IConnector" /> для взаимодействия с протоколом ITCH (LSE и NASDAQ).</summary>
+    </member>
+    <member name="M:StockSharp.ITCH.ItchTrader.#ctor">
+      <summary>Создать <see cref="T:StockSharp.ITCH.ItchTrader" />.</summary>
+    </member>
+    <member name="P:StockSharp.ITCH.ItchTrader.Login">
+      <summary>Логин.</summary>
+    </member>
+    <member name="P:StockSharp.ITCH.ItchTrader.Password">
+      <summary>Пароль.</summary>
+    </member>
+    <member name="P:StockSharp.ITCH.ItchTrader.PrimaryMulticast">
+      <summary>Основная UDP группа.</summary>
+    </member>
+    <member name="P:StockSharp.ITCH.ItchTrader.DuplicateMulticast">
+      <summary>Дублирующая UDP группа.</summary>
+    </member>
+    <member name="P:StockSharp.ITCH.ItchTrader.RecoveryAddress">
+      <summary>Адрес сервера восстановления состояния.</summary>
+    </member>
+    <member name="P:StockSharp.ITCH.ItchTrader.ReplayAddress">
+      <summary>Адрес сервера проигрывания данных.</summary>
+    </member>
+    <member name="P:StockSharp.ITCH.ItchTrader.SecurityCsvFile">
+      <summary>Файл с инструментами.</summary>
+    </member>
+    <member name="P:StockSharp.ITCH.ItchTrader.SecurityDelayLoad">
+      <summary>Отложенная загрузка инструментов из <see cref="P:StockSharp.ITCH.ItchTrader.SecurityCsvFile" />.</summary>
+    </member>
+    <member name="P:StockSharp.ITCH.ItchTrader.OnlyActiveSecurities">
+      <summary>Загружать из <see cref="P:StockSharp.ITCH.ItchTrader.SecurityCsvFile" /> только действующие инструменты.</summary>
+    </member>
+    <member name="P:StockSharp.ITCH.ItchTrader.GroupId">
+      <summary>Идентификатор группы.</summary>
+    </member>
+    <member name="P:StockSharp.ITCH.ItchTrader.TimeZone">
+      <summary>Информация о временной зоне, где находится биржа.</summary>
+    </member>
+  </members>
+</doc>

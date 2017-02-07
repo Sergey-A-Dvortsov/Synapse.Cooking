@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<settings>
+  <storage-path>C:\HistoryData</storage-path>
+  !<!-- Можно использовать форматы bin и scv -->
+  <securities>
+    <security>
+      <underling>RIU6@FORTS</underling>
+      <expiry-months>
+        <month>8</month>
+        <month>9</month>
+      </expiry-months>
+      <strikes>
+        <strike>100000</strike>
+        <strike>90500</strike>
+        <strike>90000</strike>
+        <strike>80500</strike>
+        <strike>80000</strike>
+      </strikes>
+    </security>
+    <security>
+      <underling>SIU6@FORTS</underling>
+      <expiry-months>
+        <month>8</month>
+        <month>9</month>
+      </expiry-months>
+      <strikes>
+        <strike>100000</strike>
+        <strike>90500</strike>
+        <strike>90000</strike>
+        <strike>80500</strike>
+        <strike>80000</strike>
+      </strikes>
+    </security>
+
+  </securities>
+</settings> 

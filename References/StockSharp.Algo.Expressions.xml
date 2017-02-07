@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>StockSharp.Algo.Expressions</name>
+  </assembly>
+  <members>
+    <member name="T:StockSharp.Algo.Expressions.ExpressionFormula">
+      <summary>Скомпилированная математическая формула.</summary>
+    </member>
+    <member name="M:StockSharp.Algo.Expressions.ExpressionFormula.Calculate(System.Decimal[])">
+      <summary>Вычислить значение корзины.</summary>
+      <param name="prices">Цены составных инструментов корзины <see cref="P:StockSharp.BusinessEntities.BasketSecurity.InnerSecurities" />.</param>
+      <returns>Значение корзины.</returns>
+    </member>
+    <member name="P:StockSharp.Algo.Expressions.ExpressionFormula.Expression">
+      <summary>Математическая формула.</summary>
+    </member>
+    <member name="P:StockSharp.Algo.Expressions.ExpressionFormula.Error">
+      <summary>Ошибка компиляции.</summary>
+    </member>
+    <member name="P:StockSharp.Algo.Expressions.ExpressionFormula.SecurityIds">
+      <summary>Идентификаторы инструментов.</summary>
+    </member>
+    <member name="M:StockSharp.Algo.Expressions.ExpressionFormula.Compile(System.String)">
+      <summary>Скомпилировать математическую формулу.</summary>
+      <param name="expression">Текстовое выражение.</param>
+      <returns>Скомпилированная математическая формула.</returns>
+    </member>
+    <member name="T:StockSharp.Algo.Expressions.ExpressionHelper">
+      <summary>Вспомогательный класс для <see cref="T:StockSharp.Algo.Expressions.ExpressionIndexSecurity" />.</summary>
+    </member>
+    <member name="M:StockSharp.Algo.Expressions.ExpressionHelper.GetSecurityIds(System.String)">
+      <summary>Получить все <see cref="P:StockSharp.BusinessEntities.Security.Id" /> из математической формулы.</summary>
+      <param name="expression">Математическая формула.</param>
+      <returns>Идентификаторы инструментов.</returns>
+    </member>
+    <member name="M:StockSharp.Algo.Expressions.ExpressionHelper.Encode(System.String)">
+      <summary>Экранировать математическую формулу от идентификаторов инструментов <see cref="P:StockSharp.BusinessEntities.Security.Id" />.</summary>
+      <param name="expression">Исходные текст.</param>
+      <returns>Экранированный текст.</returns>
+    </member>
+    <member name="M:StockSharp.Algo.Expressions.ExpressionHelper.Decode(System.String)">
+      <summary>Экранировать выражение от идентификаторов инструментов <see cref="P:StockSharp.BusinessEntities.Security.Id" />.</summary>
+      <param name="expression">Исходные текст.</param>
+      <returns>Дэ-экранировать выражение.</returns>
+    </member>
+    <member name="T:StockSharp.Algo.Expressions.ExpressionIndexSecurity">
+      <summary>Индекс, построенный из комбинации нескольких инструментов через математическую формулу <see cref="P:StockSharp.Algo.Expressions.ExpressionIndexSecurity.Expression" />.</summary>
+    </member>
+    <member name="M:StockSharp.Algo.Expressions.ExpressionIndexSecurity.#ctor">
+      <summary>Создать <see cref="T:StockSharp.Algo.Expressions.ExpressionIndexSecurity" />.</summary>
+    </member>
+    <member name="P:StockSharp.Algo.Expressions.ExpressionIndexSecurity.Formula">
+      <summary>Скомпилированная математическая формула.</summary>
+    </member>
+    <member name="P:StockSharp.Algo.Expressions.ExpressionIndexSecurity.Expression">
+      <summary>Математическая формула индекса.</summary>
+    </member>
+    <member name="P:StockSharp.Algo.Expressions.ExpressionIndexSecurity.InnerSecurities">
+      <summary>Инструменты, из которых создана данная корзина.</summary>
+    </member>
+    <member name="M:StockSharp.Algo.Expressions.ExpressionIndexSecurity.Calculate(System.Decimal[])">
+      <summary>Вычислить значение корзины.</summary>
+      <param name="prices">Цены составных инструментов корзины <see cref="P:StockSharp.BusinessEntities.BasketSecurity.InnerSecurities" />.</param>
+      <returns>Значение корзины.</returns>
+    </member>
+    <member name="M:StockSharp.Algo.Expressions.ExpressionIndexSecurity.Clone">
+      <summary>Создать копию <see cref="T:StockSharp.BusinessEntities.Security" />.</summary>
+      <returns>Копия объекта.</returns>
+    </member>
+    <member name="M:StockSharp.Algo.Expressions.ExpressionIndexSecurity.ToString">
+      <summary>Получить строковое представление.</summary>
+      <returns>Строковое представление.</returns>
+    </member>
+    <member name="T:StockSharp.Algo.Expressions.Xaml.IndexEditor">
+      <summary>Графический контрол для редактирования <see cref="T:StockSharp.Algo.Expressions.ExpressionIndexSecurity" />.</summary>
+      <summary>
+            IndexEditor
+            </summary>
+    </member>
+    <member name="M:StockSharp.Algo.Expressions.Xaml.IndexEditor.#ctor">
+      <summary>Создать <see cref="T:StockSharp.Algo.Expressions.Xaml.IndexEditor" />.</summary>
+    </member>
+    <member name="P:StockSharp.Algo.Expressions.Xaml.IndexEditor.Securities">
+      <summary>Все доступные инструменты.</summary>
+    </member>
+    <member name="P:StockSharp.Algo.Expressions.Xaml.IndexEditor.Formula">
+      <summary>Математическая формула.</summary>
+    </member>
+    <member name="P:StockSharp.Algo.Expressions.Xaml.IndexEditor.Text">
+      <summary>Текст.</summary>
+    </member>
+    <member name="P:StockSharp.Algo.Expressions.Xaml.IndexEditor.HasError">
+      <summary>Выражение содержит ошибку.</summary>
+    </member>
+    <member name="P:StockSharp.Algo.Expressions.Xaml.IndexEditor.HighligthFunctions">
+      <summary>Список подсвечиваемых функций.</summary>
+      <remarks>По умолчанию содержит: abs, acos, asin, atan, ceiling, cos, exp, floor, ieeeremainder, log, log10, max, min, pow, round, sign, sin, sqrt, tan, truncate.</remarks>
+    </member>
+    <member name="P:StockSharp.Algo.Expressions.Xaml.IndexEditor.HighligthForeColor">
+      <summary>Цвет шрифта функций. По умолчанию равен <see cref="P:System.Windows.Media.Brushes.Red" />.</summary>
+    </member>
+    <member name="P:StockSharp.Algo.Expressions.Xaml.IndexEditor.HighligthBackColor">
+      <summary>Цвет фона функций. По умолчанию равен <see cref="P:System.Windows.Media.Brushes.White" />.</summary>
+    </member>
+    <member name="E:StockSharp.Algo.Expressions.Xaml.IndexEditor.SecurityClicked">
+      <summary>Событие клика на инструмент.</summary>
+    </member>
+    <member name="E:StockSharp.Algo.Expressions.Xaml.IndexEditor.TextChanged">
+      <summary>Событие изменения <see cref="P:StockSharp.Algo.Expressions.Xaml.IndexEditor.Text" />.</summary>
+    </member>
+    <member name="M:StockSharp.Algo.Expressions.Xaml.IndexEditor.InitializeComponent">
+      <summary>InitializeComponent.</summary>
+    </member>
+    <member name="T:StockSharp.Algo.Expressions.Xaml.IndexSecurityWindow">
+      <summary>Окно для редактирования <see cref="T:StockSharp.Algo.Expressions.ExpressionIndexSecurity" />.</summary>
+      <summary>
+            IndexSecurityWindow
+            </summary>
+    </member>
+    <member name="M:StockSharp.Algo.Expressions.Xaml.IndexSecurityWindow.#ctor">
+      <summary>Создать <see cref="T:StockSharp.Algo.Expressions.Xaml.IndexSecurityWindow" />.</summary>
+    </member>
+    <member name="P:StockSharp.Algo.Expressions.Xaml.IndexSecurityWindow.ValidateId">
+      <summary>Обработчик, проверяющий доступность введенного идентификатора для <see cref="T:StockSharp.BusinessEntities.Security" />.</summary>
+    </member>
+    <member name="P:StockSharp.Algo.Expressions.Xaml.IndexSecurityWindow.Securities">
+      <summary>Все доступные инструменты.</summary>
+    </member>
+    <member name="P:StockSharp.Algo.Expressions.Xaml.IndexSecurityWindow.IndexSecurity">
+      <summary>Индекс.</summary>
+    </member>
+    <member name="M:StockSharp.Algo.Expressions.Xaml.IndexSecurityWindow.InitializeComponent">
+      <summary>InitializeComponent.</summary>
+    </member>
+  </members>
+</doc>

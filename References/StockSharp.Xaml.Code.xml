@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>StockSharp.Xaml.Code</name>
+  </assembly>
+  <members>
+    <member name="T:StockSharp.Xaml.Code.CodeExtensions">
+      <summary>Вспомогательный класс.</summary>
+    </member>
+    <member name="M:StockSharp.Xaml.Code.CodeExtensions.CompileCode(Ecng.Roslyn.CompilationLanguages,System.String,System.String,System.Collections.Generic.IEnumerable{StockSharp.Xaml.Code.CodeReference})">
+      <summary>Скомпилировать код.</summary>
+      <param name="language">Язык программирования.</param>
+      <param name="code">Код.</param>
+      <param name="name">Имя сборки.</param>
+      <param name="references">Ссылки.</param>
+      <returns>Результат компиляции.</returns>
+    </member>
+    <member name="M:StockSharp.Xaml.Code.CodeExtensions.HasErrors(Ecng.Roslyn.CompilationResult)">
+      <summary>Есть ли ошибки в результате компиляции.</summary>
+      <param name="result">Результат компиляции.</param>
+      <returns>
+        <see langword="true" /> - если ошибки есть, <see langword="true" /> - если компиляция выполнена без ошибок.</returns>
+    </member>
+    <member name="P:StockSharp.Xaml.Code.CodeExtensions.DefaultReferences">
+      <summary>Сборки по-умолчанию.</summary>
+    </member>
+    <member name="M:StockSharp.Xaml.Code.CodeExtensions.ToReference(System.String,System.Reflection.Assembly[])">
+      <summary>Преобразовать имя сборки в <see cref="T:StockSharp.Xaml.Code.CodeReference" />.</summary>
+      <param name="referenceName">Имя сборки.</param>
+      <param name="assemblies">Ранее загруженные сборки.</param>
+      <returns>
+        <see cref="T:StockSharp.Xaml.Code.CodeReference" />.</returns>
+    </member>
+    <member name="M:StockSharp.Xaml.Code.CodeExtensions.ToReferences(System.Collections.Generic.IEnumerable{System.String})">
+      <summary>Преобразовать имена сборок в <see cref="T:StockSharp.Xaml.Code.CodeReference" />.</summary>
+      <param name="referenceNames">Имена сборок.</param>
+      <returns>
+        <see cref="T:StockSharp.Xaml.Code.CodeReference" />.</returns>
+    </member>
+    <member name="T:StockSharp.Xaml.Code.CodeReference">
+      <summary>Ссылка на .NET сборку.</summary>
+    </member>
+    <member name="M:StockSharp.Xaml.Code.CodeReference.#ctor">
+      <summary>Создать <see cref="T:StockSharp.Xaml.Code.CodeReference" />.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Code.CodeReference.Name">
+      <summary>Имя сборки.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Code.CodeReference.Location">
+      <summary>Путь к сборке.</summary>
+    </member>
+    <member name="T:StockSharp.Xaml.Code.CodeReferencesWindow">
+      <summary>Окно для редактирования списка ссылок на .NET сборки.</summary>
+      <summary>
+            CodeReferencesWindow
+            </summary>
+    </member>
+    <member name="F:StockSharp.Xaml.Code.CodeReferencesWindow.OkCommand">
+      <summary>Команда для применения изменений.</summary>
+    </member>
+    <member name="F:StockSharp.Xaml.Code.CodeReferencesWindow.AddCommand">
+      <summary>Команда для добавления ссылок.</summary>
+    </member>
+    <member name="F:StockSharp.Xaml.Code.CodeReferencesWindow.RemoveCommand">
+      <summary>Команда для удаления ссылок.</summary>
+    </member>
+    <member name="M:StockSharp.Xaml.Code.CodeReferencesWindow.#ctor">
+      <summary>Создать <see cref="T:StockSharp.Xaml.Code.CodeReferencesWindow" />.</summary>
+    </member>
+    <member name="P:StockSharp.Xaml.Code.CodeReferencesWindow.References">
+      <summary>Ссылки.</summary>
+    </member>
+    <member name="M:StockSharp.Xaml.Code.CodeReferencesWindow.InitializeComponent">
+      <summary>InitializeComponent.</summary>
+    </member>
+  </members>
+</doc>
