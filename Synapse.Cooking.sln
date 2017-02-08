@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarketDataRecorder", "Marke
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OptionRecoder", "OptionRecoder\OptionRecoder.csproj", "{76E93DBC-8B91-4EA9-9D5B-0AB72516E86F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FirstPosition", "FirstPosition\FirstPosition.csproj", "{7EC4793A-C674-43BF-AE2E-235942242386}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +59,10 @@ Global
 		{76E93DBC-8B91-4EA9-9D5B-0AB72516E86F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{76E93DBC-8B91-4EA9-9D5B-0AB72516E86F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{76E93DBC-8B91-4EA9-9D5B-0AB72516E86F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7EC4793A-C674-43BF-AE2E-235942242386}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7EC4793A-C674-43BF-AE2E-235942242386}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7EC4793A-C674-43BF-AE2E-235942242386}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7EC4793A-C674-43BF-AE2E-235942242386}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
