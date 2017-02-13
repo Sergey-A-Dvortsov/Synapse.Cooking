@@ -3,10 +3,6 @@
     using System;
     using System.Linq;
     using System.Threading;
-    using System.Collections.Generic;
-
-    using Ecng.Collections;
-    using Ecng.Common;
 
     using MoreLinq;
 

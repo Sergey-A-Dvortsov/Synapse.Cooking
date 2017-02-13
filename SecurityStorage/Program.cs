@@ -11,7 +11,6 @@ namespace SecurityStorage
     using StockSharp.Algo.Storages;
     using StockSharp.BusinessEntities;
 
-
     class Program
     {
 

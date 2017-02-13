@@ -6,9 +6,6 @@
     using System.Collections.Generic;
     using System.Diagnostics;
 
-    using Ecng.Collections;
-    using Ecng.Common;
-
     using MoreLinq;
 
     using StockSharp.Algo;

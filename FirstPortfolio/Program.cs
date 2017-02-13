@@ -4,16 +4,11 @@
     using System.Linq;
     using System.Collections.Generic;
 
-    using Ecng.Collections;
-    using Ecng.Common;
-
     using MoreLinq;
-
 
     using StockSharp.Algo;
     using StockSharp.Quik;
     using StockSharp.BusinessEntities;
-    
 
     class Program
     {

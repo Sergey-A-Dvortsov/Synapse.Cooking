@@ -1,25 +1,14 @@
 ﻿namespace Synapse.Cooking.FirstLog
 {
     using System;
-    using System.Linq;
     using System.Threading;
-    using System.Collections.Generic;
-    using System.Diagnostics;
-
-    using Ecng.Collections;
-    using Ecng.Common;
-
-    using MoreLinq;
 
     using StockSharp.Algo;
     using StockSharp.Quik;
-    using StockSharp.BusinessEntities;
-    using StockSharp.Messages;
-    using System.Text;
     using StockSharp.Logging;
     using global::FirstLog;
 
-    class Program : BaseLogReceiver
+    class Program  
     {
         static Connector _trader;
         static AutoResetEvent _handler;
@@ -36,18 +25,21 @@
 
             // слушатель - устройство вывода, куда будут записываться сообщения
 
+            
             // слушатели: 
             // консоль
             _logManager.Listeners.Add(new ConsoleLogListener());
+
             // окно вывода
             _logManager.Listeners.Add(new DebugLogListener());
+
             // файл
             var fileListener = new FileLogListener
             {
-                Append = true,               // true - добавляет сообщения в конец существующего файла, false - перезаписывает существующий файл
+                Append = false,              // true - добавляет сообщения в конец существующего файла, false - перезаписывает существующий файл
                 Extension = "log",           // расширение файла лога
                 FileName = "FirstLog",       // имя файла лога
-                MaxLength = 1,               // максимальная длинна файла лога 
+                MaxLength = 1000000,         // максимальная длинна файла лога в байтах / в данном случае 1мб
                 LogDirectory = "Logs",       // максимальная длинна файла лога 
                 SeparateByDates = SeparateByDateModes.FileName  // режим разделения логов по датам
             };

@@ -5,8 +5,6 @@
     using System.Threading;
     using System.Collections.Generic;
     using System.Diagnostics;
-
-    using Ecng.Collections;
     using Ecng.Common;
 
     using MoreLinq;
