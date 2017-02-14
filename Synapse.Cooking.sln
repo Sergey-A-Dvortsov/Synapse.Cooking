@@ -25,6 +25,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FirstLog", "FirstLog\FirstL
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FirstCandle", "FirstCandle\FirstCandle.csproj", "{8E6912CB-5F4C-4425-A51B-9A693186DC39}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FirstChart", "FirstChart\FirstChart.csproj", "{C85A86F4-8627-42B2-A087-4F5F03593680}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealTimeEmulation", "RealTimeEmulation\RealTimeEmulation.csproj", "{47CE9A9B-32B8-4072-A188-BCC2CCAAA3A1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +79,14 @@ Global
 		{8E6912CB-5F4C-4425-A51B-9A693186DC39}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8E6912CB-5F4C-4425-A51B-9A693186DC39}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8E6912CB-5F4C-4425-A51B-9A693186DC39}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C85A86F4-8627-42B2-A087-4F5F03593680}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C85A86F4-8627-42B2-A087-4F5F03593680}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C85A86F4-8627-42B2-A087-4F5F03593680}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C85A86F4-8627-42B2-A087-4F5F03593680}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47CE9A9B-32B8-4072-A188-BCC2CCAAA3A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47CE9A9B-32B8-4072-A188-BCC2CCAAA3A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47CE9A9B-32B8-4072-A188-BCC2CCAAA3A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47CE9A9B-32B8-4072-A188-BCC2CCAAA3A1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

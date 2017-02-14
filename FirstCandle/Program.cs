@@ -26,6 +26,7 @@ namespace Synapse.Cooking.FirstCandle
     using StockSharp.Messages;
     using System.Text;
     using StockSharp.Algo.Candles;
+    using StockSharp.Algo.Candles.Compression;
 
     class Program
     {
@@ -40,7 +41,14 @@ namespace Synapse.Cooking.FirstCandle
         {
             _handler = new AutoResetEvent(false);
             _connector = new QuikTrader();
+
+            // Создается andleManager, который будет использовать данные из коннектора
             _candleManager = new CandleManager(_connector);
+
+            // Также можно создать СandleManager, который использует произвольную коллекцию данных.
+            // В контексте этого примера этот способ следует использовать, когда получен инстумент и выполнена подписка на сделки
+            // по инструменту
+            //_candleManager = CreateCandleManager(_connector, _security);
 
             _connector.Connected += () =>
             {
@@ -114,6 +122,24 @@ namespace Synapse.Cooking.FirstCandle
             while (Console.ReadLine().ToUpper() != "Q") ;
 
         }
+
+
+        // Вот так можно создать CandleManager с произвольной коллекцией данных
+        // В нашем случае используются сделки, но это могут быть стаканы или записи ордерлога
+        private static CandleManager CreateCandleManager(Connector connector, Security security)
+        {
+            var trades = connector.Trades.Where(t => t.Security == security);  // некая коллекция сделок
+            var source = new RawConvertableCandleBuilderSource<Trade>(security, DateTimeOffset.MinValue, DateTimeOffset.MaxValue, trades);
+            CandleManager candleManager = null;
+            candleManager = new CandleManager(source);
+
+            // Вот так можно добавить источник к уже существующему CandleManager
+            ///candleManager.Sources.Add((ICandleManagerSource)source);
+
+            return candleManager;
+
+        }
+
 
     }
 }
