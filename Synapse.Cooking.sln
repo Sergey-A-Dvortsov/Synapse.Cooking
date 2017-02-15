@@ -29,6 +29,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FirstChart", "FirstChart\Fi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealTimeEmulation", "RealTimeEmulation\RealTimeEmulation.csproj", "{47CE9A9B-32B8-4072-A188-BCC2CCAAA3A1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FirstStorage", "FirstStorage\FirstStorage.csproj", "{7FEFC375-FB93-4F03-9847-C947A6CC333B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FirstIndicator", "FirstIndicator\FirstIndicator.csproj", "{34ADE58C-DB0D-436F-8F15-CA8CF9B72DE0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,6 +91,14 @@ Global
 		{47CE9A9B-32B8-4072-A188-BCC2CCAAA3A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{47CE9A9B-32B8-4072-A188-BCC2CCAAA3A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{47CE9A9B-32B8-4072-A188-BCC2CCAAA3A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FEFC375-FB93-4F03-9847-C947A6CC333B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FEFC375-FB93-4F03-9847-C947A6CC333B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FEFC375-FB93-4F03-9847-C947A6CC333B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FEFC375-FB93-4F03-9847-C947A6CC333B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34ADE58C-DB0D-436F-8F15-CA8CF9B72DE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34ADE58C-DB0D-436F-8F15-CA8CF9B72DE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34ADE58C-DB0D-436F-8F15-CA8CF9B72DE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34ADE58C-DB0D-436F-8F15-CA8CF9B72DE0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

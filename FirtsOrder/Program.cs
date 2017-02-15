@@ -13,11 +13,12 @@
     using StockSharp.Quik;
     using StockSharp.BusinessEntities;
     using StockSharp.Messages;
+    using System.Net;
 
     class Program
     {
         static Connector _connector;
-        static string _portfolioName = "97843";
+        static string _portfolioName = "NL0011100043";
         static Portfolio _portfolio;
 
         static string _securityId = "SBER@QJSIM";
@@ -27,7 +28,10 @@
 
         static void Main(string[] args)
         {
-            _connector = new QuikTrader();
+            _connector = new QuikTrader
+            {
+                LuaFixServerAddress = "127.0.0.1:5002".To<EndPoint>()
+            };
 
             _handler = new AutoResetEvent(false);
 
@@ -66,10 +70,9 @@
                         _portfolio = portfolio;
                 });
 
-                if (_connector.Portfolios.Count() >= 2)
+                if (_connector.Portfolios.Count() >= 4)
                 {
                     Console.WriteLine("Все портфели получены.");
-
                     if (_isSecuritiesLoaded)
                         _handler.Set();
                 }
@@ -91,7 +94,7 @@
 
                 if (_isSecuritiesLoaded)
                 {
-                    if (_connector.Portfolios.Count() >= 2)
+                    if (_portfolio != null)
                         _handler.Set();
                 }
             };
