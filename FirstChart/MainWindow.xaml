@@ -6,7 +6,7 @@
         xmlns:sx="http://schemas.stocksharp.com/xaml"
         xmlns:local="clr-namespace:FirstChart"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525" Loaded="Window_Loaded">
+        Title="MainWindow" Height="350" Width="525" >
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
