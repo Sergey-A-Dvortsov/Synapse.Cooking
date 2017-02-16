@@ -1,227 +1,113 @@
 ﻿namespace Synapse.Cooking.FirstIndicator
 {
     using System;
-    using System.Linq;
-    using System.Threading;
-    using System.Collections.Generic;
-    using System.Diagnostics;
-
-    using Ecng.Collections;
-    using Ecng.Common;
-
-    using MoreLinq;
-
-    using StockSharp.Algo;
-    using StockSharp.Quik;
     using StockSharp.BusinessEntities;
     using StockSharp.Messages;
-    using System.Text;
+    using StockSharp.Algo.Storages;
+    using StockSharp.Algo.Indicators;
+    using StockSharp.Algo.Candles;
+    using StockSharp.Algo.Candles.Compression;
 
     class Program
     {
-        static Connector _connector;
-        static string _portfolioName = "NL0011100043";
-        static Portfolio _portfolio;
-        static string _securityId = "SBER@QJSIM";
-        static Security _security;
-        static AutoResetEvent _handler;
-
         static void Main(string[] args)
         {
-            _connector = new QuikTrader();
 
-            _handler = new AutoResetEvent(false);
+            var security = new Security() { Id = "RIH7@FORTS", Board = ExchangeBoard.Forts };
+            StorageRegistry storage = new StorageRegistry();
 
-            var _sendCancelOrders = new List<Order>();
+            string path = @"../../../Data/Quik";
 
-            _connector.Connected += () =>
+            //Для работы будем использовать готовое локальное файловое хранилище, в которое данные были предварительно записаны при помощи Гидры.
+            //Создаем экземпляр LocalMarketDataDrive.
+            LocalMarketDataDrive drive = new LocalMarketDataDrive() { Path = path };
+
+            //Передаем в StorageRegistry ссылку на локальное файловое хранилище
+            storage.DefaultDrive = drive;
+
+            DateTime from = new DateTime(2017, 02, 14, 10, 0, 0);
+            DateTime to = new DateTime(2017, 02, 15, 23, 50, 0);
+
+            // Создаем простой индикатор - простая скользяшая средняя. Простой индикатор - индикатор, которые состоит из одного индикатора.
+            var ma = new SimpleMovingAverage() { Length = 11 };
+
+            // Событие генерируется при изменении текущего значения индикатора.. Событие имеет два параметра: входное и выходное значение.
+            ma.Changed += (input, output) =>
             {
-                Console.WriteLine("Соединение установлено!");
+                //TODO
             };
 
-            _connector.Disconnected += () =>
+            // Создаем комплексный индикатор - полосы Боллинджера. Комплексный индикатор - индикатор, которые состоит из нескольких простых или комплексных
+            // индикаторов. В состав полос Боллинджера входят три простых индикатора: верхняя и нижняя полоса BollingerBand, а также простая скользящая средняя.
+            var bb = new BollingerBands() { Length = 11, Width = 1.5m };
+
+            // Событие генерируется при изменении текущего значения индикатора.. Событие имеет два параметра: входное и выходное значение.
+            bb.Changed += (input, output) =>
             {
-                Console.WriteLine("Соединение разорвано!");
-                Console.WriteLine("Для выхода нажмите Q и Enter.");
+                //TODO
             };
 
-            _connector.NewPortfolios += portfolios =>
+            // Создаем кандлеменеджер, который в качестве источника свечек использует сделки из хранилища.
+            CandleManager candleManager = new CandleManager(new TradeStorageCandleBuilderSource() { StorageRegistry = storage });
+
+            candleManager.Processing += (series, candle) =>
             {
-                portfolios.ForEach(portfolio =>
+                if (candle.State != CandleStates.Finished)
+                    return;
+
+                // передаем в метод Process значение для обработки... 
+                // Передаваемый параметр должен реализовывать интерфейс IIndicatorValue. 
+                // В нашем случае используется метод расширения, который преобразует
+                // свечу в класс CandleIndicatorValue, который реализует требуемый интерфейс. 
+                // Функция возвращается тип, который также реализует интерфейс IIndicatorValue
+                // Такой подход обладает следующими преимуществами:
+                // 1. IIndicatorValue используется при построении графиков
+                // 2. Значение одного индикторы, можно сразу передавать на вход другого индикатра.  
+                var maValue = ma.Process(candle);
+
+
+                // Свойство IsFormed становится true, когда текущее значение индикатора становится валидным
+                // Наример, в скользящих средних, если число значений поступивших на вход больше или равно
+                // периоду индикатора 
+                if (ma.IsFormed)
                 {
-                    Console.WriteLine("Получен портфель: {0}", portfolio.Name);
+                    // Так можно вернуть "нормальное" значение из IIndicatorValue 
+                    var maCur = ma.GetCurrentValue();
 
-                    if (portfolio.Name == _portfolioName)
-                        _portfolio = portfolio;
-
-                    _connector.RegisterPortfolio(portfolio);
-
+                    // Это другой способ получения "нормальное" текущего значения индикатора
+                    maCur = maValue.GetValue<decimal>();
+                }
 
 
-                });
+                // Здесь мы используем комплексный индикатор. Также передаем в метод Process значение для обработки...
+                // На выходе мы получаем тип ComplexIndicatorValue (тоже реализует IIndicatorValue).
+                // Главная особенность типа ComplexIndicatorValue в наличии свойства InnerValues, где
+                // хранятся текущие значения всех простых индикаторов, входящих в состав комплексного индикатора.
+                var bbValue = (ComplexIndicatorValue)bb.Process(candle);
 
-                if (_connector.Portfolios.Count() >= 3)
+                if (bb.IsFormed)
                 {
-                    Console.WriteLine("Все портфели получены.");
-                    if (_portfolio != null && _security != null)
-                        _handler.Set();
+                    // Так можно получить значения из InnerValues 
+                    var upBandValue = bbValue.InnerValues[bb.UpBand];
+                    var lowBandValue = bbValue.InnerValues[bb.LowBand];
+
+                    var upBand = bb.UpBand.GetCurrentValue();
+                    var lowBand = bb.LowBand.GetCurrentValue();
+
+                    upBand = upBandValue.GetValue<decimal>();
+                    lowBand = lowBandValue.GetValue<decimal>();
                 }
 
             };
 
-            _connector.NewSecurities += securities =>
-            {
-                securities.ForEach(s =>
-                {
-                    if (s.Id == _securityId)
-                    {
-                        _security = s;
-                        _connector.RegisterSecurity(s);
-                    }
+            var srs = new CandleSeries(typeof(TimeFrameCandle), security, TimeSpan.FromMinutes(1));
 
-                    if (_portfolio != null && _security != null)
-                        _handler.Set();
-
-                });
-            };
-
-            _connector.PortfoliosChanged += portfolios =>
-            {
-
-                Debug.WriteLine("Изменение состояния портфелей.");
-
-                var sb = new StringBuilder();
-
-                portfolios.ForEach(p =>
-                {
-                    sb.AppendFormat("Name: {0}{1}", p.Name, Environment.NewLine);
-                    sb.AppendFormat("AveragePrice: {0}{1}", p.AveragePrice, Environment.NewLine);
-                    sb.AppendFormat("BeginValue: {0}{1}", p.BeginValue, Environment.NewLine);
-                    sb.AppendFormat("BlockedValue: {0}{1}", p.BlockedValue, Environment.NewLine);
-                    sb.AppendFormat("Board: {0}{1}", p.Board, Environment.NewLine);
-                    sb.AppendFormat("Commission: {0}{1}", p.Commission, Environment.NewLine);
-                    sb.AppendFormat("CurrentPrice: {0}{1}", p.CurrentPrice, Environment.NewLine);
-                    sb.AppendFormat("CurrentValue: {0}{1}", p.CurrentValue, Environment.NewLine);
-                    sb.AppendFormat("Leverage: {0}{1}", p.Leverage, Environment.NewLine);
-                    sb.AppendFormat("RealizedPnL: {0}{1}", p.RealizedPnL, Environment.NewLine);
-                    sb.AppendFormat("UnrealizedPnL: {0}{1}", p.UnrealizedPnL, Environment.NewLine);
-                    sb.AppendFormat("VariationMargin: {0}{1}", p.VariationMargin, Environment.NewLine);
-
-                    Debug.WriteLine(sb.ToString());
-
-                    sb.Clear();
-
-                });
-
-            };
-
-            _connector.NewPositions += positions =>
-            {
-                Debug.WriteLine("Новые позиции.");
-                PrintPositions(positions);
-            };
-
-            _connector.PositionsChanged += positions =>
-            {
-                Debug.WriteLine("Изменение позиций.");
-                PrintPositions(positions);
-            };
-
-            _connector.NewOrders += orders =>
-            {
-                orders.ForEach(o => Debug.WriteLine(string.Format("NewOrders. {0}", o)));
-            };
-
-            _connector.OrdersChanged += orders =>
-            {
-                orders.ForEach(o =>
-                {
-                    Debug.WriteLine(string.Format("OrdersChanged. {0}. IsMatched: {1}, IsCanceled : {2}", o, o.IsMatched().ToString(), o.IsCanceled().ToString()));
-                });
-            };
-
-            _connector.OrdersRegisterFailed += fails =>
-            {
-                fails.ForEach(f => Debug.WriteLine(string.Format("OrdersRegisterFailed. {0}", f.ToMessage())));
-            };
-
-            _connector.OrdersCancelFailed += fails =>
-            {
-                fails.ForEach(f => Debug.WriteLine(string.Format("OrdersCancelFailed. {0}", f.ToMessage())));
-            };
-
-            _connector.NewMyTrades += trades =>
-            {
-                trades.ForEach(t => Debug.WriteLine(string.Format("NewMyTrades. {0}", t.ToString())));
-            };
-
-            _connector.Connect();
-
-            _handler.WaitOne();
-
-            var exitCount = 20;
-
-            while (exitCount > 0)
-            {
-                if (_security.BestAsk != null)
-                {
-                    var price = _security.BestAsk.Price + (10 * _security.PriceStep);
-
-                    var order = new Order()
-                    {
-                        Security = _security,
-                        Portfolio = _portfolio,
-                        Price = price.Value,
-                        Type = OrderTypes.Limit,
-                        Direction = Sides.Buy,
-                        Volume = 1
-                    };
-
-                    _connector.RegisterOrder(order);
-                    exitCount = 0;
-                }
-                else
-                {
-
-                    Thread.Sleep(200);
-                }
-                exitCount--;
-            }
+            candleManager.Start(srs, from, to);
 
             Console.Read();
 
-            _connector.Disconnect();
+            candleManager.Stop(srs);
 
-            // Ждет, пока последовательно не будут нажаты клаваши Q и Enter,
-            // после чего программа завершит работу
-            while (Console.ReadLine().ToUpper() != "Q") ;
-
-        }
-
-        static void PrintPositions(IEnumerable<Position> positions)
-        {
-            var sb = new StringBuilder();
-
-            positions.ForEach(p =>
-            {
-                sb.AppendFormat("AveragePrice: {0}{1}", p.AveragePrice, Environment.NewLine);
-                sb.AppendFormat("BeginValue: {0}{1}", p.BeginValue, Environment.NewLine);
-                sb.AppendFormat("BlockedValue: {0}{1}", p.BlockedValue, Environment.NewLine);
-                sb.AppendFormat("ClientCode: {0}{1}", p.ClientCode, Environment.NewLine);
-                sb.AppendFormat("Commission: {0}{1}", p.Commission, Environment.NewLine);
-                sb.AppendFormat("CurrentPrice: {0}{1}", p.CurrentPrice, Environment.NewLine);
-                sb.AppendFormat("CurrentValue: {0}{1}", p.CurrentValue, Environment.NewLine);
-                sb.AppendFormat("LimitType: {0}{1}", p.LimitType.ToString(), Environment.NewLine);
-                sb.AppendFormat("Portfolio: {0}{1}", p.Portfolio.Name, Environment.NewLine);
-                sb.AppendFormat("Security: {0}{1}", p.Security.Id, Environment.NewLine);
-                sb.AppendFormat("UnrealizedPnL: {0}{1}", p.UnrealizedPnL, Environment.NewLine);
-                sb.AppendFormat("VariationMargin: {0}{1}", p.VariationMargin, Environment.NewLine);
-
-                Debug.WriteLine(sb.ToString());
-
-                sb.Clear();
-
-            });
         }
 
     }

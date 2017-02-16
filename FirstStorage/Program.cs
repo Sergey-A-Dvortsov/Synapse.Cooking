@@ -50,6 +50,8 @@
                 Debug.WriteLine("{0} {1}", trade, trade.OpenInterest);
             }
 
+            Console.Read();
+
         }
 
     }
