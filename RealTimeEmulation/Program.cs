@@ -25,7 +25,7 @@
         static Connector _connector;
         static string _portfolioName = "test";
         static Portfolio _portfolio;
-        static string _securityId = "RIH7@FORTS";
+        static string _securityId = "SBER@TQBR";
         static Security _security;
         static AutoResetEvent _handler;
         static LogManager _logManager;
@@ -93,6 +93,7 @@
                     {
                         _security = s;
                         _connector.RegisterSecurity(s);
+                        _handler.Set();
                     }
                 });
             };
@@ -162,6 +163,7 @@
                 orders.ForEach(o => Debug.WriteLine(string.Format("NewOrders. {0}", o)));
             };
 
+
             _connector.OrdersChanged += orders =>
             {
                 orders.ForEach(o =>
@@ -189,24 +191,39 @@
 
             _handler.WaitOne();
 
-            Debug.WriteLine("Инструмент и портфель получены");
+            Console.WriteLine("Инструмент и портфель получены");
 
-            if (_security.BestAsk != null)
-            {
-                var price = _security.BestAsk.Price + (10 * _security.PriceStep);
+            //if (_security.BestAsk != null)
+            //{
+            //    var price = _security.BestAsk.Price + (10 * _security.PriceStep);
 
-                var order = new Order()
+            //    var order = new Order()
+            //    {
+            //        Security = _security,
+            //        Portfolio = _portfolio,
+            //        Price = price.Value,
+            //        Type = OrderTypes.Limit,
+            //        Direction = Sides.Buy,
+            //        Volume = 1
+            //    };
+
+            //    _connector.RegisterOrder(order);
+            //}
+
+
+
+            var order = new Order()
                 {
                     Security = _security,
                     Portfolio = _portfolio,
-                    Price = price.Value,
-                    Type = OrderTypes.Limit,
+                    Type = OrderTypes.Market,
                     Direction = Sides.Buy,
                     Volume = 1
                 };
 
-                _connector.RegisterOrder(order);
-            }
+            _connector.RegisterOrder(order);
+
+            Console.WriteLine("ПОСЛАНА ЗАЯВКА");
 
             Console.Read();
 
