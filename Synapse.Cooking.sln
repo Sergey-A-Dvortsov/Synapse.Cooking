@@ -33,6 +33,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FirstStorage", "FirstStorag
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FirstIndicator", "FirstIndicator\FirstIndicator.csproj", "{34ADE58C-DB0D-436F-8F15-CA8CF9B72DE0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SecurityList", "SecurityList\SecurityList.csproj", "{34D2EFEA-1FCF-4C09-934F-9F4392F023A7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -99,6 +101,10 @@ Global
 		{34ADE58C-DB0D-436F-8F15-CA8CF9B72DE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{34ADE58C-DB0D-436F-8F15-CA8CF9B72DE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{34ADE58C-DB0D-436F-8F15-CA8CF9B72DE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34D2EFEA-1FCF-4C09-934F-9F4392F023A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34D2EFEA-1FCF-4C09-934F-9F4392F023A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34D2EFEA-1FCF-4C09-934F-9F4392F023A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34D2EFEA-1FCF-4C09-934F-9F4392F023A7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

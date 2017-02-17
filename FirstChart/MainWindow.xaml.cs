@@ -104,9 +104,13 @@ namespace FirstChart
             Chart.ClearAreas();
             _area = new ChartArea();
             var yAxis = _area.YAxises.First();
+            var xAxis = _area.XAxises.First();
+
             yAxis.AutoRange = true;
+
             Chart.IsAutoRange = false;
             Chart.IsAutoScroll = true;
+            Chart.ShowOverview = true;
 
             _candleElement = new ChartCandleElement() { FullTitle = "Candles" };
                        
@@ -124,6 +128,8 @@ namespace FirstChart
                 _series = new CandleSeries(typeof(TimeFrameCandle), SecurityEditor.SelectedSecurity, TimeSpanEditor.Value);
 
                 InitChart(_series);
+
+                StockSharp.BusinessEntities.Position p = new StockSharp.BusinessEntities.Position();
 
                 _candleManager.Start(_series);
                 DrawButtom.Content = "Остановить";
