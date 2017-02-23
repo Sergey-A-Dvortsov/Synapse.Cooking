@@ -18,7 +18,7 @@
         static string _portfolioName = "97843";
         static Portfolio _portfolio;
 
-        static string _securityId = "SBER@QJSIM";
+        static string _securityId = "SBER@TQBR";
         static Security _security;
         static AutoResetEvent _handler;
 

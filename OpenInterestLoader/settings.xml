@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<settings>
+
+  <!--Путь к папке, где будут хранится данные. Можно использовать абсолютные и относительные пути-->
+  <folder-path Type="String">Interest</folder-path>
+
+  <!--Начальная дата закачки данных-->
+  <from-date Type="DateTime" Format="yyyy-mm-dd">2015-01-01</from-date>
+
+  <!--Конечная дата закачки данных-->
+  <to-date Type="DateTime" Format="yyyy-mm-dd">2015-01-01</to-date>
+
+  <!--Последняя дата, для которой загружены данные. Не менять это значение, оно изменяется программой-->
+  <last-date Type="DateTime" Format="yyyy-mm-dd"></last-date>
+
+  <!--Рабочие субботы/воскресенья. Если не указать, то рабочие субботы (воскресенья) будут пропущены-->
+  <workdays>
+    <day Type="DateTime" Format="yyyy-mm-dd"></day>
+  </workdays>
+
+  <!--Праздничные дни, если они не приходятся на субботу/воскресенье.-->
+  <holidays>
+    <day Type="DateTime" Format="yyyy-mm-dd"></day>
+  </holidays>
+
+  <!--Данные, которые будут сохраняться на диске. F - фьючерсы, С - call-опционы, P - put-опционы.-->
+  <derivative-types>
+    <derivative-type Type="String" Valids="F;C;P">F</derivative-type>
+    <derivative-type Type="String" Valids="F;C;P">C</derivative-type>
+    <derivative-type Type="String" Valids="F;C;P">P</derivative-type>
+  </derivative-types>
+
+  <!--Коды инструментов, данные, которых будут сохраняться на диске. 
+  Если в этот список, добавлен хоть один код, то будут сохраняться только данные инструментов,
+  добавленных в этот список. Если не добавлен ни один код, то будут сохраняться данные
+  всех инструментов. Нужно использовать 2 первых символа кода.-->
+  <include-codes>
+    <include-code Type="String" MaxLenth="2"></include-code>
+  </include-codes>
+
+    <!--Коды инструментов, данные, которых не будут сохраняться на диске. 
+  Если в этот список, будет добавлен код, входящий в список include-codes, будет сгенерирована ошибка.
+  Нужно использовать 2 первых символа кода.-->
+  <exclude-codes>
+    <exclude-code Type="String" MaxLenth="2"></exclude-code>
+  </exclude-codes>
+
+</settings> 

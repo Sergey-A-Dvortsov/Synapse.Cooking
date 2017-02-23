@@ -39,6 +39,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoexIndex", "MoexIndex\Moex
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinamLoader", "FinamLoader\FinamLoader.csproj", "{17CC68A7-1178-408C-B7BE-A01FEBF5DAB9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenInterestLoader", "OpenInterestLoader\OpenInterestLoader.csproj", "{D070B2F0-41D3-473C-871A-32BFD6655C99}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -117,6 +119,10 @@ Global
 		{17CC68A7-1178-408C-B7BE-A01FEBF5DAB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{17CC68A7-1178-408C-B7BE-A01FEBF5DAB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{17CC68A7-1178-408C-B7BE-A01FEBF5DAB9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D070B2F0-41D3-473C-871A-32BFD6655C99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D070B2F0-41D3-473C-871A-32BFD6655C99}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D070B2F0-41D3-473C-871A-32BFD6655C99}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D070B2F0-41D3-473C-871A-32BFD6655C99}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

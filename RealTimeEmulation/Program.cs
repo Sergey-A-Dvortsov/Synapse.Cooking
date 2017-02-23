@@ -5,6 +5,7 @@
     using System.Threading;
     using System.Collections.Generic;
     using System.Diagnostics;
+    using System.Security;
 
     using Ecng.Collections;
     using Ecng.Common;
@@ -19,16 +20,20 @@
     using StockSharp.Quik.Lua;
     using StockSharp.Algo.Testing;
     using StockSharp.Logging;
+    using System.IO;
+    using Ecng.Serialization;
+    using System.Net;
 
     class Program
     {
-        static Connector _connector;
+        static RealTimeEmulationTrader<IMessageAdapter> _connector;
         static string _portfolioName = "test";
         static Portfolio _portfolio;
         static string _securityId = "SBER@TQBR";
         static Security _security;
         static AutoResetEvent _handler;
         static LogManager _logManager;
+        const string _settingsFile = "connection.xml";
 
         static void Main(string[] args)
         {
@@ -36,18 +41,46 @@
             _logManager = new LogManager();
             _logManager.Listeners.Add(new FileLogListener("log.log") { LogDirectory = "Logs" }) ;
 
-            var quikMd = new LuaFixMarketDataMessageAdapter(new MillisecondIncrementalIdGenerator())
+
+            BasketMessageAdapter realAdapter = new BasketMessageAdapter(new MillisecondIncrementalIdGenerator());
+
+
+            if (File.Exists(_settingsFile))
             {
-                Login = "quik",
-                Address = QuikTrader.DefaultLuaAddress,
-                TargetCompId = "StockSharpMD",
-                SenderCompId = "quik",
-                RequestAllSecurities = true
-            };
+                realAdapter.Load(new XmlSerializer<SettingsStorage>().Deserialize(_settingsFile));
+                realAdapter.InnerAdapters.ForEach(a => a.RemoveTransactionalSupport());
+            }
+            else
+            {
 
-            _portfolio = new Portfolio { Name = "test", BeginValue = 1000000 };
+                realAdapter.AssociatedBoardCode = "ALL";
+                realAdapter.LogLevel = LogLevels.Inherit;
 
-            _connector = new RealTimeEmulationTrader<IMessageAdapter>(quikMd, _portfolio);
+                realAdapter.InnerAdapters.Add(new LuaFixMarketDataMessageAdapter(realAdapter.TransactionIdGenerator)
+                {
+                    Dialect = StockSharp.Fix.FixDialects.Default,
+                    SenderCompId = "quik",
+                    TargetCompId = "StockSharpMD",
+                    Login = "quik",
+                    Password = "quik".To<SecureString>(),
+                    Address = "localhost:5001".To<EndPoint>(),
+                    RequestAllPortfolios = false,
+                    RequestAllSecurities = true,
+                    IsResetCounter = true,
+                    ReadTimeout = TimeSpan.Zero,
+                    WriteTimeout = TimeSpan.Zero,
+                    HeartbeatInterval = TimeSpan.Zero,
+                    SupportedMessages = new MessageTypes[] { MessageTypes.MarketData, MessageTypes.SecurityLookup, MessageTypes.ChangePassword },
+                    AssociatedBoardCode = "ALL",
+                    LogLevel = LogLevels.Inherit
+                });
+            }
+
+            _connector = new RealTimeEmulationTrader<IMessageAdapter>(realAdapter);
+            _connector.EmulationAdapter.Emulator.Settings.TimeZone = TimeHelper.Est;
+            _connector.EmulationAdapter.Emulator.Settings.ConvertTime = true;
+
+            _logManager.Sources.Add(_connector);
 
             _logManager.Sources.Add(_connector);
 
@@ -174,12 +207,12 @@
 
             _connector.OrdersRegisterFailed += fails =>
             {
-                fails.ForEach(f => Debug.WriteLine(string.Format("OrdersRegisterFailed. {0}", f.ToMessage())));
+                //fails.ForEach(f => Debug.WriteLine(string.Format("OrdersRegisterFailed. {0}", f.ToMessage())));
             };
 
             _connector.OrdersCancelFailed += fails =>
             {
-                fails.ForEach(f => Debug.WriteLine(string.Format("OrdersCancelFailed. {0}", f.ToMessage())));
+                //fails.ForEach(f => Debug.WriteLine(string.Format("OrdersCancelFailed. {0}", f.ToMessage())));
             };
 
             _connector.NewMyTrades += trades =>
@@ -263,3 +296,59 @@
 
     }
 }
+
+
+
+//<key>SupportedMessages</key>
+//    <value>
+//      <Type type = "string" > System.String[], mscorlib</Type>
+//      <Value type = "System.String[], mscorlib" >
+//        < String > MarketData </ String >
+//        < String > SecurityLookup </ String >
+//        < String > ChangePassword </ String >
+//        < String > -1 </ String >
+//      </ Value >
+//    </ value >
+
+
+
+
+//private void InitConnector()
+//{
+//    _connector?.Dispose();
+
+//    try
+//    {
+//        if (File.Exists(_settingsFile))
+//            _realAdapter.Load(new XmlSerializer<SettingsStorage>().Deserialize(_settingsFile));
+
+//        _realAdapter.InnerAdapters.ForEach(a => a.RemoveTransactionalSupport());
+//    }
+//    catch
+//    {
+//    }
+
+//    _connector = new RealTimeEmulationTrader<IMessageAdapter>(_realAdapter);
+//    _logManager.Sources.Add(_connector);
+
+//    _connector.EmulationAdapter.Emulator.Settings.TimeZone = TimeHelper.Est;
+//    _connector.EmulationAdapter.Emulator.Settings.ConvertTime = true;
+
+
+//protected override void OnClosing(CancelEventArgs e)
+//{
+//    if (_connector != null)
+//        _connector.Dispose();
+
+//    base.OnClosing(e);
+//}
+
+//private void SettingsClick(object sender, RoutedEventArgs e)
+//{
+//    if (_realAdapter.Configure(this))
+//        new XmlSerializer<SettingsStorage>().Serialize(_realAdapter.Save(), _settingsFile);
+
+//    InitConnector();
+//}
+
+

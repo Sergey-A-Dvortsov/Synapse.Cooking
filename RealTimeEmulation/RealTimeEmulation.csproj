@@ -48,6 +48,10 @@
     <Reference Include="Ecng.Localization">
       <HintPath>..\References\Ecng.Localization.dll</HintPath>
     </Reference>
+    <Reference Include="Ecng.Net, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b10e79ed0227b515, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\Ecng.Net.dll</HintPath>
+    </Reference>
     <Reference Include="Ecng.Serialization">
       <HintPath>..\References\Ecng.Serialization.dll</HintPath>
     </Reference>
