@@ -1,4 +1,6 @@
-﻿namespace Synapse.Cooking.FirstPortfolio
+﻿//Copyright © Сергей Дворцов, 2016,  Все права защищены
+
+namespace Synapse.Cooking.FirstPortfolio
 {
     using System;
     using System.Linq;
@@ -13,7 +15,7 @@
     class Program
     {
         static Connector _connector;
-        static string _portfolioName = "95949";
+        static string _portfolioName = "Ваш портфель";
         static Portfolio _portfolio;
         static void Main(string[] args)
         {

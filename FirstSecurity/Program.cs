@@ -1,4 +1,6 @@
-﻿namespace Synapse.Cooking.FirstSecurity
+﻿//Copyright © Сергей Дворцов, 2016,  Все права защищены
+
+namespace Synapse.Cooking.FirstSecurity
 {
     using System;
     using System.Linq;
@@ -14,7 +16,7 @@
     class Program
     {
         static Connector _connector;
-        static string _portfolioName = "95949";
+        static string _portfolioName = "Ваш портфель";
         static Portfolio _portfolio;
 
         static string _securityId = "SBER@QJSIM";

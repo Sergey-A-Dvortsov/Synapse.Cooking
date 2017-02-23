@@ -1,4 +1,6 @@
-﻿namespace Synapse.Cooking.FirstOrder
+﻿//Copyright © Сергей Дворцов, 2016,  Все права защищены
+
+namespace Synapse.Cooking.FirstOrder
 {
     using System;
     using System.Linq;

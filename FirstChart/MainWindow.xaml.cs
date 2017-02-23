@@ -1,4 +1,7 @@
-﻿using Ecng.Xaml;
+﻿//Copyright © Сергей Дворцов, 2017,  Все права защищены
+
+
+using Ecng.Xaml;
 using StockSharp.Algo.Candles;
 using StockSharp.Quik;
 using StockSharp.Xaml.Charting;

@@ -1,4 +1,6 @@
-﻿namespace Synapse.Cooking.FirstLog
+﻿//Copyright © Сергей Дворцов, 2017,  Все права защищены
+
+namespace Synapse.Cooking.FirstLog
 {
     using System;
     using System.Threading;

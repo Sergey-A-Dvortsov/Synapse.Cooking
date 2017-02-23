@@ -1,4 +1,6 @@
-﻿namespace Synapse.Cooking.MarketDataRecorder
+﻿//Copyright © Сергей Дворцов, 2016,  Все права защищены
+
+namespace Synapse.Cooking.MarketDataRecorder
 {
 
     using System;

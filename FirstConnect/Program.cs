@@ -1,4 +1,6 @@
-﻿namespace Synapse.Cooking.FirstConnect
+﻿//Copyright © Сергей Дворцов, 2016,  Все права защищены
+
+namespace Synapse.Cooking.FirstConnect
 {
     using System;
     using StockSharp.Algo;

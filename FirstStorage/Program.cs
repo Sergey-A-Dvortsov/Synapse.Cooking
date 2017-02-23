@@ -1,21 +1,10 @@
-﻿namespace Synapse.Cooking.FirstStorage
+﻿//Copyright © Сергей Дворцов, 2017,  Все права защищены
+
+namespace Synapse.Cooking.FirstStorage
 {
     using System;
-    using System.Linq;
-    using System.Threading;
-    using System.Collections.Generic;
     using System.Diagnostics;
-
-    using Ecng.Collections;
-    using Ecng.Common;
-
-    using MoreLinq;
-
-    using StockSharp.Algo;
-    using StockSharp.Quik;
     using StockSharp.BusinessEntities;
-    using StockSharp.Messages;
-    using System.Text;
     using StockSharp.Algo.Storages;
 
     class Program

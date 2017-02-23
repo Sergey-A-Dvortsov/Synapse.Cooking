@@ -1,4 +1,6 @@
-﻿namespace OptionRecoder
+﻿//Copyright © Сергей Дворцов, 2017,  Все права защищены
+
+namespace OptionRecoder
 {
 
     using System;
@@ -13,7 +15,6 @@
     using StockSharp.Algo.Storages;
     using StockSharp.Messages;
     using Ecng.Collections;
-
 
     public class ChainInfo
     {

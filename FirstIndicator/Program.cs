@@ -1,4 +1,6 @@
-﻿namespace Synapse.Cooking.FirstIndicator
+﻿//Copyright © Сергей Дворцов, 2017,  Все права защищены
+
+namespace Synapse.Cooking.FirstIndicator
 {
     using System;
     using StockSharp.BusinessEntities;

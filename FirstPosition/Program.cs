@@ -1,4 +1,6 @@
-﻿namespace Synapse.Cooking.FirstPosition
+﻿//Copyright © Сергей Дворцов, 2017,  Все права защищены
+
+namespace Synapse.Cooking.FirstPosition
 {
     using System;
     using System.Linq;

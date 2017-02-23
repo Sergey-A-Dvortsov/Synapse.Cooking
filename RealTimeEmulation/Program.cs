@@ -1,28 +1,32 @@
-﻿namespace Synapse.Cooking.RealTimeEmulation
+﻿//Copyright © Сергей Дворцов, 2017,  Все права защищены
+
+// Пример использования коннектора RealTimeEmulationTrader
+// Данный тип коннектора позволяет работь с реальными рыночными данными
+// и эммулировать транзакции, т.е. заявки реально не выставляются в торговую систему
+
+namespace Synapse.Cooking.RealTimeEmulation
 {
     using System;
-    using System.Linq;
+    using System.IO;
+    using System.Net;
     using System.Threading;
     using System.Collections.Generic;
     using System.Diagnostics;
     using System.Security;
-
-    using Ecng.Collections;
-    using Ecng.Common;
+    using System.Text;
 
     using MoreLinq;
 
+    using Ecng.Common;
+    using Ecng.Serialization;
+
     using StockSharp.Algo;
-    using StockSharp.Quik;
     using StockSharp.BusinessEntities;
     using StockSharp.Messages;
-    using System.Text;
+    
     using StockSharp.Quik.Lua;
     using StockSharp.Algo.Testing;
     using StockSharp.Logging;
-    using System.IO;
-    using Ecng.Serialization;
-    using System.Net;
 
     class Program
     {
@@ -41,18 +45,26 @@
             _logManager = new LogManager();
             _logManager.Listeners.Add(new FileLogListener("log.log") { LogDirectory = "Logs" }) ;
 
-
             BasketMessageAdapter realAdapter = new BasketMessageAdapter(new MillisecondIncrementalIdGenerator());
 
 
+            // Можно использовать два варианта создания коннектора
+            // 1 вариант. Из файла настроек connection.xml. Чтобы создать файл настроек запустите пример
+            // SampleRealTimeEmulation из поставочного комплекта s# и создайте соединение для коннектора
+            // Quik. Обратите внимание, что нужно добавлять только MarketDataAdapter, т.к. в нашем случае  
+            // используется специальный эммуляционный TransactionAdapter, который создает сам RealTimeEmulationTrader.
+            // 2 вариант. Самостоятельно создаем адаптер
+            // В этом примере показаны два варианта.
+
             if (File.Exists(_settingsFile))
             {
+                // Создаем адаптер из файла настроек
                 realAdapter.Load(new XmlSerializer<SettingsStorage>().Deserialize(_settingsFile));
                 realAdapter.InnerAdapters.ForEach(a => a.RemoveTransactionalSupport());
             }
             else
             {
-
+                // Создаем адаптер "вручную
                 realAdapter.AssociatedBoardCode = "ALL";
                 realAdapter.LogLevel = LogLevels.Inherit;
 
@@ -76,6 +88,7 @@
                 });
             }
 
+            // Добавляем адаптер к коннектору
             _connector = new RealTimeEmulationTrader<IMessageAdapter>(realAdapter);
             _connector.EmulationAdapter.Emulator.Settings.TimeZone = TimeHelper.Est;
             _connector.EmulationAdapter.Emulator.Settings.ConvertTime = true;
@@ -113,7 +126,6 @@
                         _portfolio = portfolio;
 
                 });
-
 
             };
 
@@ -196,7 +208,6 @@
                 orders.ForEach(o => Debug.WriteLine(string.Format("NewOrders. {0}", o)));
             };
 
-
             _connector.OrdersChanged += orders =>
             {
                 orders.ForEach(o =>
@@ -207,12 +218,12 @@
 
             _connector.OrdersRegisterFailed += fails =>
             {
-                //fails.ForEach(f => Debug.WriteLine(string.Format("OrdersRegisterFailed. {0}", f.ToMessage())));
+                fails.ForEach(f => Debug.WriteLine(string.Format("OrdersRegisterFailed. {0}", f.Error.Message)));
             };
 
             _connector.OrdersCancelFailed += fails =>
             {
-                //fails.ForEach(f => Debug.WriteLine(string.Format("OrdersCancelFailed. {0}", f.ToMessage())));
+                fails.ForEach(f => Debug.WriteLine(string.Format("OrdersCancelFailed. {0}", f.Error.Message)));
             };
 
             _connector.NewMyTrades += trades =>
@@ -225,24 +236,6 @@
             _handler.WaitOne();
 
             Console.WriteLine("Инструмент и портфель получены");
-
-            //if (_security.BestAsk != null)
-            //{
-            //    var price = _security.BestAsk.Price + (10 * _security.PriceStep);
-
-            //    var order = new Order()
-            //    {
-            //        Security = _security,
-            //        Portfolio = _portfolio,
-            //        Price = price.Value,
-            //        Type = OrderTypes.Limit,
-            //        Direction = Sides.Buy,
-            //        Volume = 1
-            //    };
-
-            //    _connector.RegisterOrder(order);
-            //}
-
 
 
             var order = new Order()
@@ -296,59 +289,4 @@
 
     }
 }
-
-
-
-//<key>SupportedMessages</key>
-//    <value>
-//      <Type type = "string" > System.String[], mscorlib</Type>
-//      <Value type = "System.String[], mscorlib" >
-//        < String > MarketData </ String >
-//        < String > SecurityLookup </ String >
-//        < String > ChangePassword </ String >
-//        < String > -1 </ String >
-//      </ Value >
-//    </ value >
-
-
-
-
-//private void InitConnector()
-//{
-//    _connector?.Dispose();
-
-//    try
-//    {
-//        if (File.Exists(_settingsFile))
-//            _realAdapter.Load(new XmlSerializer<SettingsStorage>().Deserialize(_settingsFile));
-
-//        _realAdapter.InnerAdapters.ForEach(a => a.RemoveTransactionalSupport());
-//    }
-//    catch
-//    {
-//    }
-
-//    _connector = new RealTimeEmulationTrader<IMessageAdapter>(_realAdapter);
-//    _logManager.Sources.Add(_connector);
-
-//    _connector.EmulationAdapter.Emulator.Settings.TimeZone = TimeHelper.Est;
-//    _connector.EmulationAdapter.Emulator.Settings.ConvertTime = true;
-
-
-//protected override void OnClosing(CancelEventArgs e)
-//{
-//    if (_connector != null)
-//        _connector.Dispose();
-
-//    base.OnClosing(e);
-//}
-
-//private void SettingsClick(object sender, RoutedEventArgs e)
-//{
-//    if (_realAdapter.Configure(this))
-//        new XmlSerializer<SettingsStorage>().Serialize(_realAdapter.Save(), _settingsFile);
-
-//    InitConnector();
-//}
-
 

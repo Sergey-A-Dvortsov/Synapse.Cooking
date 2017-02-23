@@ -1,15 +1,18 @@
-﻿using MoreLinq;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
+﻿//Copyright © Сергей Дворцов, 2017,  Все права защищены
 
 namespace MoexIndex
 {
+
+    using MoreLinq;
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Linq;
+    using System.Net;
+    using System.Text;
+    using System.Threading.Tasks;
+    using System.Xml.Linq;
+
     class Program
     {
         private static string MICEXINDEXCF = "http://moex.com/iss/statistics/engines/stock/markets/index/analytics/MICEXINDEXCF.xml?iss.meta=on&iss.dp=comma&iss.df=%25Y-%25m-%25d&iss.tf=%25H%3A%25M%3A%25S&iss.dtf=%25Y.%25m.%25d%20%25H%3A%25M%3A%25S&iss.json=extended&callback=JSON_CALLBACK&limit=100&date=";

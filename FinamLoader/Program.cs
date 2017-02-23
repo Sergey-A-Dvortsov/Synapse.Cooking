@@ -1,16 +1,15 @@
-﻿namespace FinamLoader
+﻿//Copyright © Сергей Дворцов, 2017,  Все права защищены
+
+namespace FinamLoader
 {
 
     using StockSharp.Algo;
-    using StockSharp.Algo.Candles.Compression;
     using StockSharp.Algo.History.Russian.Finam;
     using StockSharp.Algo.Storages;
     using StockSharp.BusinessEntities;
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
 
     class Program
     {

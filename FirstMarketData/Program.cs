@@ -1,4 +1,6 @@
-﻿namespace Synapse.Cooking.FirstMarketData
+﻿//Copyright © Сергей Дворцов, 2016,  Все права защищены
+
+namespace Synapse.Cooking.FirstMarketData
 {
     using System;
     using System.Linq;
