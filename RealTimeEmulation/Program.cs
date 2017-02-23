@@ -2,7 +2,7 @@
 
 // Пример использования коннектора RealTimeEmulationTrader
 // Данный тип коннектора позволяет работь с реальными рыночными данными
-// и эммулировать транзакции, т.е. заявки реально не выставляются в торговую систему
+// и эмулировать транзакции, т.е. заявки реально не выставляются в торговую систему
 
 namespace Synapse.Cooking.RealTimeEmulation
 {
@@ -52,7 +52,7 @@ namespace Synapse.Cooking.RealTimeEmulation
             // 1 вариант. Из файла настроек connection.xml. Чтобы создать файл настроек запустите пример
             // SampleRealTimeEmulation из поставочного комплекта s# и создайте соединение для коннектора
             // Quik. Обратите внимание, что нужно добавлять только MarketDataAdapter, т.к. в нашем случае  
-            // используется специальный эммуляционный TransactionAdapter, который создает сам RealTimeEmulationTrader.
+            // используется специальный эмуляционный TransactionAdapter, который создает сам RealTimeEmulationTrader.
             // 2 вариант. Самостоятельно создаем адаптер
             // В этом примере показаны два варианта.
 
@@ -143,22 +143,9 @@ namespace Synapse.Cooking.RealTimeEmulation
                 });
             };
 
-            _connector.SecuritiesChanged += securities =>
+            _connector.ValuesChanged += (security, values, stime, ltime) =>
             {
-                securities.ForEach(s =>
-                {
-                    if (s == _security)
-                    {
-                        if (_security.BestAsk != null)
-                        {
-                            if (_portfolio != null && _security != null && !isHandlerSet)
-                            {
-                                isHandlerSet = true;
-                                _handler.Set();
-                            }
-                        }
-                    }
-                });
+                //TODO
             };
 
             _connector.PortfoliosChanged += portfolios =>
