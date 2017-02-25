@@ -59,6 +59,15 @@ namespace OpenInterestLoader
 
     }
 
+    public class InterestInfoComparer : Comparer<InterestInfo>
+    {
+        public override int Compare(InterestInfo x, InterestInfo y)
+        {
+            return string.Compare(x.Code, y.Code);
+        }
+    }
+
+
     public class Settings
     {
         public Settings()
@@ -67,9 +76,12 @@ namespace OpenInterestLoader
             Holidays = new List<DateTime>();
             Includes = new List<string>();
             Excludes = new List<string>();
+            Fields = new Dictionary<string, string>();
+            Sufixes = new Dictionary<string, string>();
+            Prefixes = new Dictionary<string, string>();
         }
 
-        public DateTime From { set; get; }
+    public DateTime From { set; get; }
         public DateTime To { set; get; }
         public DateTime Last { set; get; }
         public string FolderPath { set; get; }
@@ -78,6 +90,9 @@ namespace OpenInterestLoader
         public eContractType ContractTypes { set; get; }
         public List<string> Includes { set; get; }
         public List<string> Excludes { set; get; }
+        public Dictionary<string, string> Fields { set; get; }
+        public Dictionary<string, string> Sufixes { set; get; }
+        public Dictionary<string, string> Prefixes { set; get; }
 
     }
 
@@ -131,7 +146,9 @@ namespace OpenInterestLoader
 
                     if (response.StatusCode == HttpStatusCode.OK)
                     {
-                        var list = GetInterestInfos(response);
+                        List<InterestInfo> list = GetInterestInfos(response);
+                        list.Sort(new InterestInfoComparer());
+                        SaveToFiles(list);
                     }
                     else
                     {
@@ -286,6 +303,13 @@ namespace OpenInterestLoader
             return null;
 
         }
+
+        private static void SaveToFiles(List<InterestInfo> list)
+        {
+
+
+        }
+
 
     }
 

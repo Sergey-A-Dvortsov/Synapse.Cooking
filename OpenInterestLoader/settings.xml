@@ -44,5 +44,23 @@
   <exclude-codes>
     <exclude-code Type="String" MaxLenth="2"></exclude-code>
   </exclude-codes>
+  
+   <!--Последовательность полей и заголовки выходных файлов. Для идентификации юридического
+  или физического лица добавляются префиксы, для идентификации типа инструмента - суффиксы.
+  Атрибут Files определяет в одном или разных файлах будут сохраняться данные по фьючерсам
+  и опционам. Последовательность групп задана жестко.. Если выбран один файл, то сначала
+  идет группа данных физических лиц, в затем юридических. Внутри каждой из этих групп
+  сначала идет группа данных для фьючерсов, потом для call- и затем put-опционов.
+  Если используется два файла, последовательность групп аналогична, только фьючерсы и опционы записываются в разные файлы. 
+  В этом случае к имени файла (имя - код инструмента) добавляется суффикс '_fut' или '_opt' -->
+ <fields Files="2" PrivatePrefix="prv_" FirmPrefix="firm_" FutureSufix="_f" CallSufix="_c" PutSufix="_p">
+    <field Name="moment">date</field>>
+    <field Name="isin">code</field>>
+    <field Name="clients_in_long">long_acc</field>>
+    <field Name="clients_in_lshort">short_acc</field>>
+    <field Name="long_position">long_pos</field>>
+    <field Name="short_position">short_pos</field>>
+</fields>
+ 
+</settings>
 
-</settings> 

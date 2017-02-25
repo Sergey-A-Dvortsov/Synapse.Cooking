@@ -4,9 +4,10 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:sx="http://schemas.stocksharp.com/xaml"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:local="clr-namespace:FirstChart"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525" >
+        Title="MainWindow" Height="350" Width="625" >
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -14,11 +15,21 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <ToolBar>
-            <Button x:Name="ConnectButtom" Content="Соединить" Margin="5,2" Click="ConnectButtom_Click" />
+            <Button x:Name="ConnectButtom" 
+                    Content="Соединить" Margin="5,2" 
+                    Click="ConnectButtom_Click" 
+                    ToolTip="Установить соединение" />
             <TextBlock Text="Инструмент" Margin="5,5, 5, 0"/>
-            <sx:SecurityEditor x:Name="SecurityEditor" Width="150" SecuritySelected="SecurityEditor_SecuritySelected" />
-            <sx:TimeSpanEditor x:Name="TimeSpanEditor" />
-            <Button x:Name="DrawButtom" Content="Построить" Margin="5,2" IsEnabled="False" Click="DrawButtom_Click" />
+            <sx:SecurityEditor x:Name="SecurityEditor" Width="150" 
+                               SecuritySelected="SecurityEditor_SecuritySelected" 
+                               ToolTip="Выбрать инструмент" />
+            <sx:TimeSpanEditor x:Name="TimeSpanEditor" Margin="5,0" ToolTip="Тайм-фрйем свечи" />
+            <xctk:IntegerUpDown x:Name="IntegerUpDown" Margin="5,0" Width="70" ToolTip="Период индикатора" />
+            <Button x:Name="DrawButtom" 
+                    Content="Построить" Margin="5,2" 
+                    IsEnabled="False" 
+                    Click="DrawButtom_Click" 
+                    ToolTip="Построить график" />
         </ToolBar>
         <sx:ChartPanel x:Name="Chart" Grid.Row="1" />
         <StatusBar Grid.Row="2">
