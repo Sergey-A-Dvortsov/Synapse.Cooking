@@ -15,6 +15,7 @@ namespace Synapse.Cooking.FirstPosition
     using StockSharp.BusinessEntities;
     using StockSharp.Messages;
     using System.Text;
+    using StockSharp.Algo.PnL;
 
     class Program
     {
@@ -54,8 +55,6 @@ namespace Synapse.Cooking.FirstPosition
                         _portfolio = portfolio;
 
                     _connector.RegisterPortfolio(portfolio);
-
-                    
 
                 });
 

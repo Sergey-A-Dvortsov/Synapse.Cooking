@@ -43,6 +43,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenInterestLoader", "OpenI
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoexLoader", "MoexLoader\MoexLoader.csproj", "{E8DC499D-312B-4BA2-B040-9DD9A9921932}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FirstStrategy", "FirstStrategy\FirstStrategy.csproj", "{756423A2-49F1-47E4-8D8B-2949B31573C4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "General", "General\General.csproj", "{4211C81B-B79C-4988-A11E-26CFBC6726DA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -129,6 +133,14 @@ Global
 		{E8DC499D-312B-4BA2-B040-9DD9A9921932}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E8DC499D-312B-4BA2-B040-9DD9A9921932}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E8DC499D-312B-4BA2-B040-9DD9A9921932}.Release|Any CPU.Build.0 = Release|Any CPU
+		{756423A2-49F1-47E4-8D8B-2949B31573C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{756423A2-49F1-47E4-8D8B-2949B31573C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{756423A2-49F1-47E4-8D8B-2949B31573C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{756423A2-49F1-47E4-8D8B-2949B31573C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4211C81B-B79C-4988-A11E-26CFBC6726DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4211C81B-B79C-4988-A11E-26CFBC6726DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4211C81B-B79C-4988-A11E-26CFBC6726DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4211C81B-B79C-4988-A11E-26CFBC6726DA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

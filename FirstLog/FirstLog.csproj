@@ -7,7 +7,7 @@
     <ProjectGuid>{4B00FD09-EC22-4EC5-9E6D-DAFCD0CC436A}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>FirstLog</RootNamespace>
+    <RootNamespace>Synapse.Cooking.FirstLog</RootNamespace>
     <AssemblyName>FirstLog</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

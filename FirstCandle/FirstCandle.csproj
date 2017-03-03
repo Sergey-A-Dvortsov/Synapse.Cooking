@@ -7,7 +7,7 @@
     <ProjectGuid>{8E6912CB-5F4C-4425-A51B-9A693186DC39}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>FirstCandle</RootNamespace>
+    <RootNamespace>Synapse.Cooking.FirstCandle</RootNamespace>
     <AssemblyName>FirstCandle</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
