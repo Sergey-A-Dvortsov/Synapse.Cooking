@@ -119,14 +119,9 @@ namespace Synapse.Cooking.RealTimeEmulation
                 portfolios.ForEach(portfolio =>
                 {
                     Console.WriteLine("Получен портфель: {0}", portfolio.Name);
-
                     _connector.RegisterPortfolio(portfolio);
-
-                    if (portfolio.Name == _portfolioName)
-                        _portfolio = portfolio;
-
+                     _portfolio = portfolio;
                 });
-
             };
 
             _connector.NewSecurities += securities =>

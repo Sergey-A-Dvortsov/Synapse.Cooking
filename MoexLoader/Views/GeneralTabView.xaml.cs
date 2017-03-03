@@ -16,14 +16,13 @@ using System.Windows.Shapes;
 namespace Synapse.MoexLoader
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для GeneralTabView.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class GeneralTabView : UserControl
     {
-        public MainWindow()
+        public GeneralTabView()
         {
             InitializeComponent();
-            DataContext = new MainViewModel();
         }
     }
 }

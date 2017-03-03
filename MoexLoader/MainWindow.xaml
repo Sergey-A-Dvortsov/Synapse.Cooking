@@ -1,17 +1,14 @@
-﻿<Window x:Class="MoexLoader.MainWindow"
+﻿<Window x:Class="Synapse.MoexLoader.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
-        xmlns:local="clr-namespace:MoexLoader"
+        xmlns:local="clr-namespace:Synapse.MoexLoader"
         mc:Ignorable="d"
         Title="MainWindow" Height="300" Width="500">
     <Window.Resources>
-        <Style x:Key="NameTextBlockStyle" TargetType="TextBlock">
-            <Setter Property="HorizontalAlignment" Value="Right"/>
-            <Setter Property="Margin" Value="20,1"/>
-        </Style>
+       
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -20,7 +17,20 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal">
-            <Button Content="Start" Padding="5,1" Margin="5" />
+            <Button Command="{Binding StartCommand}" Padding="5,1" Margin="5">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Content" Value="Start" />
+                        <Setter Property="Foreground" Value="Green" />
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding State}" Value="Started" >
+                                <Setter Property="Content" Value="Stop" />
+                                <Setter Property="Foreground" Value="Red" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
             <ProgressBar Width="350" Margin="10,5"/>
             <TextBlock Margin="5">
                     <Hyperlink NavigateUri="http://synapseslot.ru/">Synapse</Hyperlink>
@@ -28,54 +38,15 @@
         </StackPanel>
         <Border Grid.Row="1" BorderThickness="2" BorderBrush="Gray" CornerRadius="2" Margin="1"  >
         <TabControl >
-                <TabItem Header="Общие">
-                    <Grid ShowGridLines="True">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="20"/>
-                            <RowDefinition Height="25"/>
-                            <RowDefinition Height="20"/>
-                            <RowDefinition Height="*"/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" Grid.Row="1" Text="Путь к корневой папке" Style="{StaticResource NameTextBlockStyle}" />
-                        <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal">
-                            <TextBox Width="250" Margin="5,1" />
-                            <Button Content=". . ." Padding="7,5" Margin="5,1"/>
-                        </StackPanel>
-                    </Grid>
+            <TabItem Header="Общие">
+                    <local:GeneralTabView DataContext="{Binding GeneralViewModel }" />
+            </TabItem>
+                <TabItem Header="Открые позиции">
+                    <local:InterestTabView DataContext="{Binding InterestViewModel}" />
                 </TabItem>
-                <TabItem Header="Индексы">
-                    <Grid ShowGridLines="True">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="20"/>
-                            <RowDefinition Height="25"/>
-                            <RowDefinition Height="25"/>
-                            <RowDefinition Height="25"/>
-                            <RowDefinition Height="25"/>
-                            <RowDefinition Height="*"/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Row="1" Text="Путь к папке" Style="{StaticResource NameTextBlockStyle}" />
-                        <Grid Grid.Column="1" Grid.Row="1">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="Auto" />
-                            </Grid.ColumnDefinitions>
-                            <TextBox Margin="5,1" />
-                            <Button Content="..." Padding="7,5" Width="30" Grid.Column="1" Margin="1,1"/>
-                        </Grid>
-                        <TextBlock Grid.Row="2" Text="Начальная дата" Style="{StaticResource NameTextBlockStyle}" />
-                        <TextBlock Grid.Row="3" Text="Конечная дата" Style="{StaticResource NameTextBlockStyle}" />
-                        <TextBlock Grid.Row="4" Text="Загружено до" Style="{StaticResource NameTextBlockStyle}" />
-                    </Grid>
-                </TabItem>
-            <TabItem Header="Открые позиции"/>
+            <TabItem Header="Индексы">
+                    <local:IndexesTabView DataContext="{Binding IndexesViewModel}" />
+            </TabItem>
         </TabControl>
         </Border>
         <StatusBar Grid.Row="3" Height="28" />

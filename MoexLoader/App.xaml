@@ -4,6 +4,9 @@
              xmlns:local="clr-namespace:MoexLoader"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <Style x:Key="NameTextBlockStyle" TargetType="TextBlock">
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="Margin" Value="20,1"/>
+        </Style>
     </Application.Resources>
 </Application>

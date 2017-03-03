@@ -14,16 +14,15 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Synapse.MoexLoader
-{
+{ 
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для InterestTabView.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class InterestTabView : UserControl
     {
-        public MainWindow()
+        public InterestTabView()
         {
             InitializeComponent();
-            DataContext = new MainViewModel();
         }
     }
 }
