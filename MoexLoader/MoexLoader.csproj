@@ -58,9 +58,13 @@
     <Reference Include="Ecng.Serialization">
       <HintPath>..\References\Ecng.Serialization.dll</HintPath>
     </Reference>
+    <Reference Include="Ecng.Serialization.FieldFactories">
+      <HintPath>..\References\Ecng.Serialization.FieldFactories.dll</HintPath>
+    </Reference>
     <Reference Include="Ecng.Xaml">
       <HintPath>..\References\Ecng.Xaml.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Expression.Interactions, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="MoreLinq">
       <HintPath>..\References\MoreLinq.dll</HintPath>
     </Reference>
@@ -70,6 +74,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -166,7 +171,9 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="interest_settings.xml" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

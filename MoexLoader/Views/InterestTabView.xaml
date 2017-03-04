@@ -13,6 +13,8 @@
             <RowDefinition Height="25"/>
             <RowDefinition Height="25"/>
             <RowDefinition Height="25"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="25"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -27,5 +29,14 @@
         <DatePicker Grid.Row="3" Grid.Column="1" SelectedDate="{Binding EndDate}" Margin="1" />
         <TextBlock Grid.Row="4" Text="Загружено до" Style="{StaticResource NameTextBlockStyle}" />
         <DatePicker Grid.Row="4" Grid.Column="1" Margin="1" SelectedDate="{Binding LoadTo}" IsEnabled="False" />
+        <TextBlock Grid.Row="5" Text="Инструменты" Style="{StaticResource NameTextBlockStyle}" />
+        <StackPanel Grid.Row="5" Grid.Column="1">
+            <RadioButton Content="фьючерсы"/>
+            <RadioButton Content="опционы"/>
+            <RadioButton Content="фьючерсы и опционы"/>
+        </StackPanel>
+        <TextBlock Grid.Row="6" Text="Инструменты" Style="{StaticResource NameTextBlockStyle}" />
+        <CheckBox Grid.Row="6" Grid.Column="1" IsChecked="{Binding OnOff}" Margin="5" />
+
     </Grid>
 </UserControl>

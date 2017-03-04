@@ -1,12 +1,15 @@
-﻿using Ecng.Xaml;
+﻿using Ecng.Serialization;
+using Ecng.Xaml;
 using StockSharp.Logging;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Forms;
 
 namespace Synapse.MoexLoader
@@ -33,9 +36,22 @@ namespace Synapse.MoexLoader
         public MainViewModel()
         {
             _loader = Loader.GetInstance();
-            StartCommand = new DelegateCommand(OnStart, CanStart); 
+            StartCommand = new DelegateCommand(OnStart, CanStart);
         }
 
+        #region properties
+
+        private double _progressValue;
+        public double ProgressValue
+        {
+            get { return _progressValue; }
+
+            set
+            {
+                _progressValue = value;
+                NotifyPropertyChanged();
+            }
+        }
         public eProcessState State
         {
             get { return _loader.State; }
@@ -79,7 +95,6 @@ namespace Synapse.MoexLoader
             }
         }
 
-
         private IndexesViewModel _indexesViewModel;
         public IndexesViewModel IndexesViewModel
         {
@@ -98,6 +113,8 @@ namespace Synapse.MoexLoader
             }
         }
 
+        #endregion
+
         public DelegateCommand StartCommand { private set; get; }
 
         private void OnStart(object obj)
@@ -109,13 +126,26 @@ namespace Synapse.MoexLoader
 
             NotifyPropertyChanged("State");
         }
-
         private bool CanStart(object obj)
         {
             return !string.IsNullOrWhiteSpace(_loader.DataPath) && 
                 (_loader.Sources["Interest"].OnOff || _loader.Sources["Indexes"].OnOff);
         }
 
+        public void OnLoaded(object sender, RoutedEventArgs e)
+        {
+            if (File.Exists("settings.xml"))
+            {
+                var storage = new XmlSerializer<SettingsStorage>().Deserialize("settings.xml");
+                _loader.Load(storage);
+            }
+        }
+
+        public void OnClosing(object sender, CancelEventArgs e)
+        {
+            var storage = _loader.Save();
+            new XmlSerializer<SettingsStorage>().Serialize(storage, "settings.xml");
+        }
 
     }
 
@@ -125,7 +155,8 @@ namespace Synapse.MoexLoader
         public GeneralViewModel()
         {
             _loader = Loader.GetInstance();
-            DataPathCommand = new DelegateCommand(SetDataPath, CanSetDataPath); 
+            DataPathCommand = new DelegateCommand(SetDataPath, CanSetDataPath);
+            _loader.SettingsLoaded += () => NotifyPropertyChanged("DataPath");
         }
         public string DataPath
         {
@@ -216,6 +247,20 @@ namespace Synapse.MoexLoader
         {
             _settings = _loader.Sources["Interest"];
         }
+
+        public eContractType ContractTypes
+        {
+            get { return _settings.ContractTypes; }
+            set { _settings.ContractTypes = value; }
+        }
+
+        public bool SeparateOptionsFile
+        {
+            get { return _settings.SeparateOptionsFile; }
+            set { _settings.SeparateOptionsFile = value; }
+        }
+
+
     }
 
     public class IndexesViewModel : SourceViewModel

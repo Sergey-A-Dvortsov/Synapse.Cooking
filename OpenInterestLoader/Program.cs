@@ -291,7 +291,6 @@ namespace OpenInterestLoader
                     }
                 }
 
-
                 return settings;
 
             }

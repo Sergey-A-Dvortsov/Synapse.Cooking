@@ -20,12 +20,12 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <TextBlock Grid.Row="1" Text="Включить" Style="{StaticResource NameTextBlockStyle}" />
-        <CheckBox Grid.Row="1" Grid.Column="1" Margin="5" />
+        <CheckBox Grid.Row="1" Grid.Column="1" IsChecked="{Binding OnOff}" Margin="5" />
         <TextBlock Grid.Row="2" Text="Начальная дата" Style="{StaticResource NameTextBlockStyle}" />
-        <DatePicker Grid.Row="2" Grid.Column="1" Margin="1" />
+        <DatePicker Grid.Row="2" Grid.Column="1" SelectedDate="{Binding StartDate}" Margin="1" />
         <TextBlock Grid.Row="3" Text="Конечная дата" Style="{StaticResource NameTextBlockStyle}" />
-        <DatePicker Grid.Row="3" Grid.Column="1" Margin="1" />
+        <DatePicker Grid.Row="3" Grid.Column="1" SelectedDate="{Binding EndDate}" Margin="1" />
         <TextBlock Grid.Row="4" Text="Загружено до" Style="{StaticResource NameTextBlockStyle}" />
-        <DatePicker Grid.Row="4" Grid.Column="1" Margin="1" IsEnabled="False" />
+        <DatePicker Grid.Row="4" Grid.Column="1" Margin="1" SelectedDate="{Binding LoadTo}" IsEnabled="False" />
     </Grid>
 </UserControl>

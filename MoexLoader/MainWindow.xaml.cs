@@ -25,5 +25,7 @@ namespace Synapse.MoexLoader
             InitializeComponent();
             DataContext = new MainViewModel();
         }
+
+    
     }
 }

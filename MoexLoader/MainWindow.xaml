@@ -3,13 +3,20 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+        xmlns:ei="clr-namespace:Microsoft.Expression.Interactivity.Core;assembly=Microsoft.Expression.Interactions"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:local="clr-namespace:Synapse.MoexLoader"
         mc:Ignorable="d"
         Title="MainWindow" Height="300" Width="500">
-    <Window.Resources>
-       
-    </Window.Resources>
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <ei:CallMethodAction MethodName="OnLoaded" TargetObject="{Binding}"/>
+        </i:EventTrigger>
+        <i:EventTrigger EventName="Closing">
+            <ei:CallMethodAction MethodName="OnClosing" TargetObject="{Binding}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -31,7 +38,7 @@
                     </Style>
                 </Button.Style>
             </Button>
-            <ProgressBar Width="350" Margin="10,5"/>
+            <ProgressBar Width="350" Margin="10,5" Value="{Binding ProgressValue}" />
             <TextBlock Margin="5">
                     <Hyperlink NavigateUri="http://synapseslot.ru/">Synapse</Hyperlink>
             </TextBlock>
