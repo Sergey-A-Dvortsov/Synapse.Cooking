@@ -8,7 +8,8 @@
 
   <!--Праздничные дни, если они не приходятся на субботу/воскресенье.-->
   <holidays>
-    <day Type="DateTime" Format="yyyy-mm-dd"></day>
+    <day Type="DateTime" Format="yyyy-mm-dd">2015-01-01</day>
+    <day Type="DateTime" Format="yyyy-mm-dd">2015-01-02</day>
   </holidays>
 
   <!--Коды инструментов, данные, которых будут сохраняться на диске. 

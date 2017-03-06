@@ -1,12 +1,14 @@
-﻿using Ecng.Serialization;
-using MoreLinq;
-using StockSharp.Logging;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using System.Globalization;
+
+using Ecng.Serialization;
+using MoreLinq;
+using StockSharp.Logging;
 
 namespace Synapse.MoexLoader
 {
@@ -44,106 +46,9 @@ namespace Synapse.MoexLoader
     [Flags]
     public enum eContractType
     {
-        Future = 0,
-        Call = 1,
-        Put = 2
-    }
-
-
-    /// <summary>
-    /// Параметры загрузки
-    /// </summary>
-    public class SourceSettings : IPersistable
-    {
-        /// <summary>
-        /// Папка, где хранятся загруженные данные
-        /// </summary>
-        public string Folder { set; get; }
-        /// <summary>
-        /// Источник загрузки включен/выключен
-        /// </summary>
-        public bool OnOff { set; get; }
-
-        private DateTime _startDate = new DateTime(2015, 1, 1);
-        /// <summary>
-        /// Начальная дата
-        /// </summary>
-        public DateTime StartDate
-        {
-            get { return _startDate; }
-            set { _startDate = value; }
-        }
-
-        private DateTime _endDate = DateTime.Now;
-
-        /// <summary>
-        /// Конечная дата
-        /// </summary>
-        public DateTime EndDate
-        {
-            get { return _endDate; }
-            set { _endDate = value; }
-        }
-
-        /// <summary>
-        /// Дата, до которой данные уже загружены
-        /// </summary>
-        public DateTime LoadTo { set; get; }
-
-        private eContractType _contractTypes = eContractType.Future | eContractType.Call | eContractType.Put;
-        public eContractType ContractTypes
-        {
-            get { return _contractTypes; }
-            set { _contractTypes = value; }
-        }
-
-        public bool SeparateOptionsFile { set; get; }
-
-        public void Load(SettingsStorage storage)
-        {
-            Folder = storage.GetValue<string>("Folder");
-            OnOff = storage.GetValue<bool>("OnOff");
-            StartDate = storage.GetValue<DateTime>("StartDate");
-            EndDate = storage.GetValue<DateTime>("EndDate");
-            LoadTo = storage.GetValue<DateTime>("LoadTo");
-        }
-
-        public void Save(SettingsStorage storage)
-        {
-            storage.SetValue("Folder", Folder);
-            storage.SetValue("OnOff", OnOff);
-            storage.SetValue("StartDate", StartDate);
-            storage.SetValue("EndDate", EndDate);
-            storage.SetValue("LoadTo", LoadTo);
-        }
-    }
-
-    public struct InterestInfo
-    {
-        //  0. moment - дата
-        public DateTime Date;
-
-        //  1. isin - код
-        public string Code;
-
-        //  3. contract_type - тип инструмента: F-фьючерс, C-call, P-put
-        public eContractType ContractType;
-
-        //  4. iz_fiz - если физик, то 1, если юрик, то пусто
-        public eClientType ClientType;
-
-        //  5. clients_in_long - количество клиентов в лонге 
-        public int ClientsInLong;
-
-        //  6. clients_in_lshort - количество клиентов в шорте 
-        public int ClientsInShort;
-
-        //  7. short_position - число коротких позиций
-        public int ShortPosition;
-
-        //  8. long_position - число длинных позиций
-        public int LongPosition;
-
+        Future = 1,
+        Call = 2,
+        Put = 4
     }
 
     public class InterestSettings
@@ -161,12 +66,8 @@ namespace Synapse.MoexLoader
         public List<string> Excludes { set; get; }
     }
 
-
-
-
     public class Loader : BaseLogReceiver, IPersistable 
     {
-        private static string OPEN_POSITIONS_URI = "http://moex.com/ru/derivatives/open-positions-csv.aspx";
 
         private static Loader _loader;
 
@@ -178,10 +79,10 @@ namespace Synapse.MoexLoader
 
         private Loader()
         {
-            Sources = new Dictionary<string, SourceSettings>
+            Sources = new List<BaseSourceLoader>
             {
-                {"Interest", new SourceSettings() { Folder = "Interest" } },
-                {"Indexes", new SourceSettings() { Folder = "Indexes" } }
+                {new InterestSourceLoader() { Folder = "Interest" } },
+                {new IndexesSourceLoader() { Folder = "Indexes" } }
             }; 
         }
 
@@ -209,10 +110,8 @@ namespace Synapse.MoexLoader
             set { _state = value; }
         }
         public string DataPath { set; get; }
-
-        public IDictionary<string, SourceSettings> Sources { private set; get; }
-
-        public InterestSettings InterestSettings { private set; get; }
+        public IList<BaseSourceLoader> Sources { private set; get; }
+      
 
         #endregion
 
@@ -239,18 +138,23 @@ namespace Synapse.MoexLoader
         public override void Save(SettingsStorage storage)
         {
             storage.SetValue("DataPath", DataPath);
+            storage.SetValue("Sources", Sources.Select(s => s.Save()).ToArray());
             base.Save(storage);
-            storage.SetValue("Sources", Sources.Values.Select(s => s.Save()).ToArray());
         }
 
         public override void Load(SettingsStorage storage)
         {
-            base.Load(storage);
-            DataPath = storage.GetValue<string>("DataPath");
-            var sourcesStorage = storage.GetValue<SettingsStorage[]>("Sources");
-            Sources["Interest"].Load(sourcesStorage[0]);
-            Sources["Indexes"].Load(sourcesStorage[0]);
-            InterestSettings = LoadSettings();
+            if (storage != null)
+            {
+                base.Load(storage);
+                DataPath = storage.GetValue<string>("DataPath");
+                var sourcesStorage = storage.GetValue<SettingsStorage[]>("Sources");
+                for (var i = 0; i < sourcesStorage.Count(); i++)
+                {
+                    Sources[i].Load(sourcesStorage[i]);
+                }
+            }
+            ((InterestSourceLoader)Sources[0]).Settings = LoadSettings();
             OnSettingsLoaded();
         }
 
@@ -259,23 +163,12 @@ namespace Synapse.MoexLoader
 
         private void OnStart()
         {
-            if (Sources["Interest"].OnOff)
-                 Task.Factory.StartNew(InterestLoad, TaskCreationOptions.LongRunning);
-
-            if (Sources["Indexes"].OnOff)
-                Task.Factory.StartNew(IndexesLoad, TaskCreationOptions.LongRunning);
+            Sources.ForEach(s => 
+            {
+                if (s.OnOff)
+                    Task.Factory.StartNew(s.LoadingProcess, TaskCreationOptions.LongRunning);
+            });
         }
-
-        private void InterestLoad()
-        {
-            //TODO
-        }
-
-        private void IndexesLoad()
-        {
-            //TODO
-        }
-
 
         private void OnStop()
         {
@@ -302,7 +195,7 @@ namespace Synapse.MoexLoader
                     {
                         if (string.IsNullOrWhiteSpace(element.Value))
                             continue;
-                        settings.Workdays.Add(DateTime.ParseExact(element.Value, element.Attribute("Format").Value, null));
+                        settings.Workdays.Add(DateTime.ParseExact(element.Value, element.Attribute("Format").Value, CultureInfo.InvariantCulture).Date);
                     }
                 }
 
@@ -314,7 +207,7 @@ namespace Synapse.MoexLoader
                     {
                         if (string.IsNullOrWhiteSpace(element.Value))
                             continue;
-                        settings.Holidays.Add(DateTime.ParseExact(element.Value, element.Attribute("Format").Value, null));
+                        settings.Holidays.Add(DateTime.ParseExact(element.Value, element.Attribute("Format").Value, CultureInfo.InvariantCulture).Date);
 
                     }
                 }

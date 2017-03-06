@@ -96,7 +96,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Loader.cs" />
+    <Compile Include="Converters\Converters.cs" />
+    <Compile Include="Models\Helpers.cs" />
+    <Compile Include="Models\Loader.cs" />
+    <Compile Include="Models\SourceLoader.cs" />
     <Compile Include="ViewModels\ViewModels.cs" />
     <Compile Include="Views\IndexesTabView.xaml.cs">
       <DependentUpon>IndexesTabView.xaml</DependentUpon>
@@ -172,7 +175,9 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="interest_settings.xml" />
+    <Resource Include="interest_settings.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

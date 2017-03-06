@@ -8,7 +8,7 @@
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:local="clr-namespace:Synapse.MoexLoader"
         mc:Ignorable="d"
-        Title="MainWindow" Height="300" Width="500">
+        Title="MainWindow" Height="350" Width="500">
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
             <ei:CallMethodAction MethodName="OnLoaded" TargetObject="{Binding}"/>
@@ -38,7 +38,6 @@
                     </Style>
                 </Button.Style>
             </Button>
-            <ProgressBar Width="350" Margin="10,5" Value="{Binding ProgressValue}" />
             <TextBlock Margin="5">
                     <Hyperlink NavigateUri="http://synapseslot.ru/">Synapse</Hyperlink>
             </TextBlock>

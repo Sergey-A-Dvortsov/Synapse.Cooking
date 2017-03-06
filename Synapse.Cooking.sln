@@ -47,6 +47,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FirstStrategy", "FirstStrat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "General", "General\General.csproj", "{4211C81B-B79C-4988-A11E-26CFBC6726DA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuikMultiConnection", "QuikMultiConnection\QuikMultiConnection.csproj", "{02AA6CA7-C37B-4A7B-8E96-F7352E49006F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -141,6 +143,10 @@ Global
 		{4211C81B-B79C-4988-A11E-26CFBC6726DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4211C81B-B79C-4988-A11E-26CFBC6726DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4211C81B-B79C-4988-A11E-26CFBC6726DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02AA6CA7-C37B-4A7B-8E96-F7352E49006F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02AA6CA7-C37B-4A7B-8E96-F7352E49006F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02AA6CA7-C37B-4A7B-8E96-F7352E49006F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02AA6CA7-C37B-4A7B-8E96-F7352E49006F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -28,6 +28,10 @@ namespace Synapse.Cooking.FirstPosition
 
         static void Main(string[] args)
         {
+
+            if (!args.Any())
+                return;
+
             _connector = new QuikTrader();
 
             _handler = new AutoResetEvent(false);
@@ -140,12 +144,12 @@ namespace Synapse.Cooking.FirstPosition
 
             _connector.OrdersRegisterFailed += fails =>
             {
-                fails.ForEach(f => Debug.WriteLine(string.Format("OrdersRegisterFailed. {0}", f.ToMessage())));
+                fails.ForEach(f => Debug.WriteLine(string.Format("OrdersRegisterFailed. {0}", f.ToMessage(f.Order.TransactionId))));
             };
 
             _connector.OrdersCancelFailed += fails =>
             {
-                fails.ForEach(f => Debug.WriteLine(string.Format("OrdersCancelFailed. {0}", f.ToMessage())));
+                fails.ForEach(f => Debug.WriteLine(string.Format("OrdersCancelFailed. {0}", f.ToMessage(f.Order.TransactionId))));
             };
 
             _connector.NewMyTrades += trades =>

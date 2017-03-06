@@ -6,9 +6,12 @@
              xmlns:local="clr-namespace:Synapse.MoexLoader"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid ShowGridLines="True">
+    <UserControl.Resources>
+        <local:ContractTypeIsCheckedConverter x:Key="ContractTypeIsCheckedConv" />
+    </UserControl.Resources>
+    <Grid ShowGridLines="False">
         <Grid.RowDefinitions>
-            <RowDefinition Height="20"/>
+            <RowDefinition Height="25"/>
             <RowDefinition Height="25"/>
             <RowDefinition Height="25"/>
             <RowDefinition Height="25"/>
@@ -21,6 +24,7 @@
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
+        <ProgressBar Grid.Row="0" Grid.ColumnSpan="2" Margin="3" Value="{Binding ProgressBarValue}" />
         <TextBlock Grid.Row="1" Text="Включить" Style="{StaticResource NameTextBlockStyle}" />
         <CheckBox Grid.Row="1" Grid.Column="1" IsChecked="{Binding OnOff}" Margin="5" />
         <TextBlock Grid.Row="2" Text="Начальная дата" Style="{StaticResource NameTextBlockStyle}" />
@@ -31,12 +35,15 @@
         <DatePicker Grid.Row="4" Grid.Column="1" Margin="1" SelectedDate="{Binding LoadTo}" IsEnabled="False" />
         <TextBlock Grid.Row="5" Text="Инструменты" Style="{StaticResource NameTextBlockStyle}" />
         <StackPanel Grid.Row="5" Grid.Column="1">
-            <RadioButton Content="фьючерсы"/>
-            <RadioButton Content="опционы"/>
-            <RadioButton Content="фьючерсы и опционы"/>
+            <RadioButton Content="фьючерсы" Margin="5,1" 
+                         IsChecked="{Binding ContractTypes, Converter={StaticResource ContractTypeIsCheckedConv}, ConverterParameter=Futures}"/>
+            <RadioButton Content="опционы" Margin="5,1"
+                         IsChecked="{Binding ContractTypes, Converter={StaticResource ContractTypeIsCheckedConv}, ConverterParameter=Options}"/>
+            <RadioButton Content="фьючерсы и опционы" Margin="5,1"
+                         IsChecked="{Binding ContractTypes, Converter={StaticResource ContractTypeIsCheckedConv}, ConverterParameter=FuturesOptions}"/>
         </StackPanel>
-        <TextBlock Grid.Row="6" Text="Инструменты" Style="{StaticResource NameTextBlockStyle}" />
-        <CheckBox Grid.Row="6" Grid.Column="1" IsChecked="{Binding OnOff}" Margin="5" />
+        <TextBlock Grid.Row="6" Text="Разные файлы" Style="{StaticResource NameTextBlockStyle}" />
+        <CheckBox Grid.Row="6" Grid.Column="1" IsChecked="{Binding SeparateOptionsFile}" Margin="5" />
 
     </Grid>
 </UserControl>

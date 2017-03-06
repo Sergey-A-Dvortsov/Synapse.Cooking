@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:Synapse.MoexLoader"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="500">
-          <Grid ShowGridLines="True">
+          <Grid ShowGridLines="False">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="20"/>
                     <RowDefinition Height="25"/>

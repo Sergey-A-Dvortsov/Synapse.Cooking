@@ -5,10 +5,10 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Synapse.MoexLoader"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="500">
-    <Grid ShowGridLines="True">
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid ShowGridLines="False">
         <Grid.RowDefinitions>
-            <RowDefinition Height="20"/>
+            <RowDefinition Height="25"/>
             <RowDefinition Height="25"/>
             <RowDefinition Height="25"/>
             <RowDefinition Height="25"/>
@@ -19,6 +19,7 @@
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
+        <ProgressBar Grid.Row="0" Grid.ColumnSpan="2" Margin="3" Value="{Binding ProgressBarValue}" />
         <TextBlock Grid.Row="1" Text="Включить" Style="{StaticResource NameTextBlockStyle}" />
         <CheckBox Grid.Row="1" Grid.Column="1" IsChecked="{Binding OnOff}" Margin="5" />
         <TextBlock Grid.Row="2" Text="Начальная дата" Style="{StaticResource NameTextBlockStyle}" />

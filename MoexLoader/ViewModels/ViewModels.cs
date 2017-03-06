@@ -128,17 +128,15 @@ namespace Synapse.MoexLoader
         }
         private bool CanStart(object obj)
         {
-            return !string.IsNullOrWhiteSpace(_loader.DataPath) && 
-                (_loader.Sources["Interest"].OnOff || _loader.Sources["Indexes"].OnOff);
+            return !string.IsNullOrWhiteSpace(_loader.DataPath) && (_loader.Sources.Any(s => s.OnOff));
         }
 
         public void OnLoaded(object sender, RoutedEventArgs e)
         {
+            SettingsStorage storage = null;
             if (File.Exists("settings.xml"))
-            {
-                var storage = new XmlSerializer<SettingsStorage>().Deserialize("settings.xml");
-                _loader.Load(storage);
-            }
+                storage = new XmlSerializer<SettingsStorage>().Deserialize("settings.xml");
+            _loader.Load(storage);
         }
 
         public void OnClosing(object sender, CancelEventArgs e)
@@ -193,7 +191,7 @@ namespace Synapse.MoexLoader
     public abstract class SourceViewModel : BaseViewModel
     {
         protected Loader _loader;
-        protected SourceSettings _settings;
+        protected BaseSourceLoader _settings;
         public SourceViewModel()
         {
             _loader = Loader.GetInstance();
@@ -207,6 +205,23 @@ namespace Synapse.MoexLoader
                 _settings.OnOff = value;
                 NotifyPropertyChanged();
             }
+        }
+
+        private eProcessState _state = eProcessState.Stopped;
+        public eProcessState State
+        {
+            get { return _state; }
+            set
+            {
+                _state = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+        public decimal ProgressBarValue
+        {
+            get { return _settings.ProgressBarValue; }
+            set { var t = value; }
         }
 
         public DateTime StartDate
@@ -239,36 +254,50 @@ namespace Synapse.MoexLoader
             }
         }
 
+        public void Notify()
+        {
+            NotifyPropertyChanged("OnOff");
+            NotifyPropertyChanged("StartDate");
+            NotifyPropertyChanged("EndDate");
+            NotifyPropertyChanged("LoadTo");
+            NotifyPropertyChanged("ProgressBarValue");
+        }
+
     }
 
     public class InterestViewModel : SourceViewModel
     {
         public InterestViewModel() : base()
         {
-            _settings = _loader.Sources["Interest"];
+            _settings = _loader.Sources[0];
+            _loader.SettingsLoaded += () =>
+            {
+                Notify();
+                NotifyPropertyChanged("ContractTypes");
+                NotifyPropertyChanged("SeparateOptionsFile");
+            };
         }
 
         public eContractType ContractTypes
         {
-            get { return _settings.ContractTypes; }
-            set { _settings.ContractTypes = value; }
+            get { return ((InterestSourceLoader)_settings).ContractTypes; }
+            set { ((InterestSourceLoader)_settings).ContractTypes = value; }
         }
 
         public bool SeparateOptionsFile
         {
-            get { return _settings.SeparateOptionsFile; }
-            set { _settings.SeparateOptionsFile = value; }
+            get { return ((InterestSourceLoader)_settings).SeparateOptionsFile; }
+            set { ((InterestSourceLoader)_settings).SeparateOptionsFile = value; }
         }
-
-
     }
 
     public class IndexesViewModel : SourceViewModel
     {
         public IndexesViewModel() : base()
         {
-            _settings = _loader.Sources["Indexes"];
+            _settings = _loader.Sources[1];
         }
-    } 
+
+    }
 
 }
